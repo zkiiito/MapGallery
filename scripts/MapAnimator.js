@@ -129,6 +129,8 @@ var MapAnimator = {
                 that.polyline.setMap(that.map);
                 that.map.fitBounds(bounds);
                 callback();
+            } else {
+                console.log(status);
             }
         });
     },
@@ -148,18 +150,22 @@ var MapAnimator = {
         locations.push(routeParams.to);
 
         locations.forEach(function (location) {
-            geocoder.geocode({'address': location}, function (results) {
-                that.polyline.getPath().push(results[0].geometry.location);
-                bounds.extend(results[0].geometry.location);
-                counter += 1;
+            geocoder.geocode({'address': location}, function (results, status) {
+                if (status === google.maps.GeocoderStatus.OK) {
+                    that.polyline.getPath().push(results[0].geometry.location);
+                    bounds.extend(results[0].geometry.location);
+                    counter += 1;
 
-                if (counter === locations.length) {
-                    that.marker = that.createMarker(that.polyline.getPath().getAt(0), "start");
-                    that.endLocation = {latlng: that.polyline.getPath().getAt(1)};
+                    if (counter === locations.length) {
+                        that.marker = that.createMarker(that.polyline.getPath().getAt(0), "start");
+                        that.endLocation = {latlng: that.polyline.getPath().getAt(counter - 1)};
 
-                    that.polyline.setMap(that.map);
-                    that.map.fitBounds(bounds);
-                    callback();
+                        that.polyline.setMap(that.map);
+                        that.map.fitBounds(bounds);
+                        callback();
+                    }
+                } else {
+                    console.log(status);
                 }
             });
         });
