@@ -14,6 +14,10 @@ var MapGallery = {
         this.waypoints = waypoints;
         startLocation = startLocation || this.getFirstLocation();
 
+        if (this.waypoints[0].from !== undefined) {
+            that.pos = -1;
+        }
+
         $(document).keydown(function (e) {
             if ((e.which === 37) || (e.which === 40)) {
                 e.preventDefault();
@@ -59,9 +63,11 @@ var MapGallery = {
         if (this.waypoints[pos] && this.waypoints[pos].from === undefined) {
             var img = new Image();
             img.src = this.getImageUrl(pos);
+            /*
             img.onload = function () {
                 console.log(img.src + ' loaded');
             };
+            */
         }
     },
 
@@ -90,13 +96,15 @@ var MapGallery = {
     },
 
     getFirstLocation: function () {
-        var locs = this.waypoints.reduce(function (locations, waypoint) {
+        var startLocation = null;
+        this.waypoints.some(function (waypoint) {
             if (waypoint.from !== undefined) {
-                locations.push(waypoint.from);
+                startLocation = waypoint.from;
+                return true;
             }
-            return locations;
-        }, []);
+            return false;
+        });
 
-        return locs[0];
+        return startLocation;
     }
 };
