@@ -1,0 +1,24 @@
+{
+  "name": "MapGallery",
+  "version": "0.0.0",
+  "description": "Slideshows with maps",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zkiiito/MapGallery.git"
+  },
+  "author": "zooli",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/zkiiito/MapGallery/issues"
+  },
+  "homepage": "https://github.com/zkiiito/MapGallery",
+  "dependencies": {
+    "express": "^4.12.3",
+    "flickrapi": "^0.3.28"
+  }
+}

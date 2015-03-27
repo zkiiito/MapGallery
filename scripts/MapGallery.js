@@ -4,7 +4,7 @@ var MapGallery = {
     waypoints: [],
     el: $('#gallery'),
     imgdir: 'images/',
-    fullscreen: true,
+    fullscreen: false,
 
     initialize: function (waypoints, startLocation) {
         var that = this;
@@ -63,11 +63,6 @@ var MapGallery = {
         if (this.waypoints[pos] && this.waypoints[pos].from === undefined) {
             var img = new Image();
             img.src = this.getImageUrl(pos);
-            /*
-            img.onload = function () {
-                console.log(img.src + ' loaded');
-            };
-            */
         }
     },
 
