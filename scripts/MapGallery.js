@@ -40,6 +40,7 @@ var MapGallery = {
     move: function (dir) {
         var that = this;
         that.openFullscreen();
+        MapAnimator.stopAnimation();
         this.el.fadeOut("fast", function () {
             that.pos += dir;
             var next = that.waypoints[that.pos];

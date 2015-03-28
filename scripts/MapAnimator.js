@@ -19,7 +19,8 @@ var MapAnimator = {
             geocoder = new google.maps.Geocoder(),
             myOptions = {
                 zoom: 13,
-                mapTypeId: google.maps.MapTypeId.ROADMAP
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+                keyboardShortcuts: false
             };
 
         this.map = new google.maps.Map(this.mapdiv, myOptions);
@@ -209,5 +210,14 @@ var MapAnimator = {
             },
             this.tick
         );
+    },
+
+    stopAnimation: function () {
+        if (this.timerHandle) {
+            clearTimeout(this.timerHandle);
+            this.timerHandle = null;
+            this.map.panTo(this.endLocation.latlng);
+            this.marker.setPosition(this.endLocation.latlng);
+        }
     }
 };
