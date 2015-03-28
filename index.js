@@ -26,15 +26,15 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
         res.sendFile(__dirname + '/index.html');
     });
 
-    app.get('/:setId', function (req, res) {
-        getTitle(flickr, parseInt(req.params.setId, 10), function (err, title) {
+    app.get('/:setId([0-9]+)', function (req, res) {
+        getTitle(flickr, req.params.setId, function (err, title) {
             if (err) {
                 console.log(err);
                 return;
             }
             fs.readFile(__dirname + '/index.html', {encoding: 'utf-8'}, function (err, data) {
                 if (!err) {
-                    var clientIndexHtml = data.replace('scripts/demo.js', '/data/' + parseInt(req.params.setId, 10));
+                    var clientIndexHtml = data.replace('scripts/demo.js', '/data/' + req.params.setId);
                     clientIndexHtml = clientIndexHtml.replace(/<title>(.*)<\/title>/, '<title>MapGallery - ' + title + '</title>');
                     res.send(clientIndexHtml);
                 }
@@ -42,7 +42,7 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
         });
     });
 
-    app.get('/data/:setId', function (req, res) {
+    app.get('/data/:setId([0-9]+)', function (req, res) {
         getAllPhotos(flickr, req.params.setId, 1, [], function (err, allPhotos) {
             if (err) {
                 console.log(err);
