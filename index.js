@@ -108,7 +108,11 @@ function transformPhotos(photos, callback) {
             try {
                 //needs improvement
                 var desc = JSON.parse(photo.description._content.replace(/&quot;/g, '"'));
-                res.push(desc);
+                if (Array.isArray(desc)) {
+                    res = res.concat(desc);
+                } else {
+                    res.push(desc);
+                }
             } catch (err) {
                 console.log(err, photo.description._content);
             }

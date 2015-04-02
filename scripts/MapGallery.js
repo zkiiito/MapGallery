@@ -52,8 +52,8 @@ var MapGallery = {
         var that = this,
             hashPos;
 
-        console.log('initstep');
         this.el.hide();
+        this.el.css('background-image', '');
 
         hashPos = parseInt(window.location.hash.substr(1), 10);
 
@@ -69,8 +69,7 @@ var MapGallery = {
 
         this.updateBtns();
 
-        console.log(startLocation);
-
+        MapAnimator.stopAnimation();
         MapAnimator.showStartLocation(startLocation, function () {
             that.move(1);
         });
