@@ -15,17 +15,27 @@ var MapGallery = {
         startLocation = startLocation || this.getFirstLocation();
 
         if (this.waypoints[0].from !== undefined) {
-            that.pos = -1;
+            this.pos = -1;
         }
+
+        this.updateImages();
 
         $(document).keydown(function (e) {
             if ((e.which === 37) || (e.which === 40)) {
                 e.preventDefault();
                 that.move(-1);
-            } else if ((e.which === 38) || (e.which === 39)) {
+            } else if ((e.which === 38) || (e.which === 39) || (e.which === 32)) {
                 e.preventDefault();
                 that.move(1);
             }
+        });
+
+        $('#btnPrev').click(function () {
+            that.move(-1);
+        });
+
+        $('#btnNext').click(function () {
+            that.move(1);
         });
 
         this.el.on("click", function () {
@@ -33,7 +43,7 @@ var MapGallery = {
         });
 
         MapAnimator.initialize(startLocation, function () {
-            that.move(0);
+            that.move(1);
         });
     },
 
@@ -56,8 +66,27 @@ var MapGallery = {
                     $(this).css('background-image', 'url("' + that.getImageUrl(that.pos) + '")');
                     $(this).fadeIn("fast");
                 }
+            } else {
+                that.pos -= dir;
             }
+            that.updateImages();
         });
+    },
+
+    updateImages: function () {
+        if (this.pos <= 0) {
+            $('#btnPrev').hide();
+            $('#btnNext').addClass('hover');
+        } else {
+            $('#btnPrev').show();
+            $('#btnNext').removeClass('hover');
+        }
+
+        if (this.pos + 1 >= this.waypoints.length) {
+            $('#btnNext').hide();
+        } else {
+            $('#btnNext').show();
+        }
     },
 
     preload: function (pos) {

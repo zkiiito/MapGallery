@@ -19,3 +19,22 @@ body, html, .fullscreen {
     position: absolute;
     top: 0;
 }
+
+#btnPrev, #btnNext {
+    position: absolute;
+    top: 50%;
+    background-image: url('btns.png');
+    width: 36px;
+    height: 36px;
+    z-index: 9999;
+    cursor: pointer;
+}
+
+#btnNext {
+    background-position-x: 36px;
+    right: 0px;
+}
+
+#btnPrev:hover, #btnNext:hover, #btnNext.hover {
+    background-position-y: 36px;
+}
