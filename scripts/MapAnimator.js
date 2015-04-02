@@ -1,4 +1,5 @@
 /*global google, $ */
+"use strict";
 var MapAnimator = {
     map: null,
     mapdiv: $('#map_canvas')[0],
@@ -13,17 +14,20 @@ var MapAnimator = {
     distance: null,
     callback: null,
 
-    initialize: function (address, callback) {
+    initialize: function () {
         // Create a map and center it on address
-        var that = this,
-            geocoder = new google.maps.Geocoder(),
-            myOptions = {
+        var myOptions = {
                 zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
                 keyboardShortcuts: false
             };
 
         this.map = new google.maps.Map(this.mapdiv, myOptions);
+    },
+
+    showStartLocation: function (address, callback) {
+        var geocoder = new google.maps.Geocoder(),
+            that = this;
 
         geocoder.geocode({'address': address}, function (results) {
             that.map.setCenter(results[0].geometry.location);

@@ -1,10 +1,12 @@
 /*global MapAnimator, $ */
+"use strict";
 var MapGallery = {
-    pos: 0,
+    pos: -1,
     waypoints: [],
     el: $('#gallery'),
     imgdir: 'images/',
     fullscreen: false,
+    watchHashChange: true,
 
     initialize: function (waypoints, startLocation) {
         var that = this;
@@ -12,13 +14,6 @@ var MapGallery = {
         this.el.hide();
 
         this.waypoints = waypoints;
-        startLocation = startLocation || this.getFirstLocation();
-
-        if (this.waypoints[0].from !== undefined) {
-            this.pos = -1;
-        }
-
-        this.updateImages();
 
         $(document).keydown(function (e) {
             if ((e.which === 37) || (e.which === 40)) {
@@ -42,7 +37,41 @@ var MapGallery = {
             that.move(1);
         });
 
-        MapAnimator.initialize(startLocation, function () {
+        MapAnimator.initialize();
+        this.initStep(startLocation);
+
+        window.onhashchange = function () {
+            if (that.watchHashChange) {
+                that.initStep();
+            }
+            that.watchHashChange = true;
+        };
+    },
+
+    initStep: function (startLocation) {
+        var that = this,
+            hashPos;
+
+        console.log('initstep');
+        this.el.hide();
+
+        hashPos = parseInt(window.location.hash.substr(1), 10);
+
+        if (!isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
+            this.pos = hashPos - 2;//-1 because of 0.., -1 because we have to move to this.
+        }
+
+        startLocation = startLocation || this.getFirstLocation();
+        //if we come by a hash, and the current step is not a map
+        if (hashPos && this.waypoints[this.pos + 1].from === undefined) {
+            startLocation = this.getLastLocation() || startLocation;
+        }
+
+        this.updateBtns();
+
+        console.log(startLocation);
+
+        MapAnimator.showStartLocation(startLocation, function () {
             that.move(1);
         });
     },
@@ -69,11 +98,14 @@ var MapGallery = {
             } else {
                 that.pos -= dir;
             }
-            that.updateImages();
+            that.watchHashChange = false;
+            window.location.hash = (that.pos + 1).toString();
+
+            that.updateBtns();
         });
     },
 
-    updateImages: function () {
+    updateBtns: function () {
         if (this.pos <= 0) {
             $('#btnPrev').hide();
             $('#btnNext').addClass('hover');
@@ -122,7 +154,7 @@ var MapGallery = {
 
     getFirstLocation: function () {
         var startLocation = null;
-        this.waypoints.some(function (waypoint) {
+        this.waypoints.slice(Math.max(this.pos, 0)).some(function (waypoint) {
             if (waypoint.from !== undefined) {
                 startLocation = waypoint.from;
                 return true;
@@ -131,5 +163,18 @@ var MapGallery = {
         });
 
         return startLocation;
+    },
+
+    getLastLocation: function () {
+        var lastLocation = null;
+        this.waypoints.slice(0, this.pos + 1).reverse().some(function (waypoint) {
+            if (waypoint.to !== undefined) {
+                lastLocation = waypoint.to;
+                return true;
+            }
+            return false;
+        });
+
+        return lastLocation;
     }
 };
