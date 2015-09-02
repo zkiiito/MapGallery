@@ -107,7 +107,7 @@ function transformPhotos(photos, callback) {
         if (photo.description._content !== '') {
             try {
                 //needs improvement
-                var desc = JSON.parse(photo.description._content.replace(/&quot;/g, '"'));
+                var desc = JSON.parse(photo.description._content.replace(/'/g, '"').replace(/&quot;/g, '"').replace(/\n/g, ''));
                 if (Array.isArray(desc)) {
                     res = res.concat(desc);
                 } else {
