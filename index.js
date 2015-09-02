@@ -1,5 +1,6 @@
 var express = require('express'),
     Flickr = require('flickrapi'),
+    fJSON = require("fbbk-json"),
     fs = require('fs'),
     config = require('./config'),
     flickrOptions = {
@@ -106,8 +107,7 @@ function transformPhotos(photos, callback) {
     photos.forEach(function (photo) {
         if (photo.description._content !== '') {
             try {
-                //needs improvement
-                var desc = JSON.parse(photo.description._content.replace(/'/g, '"').replace(/&quot;/g, '"').replace(/\n/g, ''));
+                var desc = fJSON.parse(photo.description._content);
                 if (Array.isArray(desc)) {
                     res = res.concat(desc);
                 } else {
