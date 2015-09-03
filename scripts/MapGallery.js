@@ -11,6 +11,10 @@ var MapGallery = {
     initialize: function (waypoints, startLocation) {
         var that = this;
 
+        if ('{{flickr-url}}' === $('#btnFlickr a').attr('href')) {
+            $('#btnFlickr').hide();
+        }
+
         this.el.hide();
 
         this.waypoints = waypoints;

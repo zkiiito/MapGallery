@@ -28,7 +28,7 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
     });
 
     app.get('/:setId([0-9]+)', function (req, res) {
-        getTitle(flickr, req.params.setId, function (err, title) {
+        getPhotosetInfo(flickr, req.params.setId, function (err, photoset) {
             if (err) {
                 console.log(err);
                 return;
@@ -36,7 +36,11 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
             fs.readFile(__dirname + '/index.html', {encoding: 'utf-8'}, function (err, data) {
                 if (!err) {
                     var clientIndexHtml = data.replace('scripts/demo.js', '/data/' + req.params.setId);
-                    clientIndexHtml = clientIndexHtml.replace(/<title>(.*)<\/title>/, '<title>MapGallery - ' + title + '</title>');
+                    clientIndexHtml = clientIndexHtml.replace(/<title>(.*)<\/title>/, '<title>MapGallery - ' + photoset.title._content + '</title>');
+                    clientIndexHtml = clientIndexHtml.replace('{{og-title}}', 'MapGallery - ' + photoset.title._content);
+                    clientIndexHtml = clientIndexHtml.replace('{{og-description}}', photoset.description._content);
+                    clientIndexHtml = clientIndexHtml.replace('{{og-image}}', photoset.primaryPhotoUrl);
+                    clientIndexHtml = clientIndexHtml.replace('{{flickr-url}}', photoset.url);
                     res.send(clientIndexHtml);
                 }
             });
@@ -61,7 +65,7 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
 
 });
 
-function getTitle(filckr, setId, callback) {
+function getPhotosetInfo(filckr, setId, callback) {
     filckr.photosets.getInfo({
         photoset_id: setId
     }, function (err, data) {
@@ -72,7 +76,10 @@ function getTitle(filckr, setId, callback) {
             return;
         }
 
-        callback(null, data.photoset.title._content);
+        data.photoset.primaryPhotoUrl = 'https://farm' + data.photoset.farm + '.staticflickr.com/' + data.photoset.server + '/' + data.photoset.primary + '_' + data.photoset.secret + '_b.jpg';
+        data.photoset.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/sets/' + data.photoset.id;
+
+        callback(null, data.photoset);
     });
 }
 
@@ -107,7 +114,7 @@ function transformPhotos(photos, callback) {
     photos.forEach(function (photo) {
         if (photo.description._content !== '') {
             try {
-                var desc = fJSON.parse(photo.description._content);
+                var desc = fJSON.parse(photo.description._content.replace(/&quot;/g, '"'));
                 if (Array.isArray(desc)) {
                     res = res.concat(desc);
                 } else {

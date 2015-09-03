@@ -19,7 +19,13 @@ var MapAnimator = {
         var myOptions = {
                 zoom: 13,
                 mapTypeId: google.maps.MapTypeId.ROADMAP,
-                keyboardShortcuts: false
+                keyboardShortcuts: false,
+                panControl: false,
+                streetViewControl: false,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.SMALL
+                },
+                mapTypeControl: false
             };
 
         this.map = new google.maps.Map(this.mapdiv, myOptions);
