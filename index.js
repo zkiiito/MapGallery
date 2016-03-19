@@ -2,22 +2,16 @@ var express = require('express'),
     Flickr = require('flickrapi'),
     fJSON = require("fbbk-json"),
     fs = require('fs'),
-    config = require('./config'),
-    flickrOptions = {
-        api_key: config.flickrKey,
-        secret: config.flickrSecret
-    };
+    config = require('./config');
 
-Flickr.tokenOnly(flickrOptions, function (err, flickr) {
+Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions, function (err, flickr) {
     if (err) {
         console.log(err);
         return;
     }
 
     var app = express();
-
     app.disable('x-powered-by');
-    flickr.proxy(app, '/service/rest');
 
     app.use('/css', express.static(__dirname + '/css'));
     app.use('/scripts', express.static(__dirname + '/scripts'));
@@ -31,7 +25,7 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
         getPhotosetInfo(flickr, req.params.setId, function (err, photoset) {
             if (err) {
                 console.log(err);
-                return;
+                return res.send(err.toString());
             }
             fs.readFile(__dirname + '/index.html', {encoding: 'utf-8'}, function (err, data) {
                 if (!err) {
@@ -51,7 +45,7 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
         getAllPhotos(flickr, req.params.setId, 1, [], function (err, allPhotos) {
             if (err) {
                 console.log(err);
-                return;
+                return res.send(err.toString());
             }
             transformPhotos(allPhotos, function (err, transformedPhotos) {
                 res.send('MapGallery.initialize(' + JSON.stringify(transformedPhotos) + ');');
@@ -67,7 +61,8 @@ Flickr.tokenOnly(flickrOptions, function (err, flickr) {
 
 function getPhotosetInfo(filckr, setId, callback) {
     filckr.photosets.getInfo({
-        photoset_id: setId
+        photoset_id: setId,
+        authenticated: config.authenticate
     }, function (err, data) {
         if (err) {
             if (err.toString().indexOf('user_id') < 0) {
@@ -89,7 +84,8 @@ function getAllPhotos(flickr, setId, page, allPhotos, callback) {
     flickr.photosets.getPhotos({
         photoset_id: setId,
         extras: 'url_l, description',
-        page: page
+        page: page,
+        authenticated: config.authenticate
     }, function (err, data) {
         if (err) {
             if (err.toString().indexOf('user_id') < 0) {
