@@ -1,7 +1,7 @@
 body {
     margin: 0;
     padding: 0;
-    font-family: Helvetica, Arial;
+    font-family: Helvetica, Arial, sans-serif;
 }
 
 body, html, .fullscreen {
@@ -31,12 +31,16 @@ body, html, .fullscreen {
 }
 
 #btnNext {
-    background-position-x: 36px;
-    right: 0px;
+    background-position: 36px 0;
+    right: 0;
 }
 
-#btnPrev:hover, #btnNext:hover, #btnNext.hover {
-    background-position-y: 36px;
+#btnPrev:hover {
+    background-position: 0 36px;
+}
+
+#btnNext:hover, #btnNext.hover {
+    background-position: 36px 36px;
 }
 
 #btnFlickr {
