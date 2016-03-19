@@ -189,7 +189,7 @@ var MapAnimator = {
         this.distance = this.polyline.Distance();
         this.map.setCenter(this.polyline.getPath().getAt(0));
 
-        google.maps.event.addListenerOnce(this.map, 'idle', function () {
+        google.maps.event.addListenerOnce(this.map, 'tilesloaded', function () {
             that.animate(that.step);
         });
     },
