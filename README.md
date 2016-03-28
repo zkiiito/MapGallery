@@ -2,7 +2,7 @@
 
 I could not find an image viewer which supports slideshows mixing photos with maps, so I created my own. It's designed for local images and flickr sets.
 
-Try it now at http://zoo.li/MapGallery
+Try it now at http://zkiiito.github.io/MapGallery
 
 ## Controls
 
