@@ -1,3 +1,5 @@
+'use strict';
+
 var config = {
     flickrOptions: {
         api_key: process.env.FLICKR_KEY || 'YOURFLICKRKEY',

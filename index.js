@@ -1,3 +1,5 @@
+'use strict';
+
 var express = require('express'),
     Flickr = require('flickrapi'),
     fJSON = require("fbbk-json"),
@@ -29,7 +31,12 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
             }
             fs.readFile(__dirname + '/index.html', {encoding: 'utf-8'}, function (err, data) {
                 if (!err) {
-                    var clientIndexHtml = data.replace('scripts/demo.js', '/data/' + req.params.setId);
+                    var dataUrl = '/data/' + req.params.setId;
+                    if (req.query.hd) {
+                        dataUrl += '?hd=1';
+                    }
+
+                    var clientIndexHtml = data.replace('scripts/demo.js', dataUrl);
                     clientIndexHtml = clientIndexHtml.replace(/<title>(.*)<\/title>/, '<title>MapGallery - ' + photoset.title._content + '</title>');
                     clientIndexHtml = clientIndexHtml.replace('{{og-title}}', 'MapGallery - ' + photoset.title._content);
                     clientIndexHtml = clientIndexHtml.replace('{{og-description}}', photoset.description._content);
@@ -47,7 +54,10 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
                 console.log(err);
                 return res.send(err.toString());
             }
-            transformPhotos(allPhotos, function (err, transformedPhotos) {
+            transformPhotos(allPhotos, req.query.hd !== undefined, function (err, transformedPhotos) {
+                if (err) {
+                    res.send(JSON.stringify({error: err}));
+                }
                 res.send('MapGallery.initialize(' + JSON.stringify(transformedPhotos) + ');');
             });
         });
@@ -83,7 +93,7 @@ function getAllPhotos(flickr, setId, page, allPhotos, callback) {
     allPhotos = allPhotos || [];
     flickr.photosets.getPhotos({
         photoset_id: setId,
-        extras: 'url_l, description',
+        extras: 'url_h, url_l, description',
         page: page,
         authenticated: config.authenticate
     }, function (err, data) {
@@ -104,7 +114,7 @@ function getAllPhotos(flickr, setId, page, allPhotos, callback) {
     });
 }
 
-function transformPhotos(photos, callback) {
+function transformPhotos(photos, hdEnabled, callback) {
     var res = [];
 
     photos.forEach(function (photo) {
@@ -120,7 +130,7 @@ function transformPhotos(photos, callback) {
                 console.log(err, photo.description._content);
             }
         }
-        res.push(photo.url_l);
+        res.push((hdEnabled && photo.url_h) ? photo.url_h : photo.url_l);
     });
 
     callback(null, res);

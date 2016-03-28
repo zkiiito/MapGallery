@@ -47,10 +47,14 @@ body, html, .fullscreen {
     position: absolute;
     top: 1px;
     right: 1px;
+    text-align: right;
 }
 
 #btnFlickr a {
     opacity: 0.3;
+    font-weight: bold;
+    text-decoration: none;
+    color: #000;
 }
 
 #btnFlickr a:hover {

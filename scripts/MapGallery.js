@@ -13,6 +13,12 @@ var MapGallery = {
 
         if ('{{flickr-url}}' === $('#btnFlickr a').attr('href')) {
             $('#btnFlickr').hide();
+        } else {
+            var isHd = document.location.search.indexOf('hd=1') > 0;
+            $('#btnHd').text('HD ' + (isHd ? 'on' : 'off')).click(function (e) {
+                e.preventDefault();
+                document.location.search = '?hd=' + (isHd ? '0' : '1');
+            });
         }
 
         this.el.hide();
