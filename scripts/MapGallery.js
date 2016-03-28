@@ -80,7 +80,7 @@ var MapGallery = {
         this.updateBtns();
 
         MapAnimator.stopAnimation();
-        MapAnimator.showStartLocation(startLocation, function () {
+        MapAnimator.showStartLocation(startLocation, that.waypoints[that.pos + 1].from === undefined, function () {
             that.move(1);
         });
     },

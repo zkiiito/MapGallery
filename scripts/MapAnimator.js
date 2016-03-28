@@ -31,7 +31,7 @@ var MapAnimator = {
         this.map = new google.maps.Map(this.mapdiv, myOptions);
     },
 
-    showStartLocation: function (address, callback) {
+    showStartLocation: function (address, callbackImmediately, callback) {
         var geocoder = new google.maps.Geocoder(),
             that = this;
 
@@ -39,7 +39,9 @@ var MapAnimator = {
             that.map.setCenter(results[0].geometry.location);
             that.marker = that.createMarker(results[0].geometry.location, "start");
 
-            if (callback) {
+            if (callbackImmediately) {
+                callback();
+            } else {
                 google.maps.event.addListenerOnce(that.map, 'click', function () {
                     callback();
                 });
