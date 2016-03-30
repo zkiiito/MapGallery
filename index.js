@@ -4,7 +4,9 @@ var express = require('express'),
     Flickr = require('flickrapi'),
     fJSON = require("fbbk-json"),
     fs = require('fs'),
-    config = require('./config');
+    config = require('./config'),
+    infoCache = {},
+    photoCache = {};
 
 Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions, function (err, flickr) {
     if (err) {
@@ -24,14 +26,21 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
     });
 
     app.get('/:setId([0-9]+)', function (req, res) {
-        getPhotosetInfo(flickr, req.params.setId, function (err, photoset) {
+        var setId = req.params.setId;
+        //clear the cache if you have to
+        if (req.query.cc) {
+            photoCache.setId = undefined;
+            infoCache.setId = undefined;
+        }
+
+        getPhotosetInfo(flickr, setId, function (err, photoset) {
             if (err) {
                 console.log(err);
                 return res.send(err.toString());
             }
             fs.readFile(__dirname + '/index.html', {encoding: 'utf-8'}, function (err, data) {
                 if (!err) {
-                    var dataUrl = '/data/' + req.params.setId;
+                    var dataUrl = '/data/' + setId;
                     if (req.query.hd) {
                         dataUrl += '?hd=1';
                     }
@@ -70,6 +79,11 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
 });
 
 function getPhotosetInfo(filckr, setId, callback) {
+    if (infoCache.setId) {
+        console.log('cache hit: ' + setId);
+        return callback(null, infoCache.setId);
+    }
+
     filckr.photosets.getInfo({
         photoset_id: setId,
         authenticated: config.authenticate
@@ -84,11 +98,17 @@ function getPhotosetInfo(filckr, setId, callback) {
         data.photoset.primaryPhotoUrl = 'https://farm' + data.photoset.farm + '.staticflickr.com/' + data.photoset.server + '/' + data.photoset.primary + '_' + data.photoset.secret + '_b.jpg';
         data.photoset.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/sets/' + data.photoset.id;
 
+        infoCache.setId = data.photoset;
         callback(null, data.photoset);
     });
 }
 
 function getAllPhotos(flickr, setId, page, allPhotos, callback) {
+    if (photoCache.setId) {
+        console.log('cache hit: ' + setId);
+        return callback(null, photoCache.setId);
+    }
+
     page = page || 1;
     allPhotos = allPhotos || [];
     flickr.photosets.getPhotos({
@@ -109,6 +129,7 @@ function getAllPhotos(flickr, setId, page, allPhotos, callback) {
         if (data.photoset.pages > page) {
             getAllPhotos(flickr, setId, page + 1, allPhotos, callback);
         } else {
+            photoCache.setId = allPhotos;
             callback(null, allPhotos);
         }
     });
