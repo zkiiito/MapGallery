@@ -11,11 +11,10 @@ var MapGallery = {
     initialize: function (waypoints, startLocation) {
         var that = this;
 
-        if ('{{flickr-url}}' === $('#btnFlickr a').attr('href')) {
-            $('#btnFlickr').hide();
-        } else {
+        if ('{{flickr-url}}' !== $('#btnFlickr a').attr('href')) {
+            $('#btnFlickr').show();
             var isHd = document.location.search.indexOf('hd=1') > 0;
-            $('#btnHd').text('HD ' + (isHd ? 'on' : 'off')).click(function (e) {
+            $('#btnHd').html('HD <span class="status">' + (isHd ? 'on' : 'off') + "</span>").click(function (e) {
                 e.preventDefault();
                 document.location.search = '?hd=' + (isHd ? '0' : '1');
             });
@@ -39,7 +38,7 @@ var MapGallery = {
             that.move(-1);
         });
 
-        $('#btnNext').click(function () {
+        $('#btnNext, #btnHelper').click(function () {
             that.move(1);
         });
 
@@ -69,6 +68,8 @@ var MapGallery = {
 
         if (!isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
             this.pos = hashPos - 2;//-1 because of 0.., -1 because we have to move to this.
+        } else {
+            $('#btnHelper').show();
         }
 
         startLocation = startLocation || this.getFirstLocation();
@@ -87,9 +88,10 @@ var MapGallery = {
 
     move: function (dir) {
         var that = this;
+        $('#btnHelper').hide();
         that.openFullscreen();
         MapAnimator.stopAnimation();
-        this.el.fadeOut("fast", function () {
+        this.el.fadeOut(100, function () {
             that.pos += dir;
             var next = that.waypoints[that.pos];
 
