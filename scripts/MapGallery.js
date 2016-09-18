@@ -31,6 +31,13 @@ var MapGallery = {
             } else if ((e.which === 38) || (e.which === 39) || (e.which === 32)) {
                 e.preventDefault();
                 that.move(1);
+            } else if (e.which === 88) { //x delete from waypoints
+                e.preventDefault();
+                that.removeImage();
+            } else if (e.which === 83) { //[s]ave to localStorage
+                that.save();
+            } else if (e.which === 76) { //[l]oad from localStorage
+                that.load();
             }
         });
 
@@ -187,5 +194,23 @@ var MapGallery = {
         });
 
         return lastLocation;
+    },
+
+    removeImage: function () {
+        this.waypoints.splice(this.pos, 1);
+        this.move(0);
+    },
+
+    save: function () {
+        var data = JSON.stringify(this.waypoints);
+        localStorage.setItem('MapGallery', data);
+        console.log('MapGallery.initialize(' + data.replace(/,"/g, ",\n\"") + ');');
+    },
+
+    load: function () {
+        if (localStorage.getItem('MapGallery')) {
+          this.waypoints = JSON.parse(localStorage.getItem('MapGallery'));
+          this.move(0);
+        }
     }
 };
