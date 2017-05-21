@@ -29,8 +29,8 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
         var setId = req.params.setId;
         //clear the cache if you have to
         if (req.query.cc) {
-            photoCache.setId = undefined;
-            infoCache.setId = undefined;
+            photoCache[setId] = undefined;
+            infoCache[setId] = undefined;
         }
 
         getPhotosetInfo(flickr, setId, function (err, photoset) {
@@ -79,9 +79,9 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
 });
 
 function getPhotosetInfo(filckr, setId, callback) {
-    if (infoCache.setId) {
+    if (infoCache[setId]) {
         console.log('cache hit: ' + setId);
-        return callback(null, infoCache.setId);
+        return callback(null, infoCache[setId]);
     }
 
     filckr.photosets.getInfo({
@@ -98,15 +98,15 @@ function getPhotosetInfo(filckr, setId, callback) {
         data.photoset.primaryPhotoUrl = 'https://farm' + data.photoset.farm + '.staticflickr.com/' + data.photoset.server + '/' + data.photoset.primary + '_' + data.photoset.secret + '_b.jpg';
         data.photoset.url = 'https://www.flickr.com/photos/' + data.photoset.owner + '/sets/' + data.photoset.id;
 
-        infoCache.setId = data.photoset;
+        infoCache[setId] = data.photoset;
         callback(null, data.photoset);
     });
 }
 
 function getAllPhotos(flickr, setId, page, allPhotos, callback) {
-    if (photoCache.setId) {
+    if (photoCache[setId]) {
         console.log('cache hit: ' + setId);
-        return callback(null, photoCache.setId);
+        return callback(null, photoCache[setId]);
     }
 
     page = page || 1;
@@ -129,7 +129,7 @@ function getAllPhotos(flickr, setId, page, allPhotos, callback) {
         if (data.photoset.pages > page) {
             getAllPhotos(flickr, setId, page + 1, allPhotos, callback);
         } else {
-            photoCache.setId = allPhotos;
+            photoCache[setId] = allPhotos;
             callback(null, allPhotos);
         }
     });
@@ -156,4 +156,3 @@ function transformPhotos(photos, hdEnabled, callback) {
 
     callback(null, res);
 }
-
