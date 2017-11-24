@@ -22,6 +22,7 @@ var MapAnimator = {
                 keyboardShortcuts: false,
                 panControl: false,
                 streetViewControl: false,
+                fullscreenControl: false,
                 zoomControlOptions: {
                     style: google.maps.ZoomControlStyle.SMALL
                 },
