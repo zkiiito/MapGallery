@@ -38,21 +38,37 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
                 console.log(err);
                 return res.send(err.toString());
             }
-            fs.readFile(__dirname + '/index.html', {encoding: 'utf-8'}, function (err, data) {
-                if (!err) {
-                    var dataUrl = '/data/' + setId;
-                    if (req.query.hd) {
-                        dataUrl += '?hd=1';
-                    }
 
-                    var clientIndexHtml = data.replace('scripts/demo.js', dataUrl);
-                    clientIndexHtml = clientIndexHtml.replace(/<title>(.*)<\/title>/, '<title>MapGallery - ' + photoset.title._content + '</title>');
-                    clientIndexHtml = clientIndexHtml.replace('{{og-title}}', 'MapGallery - ' + photoset.title._content);
-                    clientIndexHtml = clientIndexHtml.replace('{{og-description}}', photoset.description._content);
-                    clientIndexHtml = clientIndexHtml.replace('{{og-image}}', photoset.primaryPhotoUrl);
-                    clientIndexHtml = clientIndexHtml.replace('{{flickr-url}}', photoset.url);
-                    res.send(clientIndexHtml);
+            getAllPhotos(flickr, setId, 1, [], function (err, allPhotos) {
+                if (err) {
+                    console.log(err);
+                    return res.send(err.toString());
                 }
+
+                fs.readFile(__dirname + '/index.html', {encoding: 'utf-8'}, function (err, data) {
+                    if (!err) {
+                        var isHd = getHdParam(req);
+                        var dataUrl = '/data/' + setId + '?hd=' + (isHd ? 1 : 0);
+
+                        var clientIndexHtml = data.replace('scripts/demo.js', dataUrl);
+                        clientIndexHtml = clientIndexHtml.replace(/<title>(.*)<\/title>/, '<title>MapGallery - ' + photoset.title._content + '</title>');
+                        clientIndexHtml = clientIndexHtml.replace('{{og-title}}', 'MapGallery - ' + photoset.title._content);
+                        clientIndexHtml = clientIndexHtml.replace('{{og-description}}', photoset.description._content);
+                        clientIndexHtml = clientIndexHtml.replace('{{og-image}}', photoset.primaryPhotoUrl);
+                        clientIndexHtml = clientIndexHtml.replace('data-isflickr="0"', 'data-isflickr="1"');
+
+                        if (allPhotos.some((photo) => {
+                            return photo.ispublic > 0;
+                        })) {
+                            clientIndexHtml = clientIndexHtml.replace('{{flickr-url}}', photoset.url);
+
+                        } else {
+                            clientIndexHtml = clientIndexHtml.replace('data-ispublic="1"', 'data-ispublic="0"');
+                        }
+
+                        res.send(clientIndexHtml);
+                    }
+                });
             });
         });
     });
@@ -63,7 +79,8 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
                 console.log(err);
                 return res.send(err.toString());
             }
-            transformPhotos(allPhotos, req.query.hd !== undefined, function (err, transformedPhotos) {
+            var isHd = getHdParam(req);
+            transformPhotos(allPhotos, isHd, function (err, transformedPhotos) {
                 if (err) {
                     res.send(JSON.stringify({error: err}));
                 }
@@ -77,6 +94,10 @@ Flickr[config.authenticate ? 'authenticate' : 'tokenOnly'](config.flickrOptions,
     });
 
 });
+
+function getHdParam(req) {
+    return req.query.hd === undefined ? true : parseInt(req.query.hd, 10) > 0;
+}
 
 function getPhotosetInfo(filckr, setId, callback) {
     if (infoCache[setId]) {
