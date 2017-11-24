@@ -29,6 +29,11 @@
         "name": "comment",
         "optional": "1",
         "_content": "A short comment or story to accompany the photo."
+      },
+      {
+        "name": "full_response",
+        "optional": "1",
+        "_content": "If specified, return updated details of the gallery the photo was added to"
       }
     ]
   },

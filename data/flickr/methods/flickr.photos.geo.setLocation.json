@@ -5,7 +5,7 @@
     "needssigning": 1,
     "requiredperms": "2",
     "description": {
-      "_content": "Sets the geo data (latitude and longitude and, optionally, the accuracy level) for a photo.\r\n\r\nBefore users may assign location data to a photo they must define who, by default, may view that information. Users can edit this preference at <a href=\"http://www.flickr.com/account/geo/privacy/\">http://www.flickr.com/account/geo/privacy/</a>. If a user has not set this preference, the API method will return an error."
+      "_content": "Sets the geo data (latitude and longitude and, optionally, the accuracy level) for a photo.\n\nBefore users may assign location data to a photo they must define who, by default, may view that information. Users can edit this preference at <a href=\"http://www.flickr.com/account/geo/privacy/\">http://www.flickr.com/account/geo/privacy/</a>. If a user has not set this preference, the API method will return an error."
     }
   },
   "arguments": {
@@ -38,7 +38,7 @@
       {
         "name": "context",
         "optional": "1",
-        "_content": "Context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to indicate that a photo was taken \"indoors\" or \"outdoors\". <br /><br />\r\nThe current list of context IDs is :<br /><br/>\r\n<ul>\r\n<li><strong>0</strong>, not defined.</li>\r\n<li><strong>1</strong>, indoors.</li>\r\n<li><strong>2</strong>, outdoors.</li>\r\n</ul><br />\r\nThe default context for geotagged photos is 0, or \"not defined\"\r\n"
+        "_content": "Context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to indicate that a photo was taken \"indoors\" or \"outdoors\". <br /><br />\nThe current list of context IDs is :<br /><br/>\n<ul>\n<li><strong>0</strong>, not defined.</li>\n<li><strong>1</strong>, indoors.</li>\n<li><strong>2</strong>, outdoors.</li>\n</ul><br />\nThe default context for geotagged photos is 0, or \"not defined\"\n"
       }
     ]
   },

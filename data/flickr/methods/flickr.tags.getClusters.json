@@ -8,7 +8,7 @@
       "_content": "Gives you a list of tag clusters for the given tag."
     },
     "response": {
-      "_content": "<clusters source=\"cows\" total=\"2\">\r\n\t<cluster total=\"3\">\r\n\t\t<tag>farm</tag>\r\n\t\t<tag>animals</tag>\r\n\t\t<tag>cattle</tag>\r\n\t</cluster>\r\n\t<cluster total=\"3\">\r\n\t\t<tag>green</tag>\r\n\t\t<tag>landscape</tag>\r\n\t\t<tag>countryside</tag>\r\n\t</cluster>\r\n</clusters>"
+      "_content": "<clusters source=\"cows\" total=\"2\">\n\t<cluster total=\"3\">\n\t\t<tag>farm</tag>\n\t\t<tag>animals</tag>\n\t\t<tag>cattle</tag>\n\t</cluster>\n\t<cluster total=\"3\">\n\t\t<tag>green</tag>\n\t\t<tag>landscape</tag>\n\t\t<tag>countryside</tag>\n\t</cluster>\n</clusters>"
     }
   },
   "arguments": {

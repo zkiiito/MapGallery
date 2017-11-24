@@ -8,7 +8,7 @@
       "_content": "Create a new gallery for the calling user."
     },
     "response": {
-      "_content": "  <gallery id=\"50736-72157623680420409\" url=\"http://www.flickr.com/photos/kellan/galleries/72157623680420409\" /> \r\n"
+      "_content": "  <gallery id=\"50736-72157623680420409\" url=\"http://www.flickr.com/photos/kellan/galleries/72157623680420409\" /> \n"
     },
     "explanation": {
       "_content": "The ID of the newly created gallery, and its URL."

@@ -8,7 +8,7 @@
       "_content": "Returns a list of available flickr API methods."
     },
     "response": {
-      "_content": "<methods>\r\n\t<method>flickr.blogs.getList</method>\r\n\t<method>flickr.blogs.postPhoto</method>\r\n\t<method>flickr.contacts.getList</method>\r\n\t<method>flickr.contacts.getPublicList</method>\r\n</methods>"
+      "_content": "<methods>\n\t<method>flickr.blogs.getList</method>\n\t<method>flickr.blogs.postPhoto</method>\n\t<method>flickr.contacts.getList</method>\n\t<method>flickr.contacts.getPublicList</method>\n</methods>"
     }
   },
   "arguments": {

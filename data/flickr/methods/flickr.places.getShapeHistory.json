@@ -8,7 +8,7 @@
       "_content": "Return an historical list of all the shape data generated for a Places or Where on Earth (WOE) ID."
     },
     "response": {
-      "_content": "<shapes total=\"2\" woe_id=\"3534\" place_id=\"4hLQygSaBJ92\" place_type=\"locality\" place_type_id=\"7\">\r\n   <shapedata created=\"1223513357\" alpha=\"0.012359619140625\"\r\n      count_points=\"34778\" count_edges=\"52\" is_donuthole=\"0\">\r\n      <polylines>\r\n         <polyline>\r\n            45.427627563477,-73.589645385742 45.428966522217,-73.587898254395, etc...\r\n         </polyline>\r\n      </polylines>\r\n      <urls>\r\n         <shapefile>\r\n         http://farm4.static.flickr.com/3228/shapefiles/3534_20081111_0a8afe03c5.tar.gz\r\n         </shapefile>\r\n      </urls>\r\n   </shapedata>\r\n   <!-- and so on... -->\r\n</shapes>"
+      "_content": "<shapes total=\"2\" woe_id=\"3534\" place_id=\"4hLQygSaBJ92\" place_type=\"locality\" place_type_id=\"7\">\n   <shapedata created=\"1223513357\" alpha=\"0.012359619140625\"\n      count_points=\"34778\" count_edges=\"52\" is_donuthole=\"0\">\n      <polylines>\n         <polyline>\n            45.427627563477,-73.589645385742 45.428966522217,-73.587898254395, etc...\n         </polyline>\n      </polylines>\n      <urls>\n         <shapefile>\n         http://farm4.static.flickr.com/3228/shapefiles/3534_20081111_0a8afe03c5.tar.gz\n         </shapefile>\n      </urls>\n   </shapedata>\n   <!-- and so on... -->\n</shapes>"
     }
   },
   "arguments": {

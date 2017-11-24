@@ -8,7 +8,7 @@
       "_content": "Exchange an auth token from the old Authentication API, to an OAuth access token. Calling this method will delete the auth token used to make the request."
     },
     "response": {
-      "_content": "<auth> \r\n\t<access_token oauth_token=\"72157607082540144-8d5d7ea7696629bf\" oauth_token_secret=\"f38bf58b2d95bc8b\" /> \r\n</auth> "
+      "_content": "<auth> \n\t<access_token oauth_token=\"72157607082540144-8d5d7ea7696629bf\" oauth_token_secret=\"f38bf58b2d95bc8b\" /> \n</auth> "
     }
   },
   "arguments": {

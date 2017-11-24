@@ -8,10 +8,10 @@
       "_content": "Browse the group category tree, finding groups and sub-categories."
     },
     "response": {
-      "_content": "<category name=\"Alt\" path=\"/Alt\" pathids=\"/63\">\r\n\t<subcat id=\"80\" name=\"18+\" count=\"0\" /> \r\n\t<subcat id=\"82\" name=\"Absurd\" count=\"4\" /> \r\n\t<group nsid=\"34955637532@N01\" name=\"Cal's Public Test Group\"\r\n\t\tmembers=\"13\" online=\"1\" chatnsid=\"34955637533@N01\" inchat=\"0\" /> \r\n\t<group nsid=\"34158032587@N01\" name=\"Eric's Alt Group Test\"\r\n\t\tmembers=\"3\" online=\"0\" chatnsid=\"34158032588@N01\" inchat=\"0\" /> \r\n</category>\r\n"
+      "_content": "<category name=\"Alt\" path=\"/Alt\" pathids=\"/63\">\n\t<subcat id=\"80\" name=\"18+\" count=\"0\" /> \n\t<subcat id=\"82\" name=\"Absurd\" count=\"4\" /> \n\t<group nsid=\"34955637532@N01\" name=\"Cal's Public Test Group\"\n\t\tmembers=\"13\" online=\"1\" chatnsid=\"34955637533@N01\" inchat=\"0\" /> \n\t<group nsid=\"34158032587@N01\" name=\"Eric's Alt Group Test\"\n\t\tmembers=\"3\" online=\"0\" chatnsid=\"34158032588@N01\" inchat=\"0\" /> \n</category>\n"
     },
     "explanation": {
-      "_content": "<p>The <code>count</code> attribute of the <code>subcat</code> element gives the number of groups inside the subcat.</p>\r\n\r\n<p>The <code>members</code> attribute of the <code>group</code> element gives the total number of members in the group. The <code>online</code> attribute gives a count of the members who are currently online. The <code>inchat</code> attribute gives a count of the number of people in the group's chat, regardless of whether they are members of the group.</p>"
+      "_content": "<p>The <code>count</code> attribute of the <code>subcat</code> element gives the number of groups inside the subcat.</p>\n\n<p>The <code>members</code> attribute of the <code>group</code> element gives the total number of members in the group. The <code>online</code> attribute gives a count of the members who are currently online. The <code>inchat</code> attribute gives a count of the number of people in the group's chat, regardless of whether they are members of the group.</p>"
     }
   },
   "arguments": {

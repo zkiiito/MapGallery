@@ -8,7 +8,7 @@
       "_content": "Get suggestions for tagging people in photos based on the calling user's contacts."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<contacts page=\"1\" pages=\"1\" perpage=\"1000\" total=\"1\">\r\n\t<contact nsid=\"30135021@N05\" username=\"Hugo Haas\" iconserver=\"1\" iconfarm=\"1\" realname=\"\" friend=\"0\" family=\"0\" path_alias=\"\" />\r\n</contacts>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<contacts page=\"1\" pages=\"1\" perpage=\"1000\" total=\"1\">\n\t<contact nsid=\"30135021@N05\" username=\"Hugo Haas\" iconserver=\"1\" iconfarm=\"1\" realname=\"\" friend=\"0\" family=\"0\" path_alias=\"\" />\n</contacts>\n</rsp>"
     }
   },
   "arguments": {

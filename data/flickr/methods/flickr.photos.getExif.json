@@ -8,7 +8,7 @@
       "_content": "Retrieves a list of EXIF/TIFF/GPS tags for a given photo. The calling user must have permission to view the photo."
     },
     "response": {
-      "_content": "<photo id=\"4424\" secret=\"06b8e43bc7\" server=\"2\">\r\n\t<exif tagspace=\"TIFF\" tagspaceid=\"1\" tag=\"271\" label=\"Manufacturer\">\r\n\t\t<raw>Canon</raw>\r\n\t</exif>\r\n\t<exif tagspace=\"EXIF\" tagspaceid=\"0\" tag=\"33437\" label=\"Aperture\">\r\n\t\t<raw>90/10</raw>\r\n\t\t<clean>f/9</clean>\r\n\t</exif>\r\n\t<exif tagspace=\"GPS\" tagspaceid=\"3\" tag=\"4\" label=\"Longitude\">\r\n\t\t<raw>64/1, 42/1, 4414/100</raw>\r\n\t\t<clean>64° 42' 44.14\"</clean>\r\n\t</exif>\r\n</photo>\r\n"
+      "_content": "<photo id=\"4424\" secret=\"06b8e43bc7\" server=\"2\">\n\t<exif tagspace=\"TIFF\" tagspaceid=\"1\" tag=\"271\" label=\"Manufacturer\">\n\t\t<raw>Canon</raw>\n\t</exif>\n\t<exif tagspace=\"EXIF\" tagspaceid=\"0\" tag=\"33437\" label=\"Aperture\">\n\t\t<raw>90/10</raw>\n\t\t<clean>f/9</clean>\n\t</exif>\n\t<exif tagspace=\"GPS\" tagspaceid=\"3\" tag=\"4\" label=\"Longitude\">\n\t\t<raw>64/1, 42/1, 4414/100</raw>\n\t\t<clean>64° 42' 44.14\"</clean>\n\t</exif>\n</photo>\n"
     },
     "explanation": {
       "_content": "<p>The <code>&lt;clean&gt;</code> element contains a pretty-formatted version of the tag where availabale.</p>"

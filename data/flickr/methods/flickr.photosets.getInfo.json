@@ -8,7 +8,7 @@
       "_content": "Gets information about a photoset."
     },
     "response": {
-      "_content": "<photoset id=\"72157624618609504\" owner=\"34427469121@N01\" primary=\"4847770787\" secret=\"6abd09a292\" server=\"4153\" farm=\"5\" photos=\"55\" count_views=\"523\" count_comments=\"1\" count_photos=\"43\" count_videos=\"12\" can_comment=\"1\" date_create=\"1280530593\" date_update=\"1308091378\">\r\n    <title>Mah Kittehs</title>\r\n    <description>Sixty and Niner. Born on the 3rd of May, 2010, or thereabouts. Came to my place on Thursday, July 29, 2010.</description>\r\n</photoset>"
+      "_content": "<photoset id=\"72157624618609504\" owner=\"34427469121@N01\" primary=\"4847770787\" secret=\"6abd09a292\" server=\"4153\" farm=\"5\" photos=\"55\" count_views=\"523\" count_comments=\"1\" count_photos=\"43\" count_videos=\"12\" can_comment=\"1\" date_create=\"1280530593\" date_update=\"1308091378\">\n    <title>Mah Kittehs</title>\n    <description>Sixty and Niner. Born on the 3rd of May, 2010, or thereabouts. Came to my place on Thursday, July 29, 2010.</description>\n</photoset>"
     }
   },
   "arguments": {
@@ -26,7 +26,7 @@
       {
         "name": "user_id",
         "optional": "0",
-        "_content": "The user_id here is the owner of the set passed in photoset_id. This is optional, but passing this gives better performance. "
+        "_content": "The user_id here is the owner of the set passed in photoset_id."
       }
     ]
   },

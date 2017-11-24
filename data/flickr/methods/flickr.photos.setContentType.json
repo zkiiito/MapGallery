@@ -8,7 +8,7 @@
       "_content": "Set the content type of a photo."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<photo id=\"14814\" content_type=\"3\"/>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<photo id=\"14814\" content_type=\"3\"/>\n</rsp>"
     }
   },
   "arguments": {

@@ -8,7 +8,7 @@
       "_content": "Retrieves a list of the current Commons institutions."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n <institutions>\r\n  <institution nsid=\"123456@N01\" date_launch=\"1232000000\">\r\n   <name>Institution</name>\r\n    <urls>\r\n     <url type=\"site\">http://example.com/</url>\r\n     <url type=\"license\">http://example.com/commons/license</url>\r\n     <url type=\"flickr\">http://flickr.com/photos/institution</url>\r\n    </urls>\r\n   </institution>\r\n  </institutions>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n <institutions>\n  <institution nsid=\"123456@N01\" date_launch=\"1232000000\">\n   <name>Institution</name>\n    <urls>\n     <url type=\"site\">http://example.com/</url>\n     <url type=\"license\">http://example.com/commons/license</url>\n     <url type=\"flickr\">http://flickr.com/photos/institution</url>\n    </urls>\n   </institution>\n  </institutions>\n</rsp>"
     }
   },
   "arguments": {

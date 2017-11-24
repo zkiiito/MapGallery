@@ -8,7 +8,7 @@
       "_content": "Return a list of the top 100 unique places clustered by a given placetype for a user. "
     },
     "response": {
-      "_content": "<places total=\"1\">\r\n   <place place_id=\"kH8dLOubBZRvX_YZ\" woeid=\"2487956\"\r\n               latitude=\"37.779\" longitude=\"-122.420\"\r\n               place_url=\"/United+States/California/San+Francisco\"\r\n               place_type=\"locality\"\r\n               photo_count=\"156\">San Francisco, California</place>\r\n</places>"
+      "_content": "<places total=\"1\">\n   <place place_id=\"kH8dLOubBZRvX_YZ\" woeid=\"2487956\"\n               latitude=\"37.779\" longitude=\"-122.420\"\n               place_url=\"/United+States/California/San+Francisco\"\n               place_type=\"locality\"\n               photo_count=\"156\">San Francisco, California</place>\n</places>"
     }
   },
   "arguments": {
@@ -21,27 +21,27 @@
       {
         "name": "place_type_id",
         "optional": "1",
-        "_content": "The numeric ID for a specific place type to cluster photos by. <br /><br />\r\n\r\nValid place type IDs are :\r\n\r\n<ul>\r\n<li><strong>22</strong>: neighbourhood</li>\r\n<li><strong>7</strong>: locality</li>\r\n<li><strong>8</strong>: region</li>\r\n<li><strong>12</strong>: country</li>\r\n<li><strong>29</strong>: continent</li>\r\n</ul>\r\n<br />\r\n<span style=\"font-style:italic;\">The \"place_type\" argument has been deprecated in favor of the \"place_type_id\" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the <a href=\"http://www.flickr.com/services/api/flickr.places.getPlaceTypes.html\">flickr.places.getPlaceTypes</a> method. (While optional, you must pass either a valid place type or place type ID.)</span>"
+        "_content": "The numeric ID for a specific place type to cluster photos by. <br /><br />\n\nValid place type IDs are :\n\n<ul>\n<li><strong>22</strong>: neighbourhood</li>\n<li><strong>7</strong>: locality</li>\n<li><strong>8</strong>: region</li>\n<li><strong>12</strong>: country</li>\n<li><strong>29</strong>: continent</li>\n</ul>\n<br />\n<span style=\"font-style:italic;\">The \"place_type\" argument has been deprecated in favor of the \"place_type_id\" argument. It won't go away but it will not be added to new methods. A complete list of place type IDs is available using the <a href=\"http://www.flickr.com/services/api/flickr.places.getPlaceTypes.html\">flickr.places.getPlaceTypes</a> method. (While optional, you must pass either a valid place type or place type ID.)</span>"
       },
       {
         "name": "place_type",
         "optional": "1",
-        "_content": "A specific place type to cluster photos by. <br /><br />\r\n\r\nValid place types are :\r\n\r\n<ul>\r\n<li><strong>neighbourhood</strong> (and neighborhood)</li>\r\n<li><strong>locality</strong></li>\r\n<li><strong>region</strong></li>\r\n<li><strong>country</strong></li>\r\n<li><strong>continent</strong></li>\r\n</ul>\r\n<br /><span style=\"font-style:italic;\">(While optional, you must pass either a valid place type or place type ID.)</span>"
+        "_content": "A specific place type to cluster photos by. <br /><br />\n\nValid place types are :\n\n<ul>\n<li><strong>neighbourhood</strong> (and neighborhood)</li>\n<li><strong>locality</strong></li>\n<li><strong>region</strong></li>\n<li><strong>country</strong></li>\n<li><strong>continent</strong></li>\n</ul>\n<br /><span style=\"font-style:italic;\">(While optional, you must pass either a valid place type or place type ID.)</span>"
       },
       {
         "name": "woe_id",
         "optional": "1",
-        "_content": "A Where on Earth identifier to use to filter photo clusters. For example all the photos clustered by <strong>locality</strong> in the United States (WOE ID <strong>23424977</strong>).<br /><br />\r\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
+        "_content": "A Where on Earth identifier to use to filter photo clusters. For example all the photos clustered by <strong>locality</strong> in the United States (WOE ID <strong>23424977</strong>).<br /><br />\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
       },
       {
         "name": "place_id",
         "optional": "1",
-        "_content": "A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by <strong>locality</strong> in the United States (Place ID <strong>4KO02SibApitvSBieQ</strong>).<br /><br />\r\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
+        "_content": "A Flickr Places identifier to use to filter photo clusters. For example all the photos clustered by <strong>locality</strong> in the United States (Place ID <strong>4KO02SibApitvSBieQ</strong>).<br /><br />\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
       },
       {
         "name": "threshold",
         "optional": "1",
-        "_content": "The minimum number of photos that a place type must have to be included. If the number of photos is lowered then the parent place type for that place will be used.<br /><br />\r\n\r\nFor example if you only have <strong>3</strong> photos taken in the locality of Montreal</strong> (WOE ID 3534) but your threshold is set to <strong>5</strong> then those photos will be \"rolled up\" and included instead with a place record for the region of Quebec (WOE ID 2344924)."
+        "_content": "The minimum number of photos that a place type must have to be included. If the number of photos is lowered then the parent place type for that place will be used.<br /><br />\n\nFor example if you only have <strong>3</strong> photos taken in the locality of Montreal</strong> (WOE ID 3534) but your threshold is set to <strong>5</strong> then those photos will be \"rolled up\" and included instead with a place record for the region of Quebec (WOE ID 2344924)."
       },
       {
         "name": "min_upload_date",

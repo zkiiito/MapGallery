@@ -8,10 +8,10 @@
       "_content": "Get information about a user."
     },
     "response": {
-      "_content": "<person nsid=\"12037949754@N01\" ispro=\"0\" iconserver=\"122\" iconfarm=\"1\">\r\n\t<username>bees</username>\r\n\t<realname>Cal Henderson</realname>\r\n        <mbox_sha1sum>eea6cd28e3d0003ab51b0058a684d94980b727ac</mbox_sha1sum>\r\n\t<location>Vancouver, Canada</location>\r\n\t<photosurl>http://www.flickr.com/photos/bees/</photosurl> \r\n\t<profileurl>http://www.flickr.com/people/bees/</profileurl> \r\n\t<photos>\r\n\t\t<firstdate>1071510391</firstdate>\r\n\t\t<firstdatetaken>1900-09-02 09:11:24</firstdatetaken>\r\n\t\t<count>449</count>\r\n\t</photos>\r\n</person>"
+      "_content": "<person nsid=\"12037949754@N01\" ispro=\"0\" iconserver=\"122\" iconfarm=\"1\">\n\t<username>bees</username>\n\t<realname>Cal Henderson</realname>\n        <mbox_sha1sum>eea6cd28e3d0003ab51b0058a684d94980b727ac</mbox_sha1sum>\n\t<location>Vancouver, Canada</location>\n\t<photosurl>http://www.flickr.com/photos/bees/</photosurl> \n\t<profileurl>http://www.flickr.com/people/bees/</profileurl> \n\t<photos>\n\t\t<firstdate>1071510391</firstdate>\n\t\t<firstdatetaken>1900-09-02 09:11:24</firstdatetaken>\n\t\t<count>449</count>\n\t</photos>\n</person>"
     },
     "explanation": {
-      "_content": "<p>The <code>firstdate</code> element contains the unix timestamp of the first photo uploaded by the user. The <code>firstdatetaken</code> element contains the mysql datetime of the first photo taken by the user.</p>\r\n<p>The <code>iconserver</code> element is used to build the url to the users' buddyicon - for more information please read the <a href=\"/services/api/misc.buddyicons.html\">buddyicon guide</a>.</p>\r\n<p>\r\nIf the API call is authenticated contact information will also be returned as attributes on the person element.  <code>contact</code>, <code>friend</code>, and <code>family</code> are boolean flags describing the relationship between the <a href=\"/services/api/auth.spec.html\">authenticated</a> user, and the person currently being inspected.   <code>revcontact</code>, <code>revfriend</code>, and <code>revfamily</code> is the reciprocal relationship.\r\n</p>"
+      "_content": "<p>The <code>firstdate</code> element contains the unix timestamp of the first photo uploaded by the user. The <code>firstdatetaken</code> element contains the mysql datetime of the first photo taken by the user.</p>\n<p>The <code>iconserver</code> element is used to build the url to the users' buddyicon - for more information please read the <a href=\"/services/api/misc.buddyicons.html\">buddyicon guide</a>.</p>\n<p>\nIf the API call is authenticated contact information will also be returned as attributes on the person element.  <code>contact</code>, <code>friend</code>, and <code>family</code> are boolean flags describing the relationship between the <a href=\"/services/api/auth.spec.html\">authenticated</a> user, and the person currently being inspected.   <code>revcontact</code>, <code>revfriend</code>, and <code>revfamily</code> is the reciprocal relationship.\n</p>"
     }
   },
   "arguments": {
@@ -34,6 +34,11 @@
         "code": "1",
         "message": "User not found",
         "_content": "The user id passed did not match a Flickr user."
+      },
+      {
+        "code": "5",
+        "message": "User deleted",
+        "_content": "The user id passed matched a deleted Flickr user."
       },
       {
         "code": 100,

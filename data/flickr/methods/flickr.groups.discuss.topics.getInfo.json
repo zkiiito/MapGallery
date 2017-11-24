@@ -8,7 +8,7 @@
       "_content": "Get information about a group discussion topic."
     },
     "response": {
-      "_content": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<rsp stat=\"ok\">\r\n  <topic id=\"72157607082559966\" subject=\"Who's still around?\" author=\"30134652@N05\" authorname=\"JAMAL'S ACCOUNT\" is_pro=\"0\" role=\"admin\" iconserver=\"0\" iconfarm=\"0\" count_replies=\"1\" can_edit=\"1\" can_delete=\"0\" can_reply=\"0\" is_sticky=\"0\" is_locked=\"0\" datecreate=\"1337975869\" datelastpost=\"1337975921\" last_reply=\"72157607082559968\">\r\n    <message>Is anyone still around in this group?</message>\r\n  </topic>\r\n</rsp>"
+      "_content": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n  <topic id=\"72157607082559966\" subject=\"Who's still around?\" author=\"30134652@N05\" authorname=\"JAMAL'S ACCOUNT\" is_pro=\"0\" role=\"admin\" iconserver=\"0\" iconfarm=\"0\" count_replies=\"1\" can_edit=\"1\" can_delete=\"0\" can_reply=\"0\" is_sticky=\"0\" is_locked=\"0\" datecreate=\"1337975869\" datelastpost=\"1337975921\" last_reply=\"72157607082559968\">\n    <message>Is anyone still around in this group?</message>\n  </topic>\n</rsp>"
     }
   },
   "arguments": {

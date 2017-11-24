@@ -8,7 +8,7 @@
       "_content": "Fetch a list of recent photos from the calling users' contacts."
     },
     "response": {
-      "_content": "<photos>\r\n\t<photo id=\"2801\" owner=\"12037949629@N01\"\r\n\t\tsecret=\"123456\" server=\"1\"\r\n\t\tusername=\"Eric is the best\" title=\"grease\" /> \r\n\t<photo id=\"2499\" owner=\"33853651809@N01\"\r\n\t\tsecret=\"123456\" server=\"1\"\r\n\t\tusername=\"cal18\" title=\"36679_o\" /> \r\n\t<photo id=\"2437\" owner=\"12037951898@N01\"\r\n\t\tsecret=\"123456\" server=\"1\"\r\n\t\tusername=\"georgie parker\" title=\"phoenix9_stewart\" /> \r\n</photos>"
+      "_content": "<photos>\n\t<photo id=\"2801\" owner=\"12037949629@N01\"\n\t\tsecret=\"123456\" server=\"1\"\n\t\tusername=\"Eric is the best\" title=\"grease\" /> \n\t<photo id=\"2499\" owner=\"33853651809@N01\"\n\t\tsecret=\"123456\" server=\"1\"\n\t\tusername=\"cal18\" title=\"36679_o\" /> \n\t<photo id=\"2437\" owner=\"12037951898@N01\"\n\t\tsecret=\"123456\" server=\"1\"\n\t\tusername=\"georgie parker\" title=\"phoenix9_stewart\" /> \n</photos>"
     }
   },
   "arguments": {

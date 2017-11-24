@@ -8,7 +8,7 @@
       "_content": "Get the raw versions of a given tag (or all tags) for the currently logged-in user."
     },
     "response": {
-      "_content": "<who id=\"12037949754@N01\">\r\n    <tags>\r\n        <tag clean=\"foo\">\r\n            <raw>foo</raw>\r\n            <raw>Foo</raw>\r\n            <raw>f:oo</raw>\r\n        </tag>\r\n    </tags>\r\n</who>"
+      "_content": "<who id=\"12037949754@N01\">\n    <tags>\n        <tag clean=\"foo\">\n            <raw>foo</raw>\n            <raw>Foo</raw>\n            <raw>f:oo</raw>\n        </tag>\n    </tags>\n</who>"
     }
   },
   "arguments": {

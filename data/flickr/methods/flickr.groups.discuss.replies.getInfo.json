@@ -8,7 +8,7 @@
       "_content": "Get information on a group topic reply."
     },
     "response": {
-      "_content": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\r\n<rsp stat=\"ok\">\r\n  <reply id=\"72157607082559968\" author=\"30134652@N05\" authorname=\"JAMAL'S ACCOUNT\" is_pro=\"0\" role=\"admin\" iconserver=\"0\" iconfarm=\"0\" can_edit=\"1\" can_delete=\"1\" datecreate=\"1337975921\" lastedit=\"0\">\r\n    <message>...well, too bad.</message>\r\n  </reply>\r\n</rsp>"
+      "_content": "<?xml version=\"1.0\" encoding=\"utf-8\" ?>\n<rsp stat=\"ok\">\n  <reply id=\"72157607082559968\" author=\"30134652@N05\" authorname=\"JAMAL'S ACCOUNT\" is_pro=\"0\" role=\"admin\" iconserver=\"0\" iconfarm=\"0\" can_edit=\"1\" can_delete=\"1\" datecreate=\"1337975921\" lastedit=\"0\">\n    <message>...well, too bad.</message>\n  </reply>\n</rsp>"
     }
   },
   "arguments": {

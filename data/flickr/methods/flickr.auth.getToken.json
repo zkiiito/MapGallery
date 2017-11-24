@@ -8,7 +8,7 @@
       "_content": "Returns the auth token for the given frob, if one has been attached. <b>This method call must be signed</b>, and is <b><a href=\"/services/api/auth.oauth.html\">deprecated in favour of OAuth</a></b>."
     },
     "response": {
-      "_content": "<auth>\r\n\t<token>976598454353455</token>\r\n\t<perms>write</perms>\r\n\t<user nsid=\"12037949754@N01\" username=\"Bees\" fullname=\"Cal H\" />\r\n</auth>"
+      "_content": "<auth>\n\t<token>976598454353455</token>\n\t<perms>write</perms>\n\t<user nsid=\"12037949754@N01\" username=\"Bees\" fullname=\"Cal H\" />\n</auth>"
     },
     "explanation": {
       "_content": "<p><code>perms</code> can have values of <code>none</code>, <code>read</code>, <code>write</code> or <code>delete</code>. For more information, see the <a href=\"/services/api/auth.spec.html\">Auth API spec</a>.</p>"

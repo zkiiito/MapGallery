@@ -5,7 +5,7 @@
     "needssigning": 1,
     "requiredperms": "2",
     "description": {
-      "_content": "Correct the places hierarchy for all the photos for a user at a given latitude, longitude and accuracy.<br /><br />\r\n\r\nBatch corrections are processed in a delayed queue so it may take a few minutes before the changes are reflected in a user's photos."
+      "_content": "Correct the places hierarchy for all the photos for a user at a given latitude, longitude and accuracy.<br /><br />\n\nBatch corrections are processed in a delayed queue so it may take a few minutes before the changes are reflected in a user's photos."
     }
   },
   "arguments": {

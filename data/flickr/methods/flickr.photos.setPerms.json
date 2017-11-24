@@ -41,12 +41,12 @@
       {
         "name": "perm_comment",
         "optional": "1",
-        "_content": "who can add comments to the photo and it's notes. one of:<br />\r\n<code>0</code>: nobody<br />\r\n<code>1</code>: friends &amp; family<br />\r\n<code>2</code>: contacts<br />\r\n<code>3</code>: everybody"
+        "_content": "who can add comments to the photo and it's notes. one of:<br />\n<code>0</code>: nobody<br />\n<code>1</code>: friends &amp; family<br />\n<code>2</code>: contacts<br />\n<code>3</code>: everybody"
       },
       {
         "name": "perm_addmeta",
         "optional": "1",
-        "_content": "who can add notes and tags to the photo. one of:<br />\r\n<code>0</code>: nobody / just the owner<br />\r\n<code>1</code>: friends &amp; family<br />\r\n<code>2</code>: contacts<br />\r\n<code>3</code>: everybody\r\n"
+        "_content": "who can add notes and tags to the photo. one of:<br />\n<code>0</code>: nobody / just the owner<br />\n<code>1</code>: friends &amp; family<br />\n<code>2</code>: contacts<br />\n<code>3</code>: everybody\n"
       }
     ]
   },

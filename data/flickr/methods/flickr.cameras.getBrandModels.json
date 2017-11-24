@@ -8,7 +8,7 @@
       "_content": "Retrieve all the models for a given camera brand."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n  <cameras brand=\"apple\">\r\n    <camera id=\"iphone_9000\">\r\n      <name>iPhone 9000</name>\r\n      <details>\r\n        <megapixels>22.0</megapixels>\r\n        <zoom>3.0</zoom>\r\n        <lcd_size>40.5</lcd_size>\r\n        <storage_type>Flash</storage_type>\r\n      </details>\r\n      <images>\r\n        <small>http://farm3.staticflickr.com/1234/cameras/123456_model_small_123456.jpg</small>\r\n        <large>http://farm3.staticflickr.com/1234/cameras/123456_model_large_123456.jpg</large>\r\n      </images>\r\n    </camera>\r\n  </cameras>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n  <cameras brand=\"apple\">\n    <camera id=\"iphone_9000\">\n      <name>iPhone 9000</name>\n      <details>\n        <megapixels>22.0</megapixels>\n        <zoom>3.0</zoom>\n        <lcd_size>40.5</lcd_size>\n        <storage_type>Flash</storage_type>\n      </details>\n      <images>\n        <small>http://farm3.staticflickr.com/1234/cameras/123456_model_small_123456.jpg</small>\n        <large>http://farm3.staticflickr.com/1234/cameras/123456_model_large_123456.jpg</large>\n      </images>\n    </camera>\n  </cameras>\n</rsp>"
     }
   },
   "arguments": {

@@ -71,32 +71,32 @@
       {
         "name": "privacy_filter",
         "optional": "1",
-        "_content": "Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:\r\n<ul>\r\n<li>1 public photos</li>\r\n<li>2 private photos visible to friends</li>\r\n<li>3 private photos visible to family</li>\r\n<li>4 private photos visible to friends & family</li>\r\n<li>5 completely private photos</li>\r\n</ul>\r\n"
+        "_content": "Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:\n<ul>\n<li>1 public photos</li>\n<li>2 private photos visible to friends</li>\n<li>3 private photos visible to family</li>\n<li>4 private photos visible to friends & family</li>\n<li>5 completely private photos</li>\n</ul>\n"
       },
       {
         "name": "bbox",
         "optional": "1",
-        "_content": "A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched.\r\n<br /><br />\r\nThe 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.\r\n<br /><br />\r\nLongitude has a range of -180 to 180 , latitude of -90 to 90. Defaults to -180, -90, 180, 90 if not specified.\r\n<br /><br />\r\nUnlike standard photo queries, geo (or bounding box) queries will only return 250 results per page.\r\n<br /><br />\r\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\r\n<br /><br />\r\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &#8212; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
+        "_content": "A comma-delimited list of 4 values defining the Bounding Box of the area that will be searched.\n<br /><br />\nThe 4 values represent the bottom-left corner of the box and the top-right corner, minimum_longitude, minimum_latitude, maximum_longitude, maximum_latitude.\n<br /><br />\nLongitude has a range of -180 to 180 , latitude of -90 to 90. Defaults to -180, -90, 180, 90 if not specified.\n<br /><br />\nUnlike standard photo queries, geo (or bounding box) queries will only return 250 results per page.\n<br /><br />\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\n<br /><br />\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &#8212; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
       },
       {
         "name": "accuracy",
         "optional": "1",
-        "_content": "Recorded accuracy level of the location information.  Current range is 1-16 : \r\n\r\n<ul>\r\n<li>World level is 1</li>\r\n<li>Country is ~3</li>\r\n<li>Region is ~6</li>\r\n<li>City is ~11</li>\r\n<li>Street is ~16</li>\r\n</ul>\r\n\r\nDefaults to maximum value if not specified."
+        "_content": "Recorded accuracy level of the location information.  Current range is 1-16 : \n\n<ul>\n<li>World level is 1</li>\n<li>Country is ~3</li>\n<li>Region is ~6</li>\n<li>City is ~11</li>\n<li>Street is ~16</li>\n</ul>\n\nDefaults to maximum value if not specified."
       },
       {
         "name": "safe_search",
         "optional": "1",
-        "_content": "Safe search setting:\r\n\r\n<ul>\r\n<li>1 for safe.</li>\r\n<li>2 for moderate.</li>\r\n<li>3 for restricted.</li>\r\n</ul>\r\n\r\n(Please note: Un-authed calls can only see Safe content.)"
+        "_content": "Safe search setting:\n\n<ul>\n<li>1 for safe.</li>\n<li>2 for moderate.</li>\n<li>3 for restricted.</li>\n</ul>\n\n(Please note: Un-authed calls can only see Safe content.)"
       },
       {
         "name": "content_type",
         "optional": "1",
-        "_content": "Content Type setting:\r\n<ul>\r\n<li>1 for photos only.</li>\r\n<li>2 for screenshots only.</li>\r\n<li>3 for 'other' only.</li>\r\n<li>4 for photos and screenshots.</li>\r\n<li>5 for screenshots and 'other'.</li>\r\n<li>6 for photos and 'other'.</li>\r\n<li>7 for photos, screenshots, and 'other' (all).</li>\r\n</ul>"
+        "_content": "Content Type setting:\n<ul>\n<li>1 for photos only.</li>\n<li>2 for screenshots only.</li>\n<li>3 for 'other' only.</li>\n<li>4 for photos and screenshots.</li>\n<li>5 for screenshots and 'other'.</li>\n<li>6 for photos and 'other'.</li>\n<li>7 for photos, screenshots, and 'other' (all).</li>\n</ul>"
       },
       {
         "name": "machine_tags",
         "optional": "1",
-        "_content": "Aside from passing in a fully formed machine tag, there is a special syntax for searching on specific properties :\r\n\r\n<ul>\r\n  <li>Find photos using the 'dc' namespace :    <code>\"machine_tags\" => \"dc:\"</code></li>\r\n\r\n  <li> Find photos with a title in the 'dc' namespace : <code>\"machine_tags\" => \"dc:title=\"</code></li>\r\n\r\n  <li>Find photos titled \"mr. camera\" in the 'dc' namespace : <code>\"machine_tags\" => \"dc:title=\\\"mr. camera\\\"</code></li>\r\n\r\n  <li>Find photos whose value is \"mr. camera\" : <code>\"machine_tags\" => \"*:*=\\\"mr. camera\\\"\"</code></li>\r\n\r\n  <li>Find photos that have a title, in any namespace : <code>\"machine_tags\" => \"*:title=\"</code></li>\r\n\r\n  <li>Find photos that have a title, in any namespace, whose value is \"mr. camera\" : <code>\"machine_tags\" => \"*:title=\\\"mr. camera\\\"\"</code></li>\r\n\r\n  <li>Find photos, in the 'dc' namespace whose value is \"mr. camera\" : <code>\"machine_tags\" => \"dc:*=\\\"mr. camera\\\"\"</code></li>\r\n\r\n </ul>\r\n\r\nMultiple machine tags may be queried by passing a comma-separated list. The number of machine tags you can pass in a single query depends on the tag mode (AND or OR) that you are querying with. \"AND\" queries are limited to (16) machine tags. \"OR\" queries are limited\r\nto (8)."
+        "_content": "Aside from passing in a fully formed machine tag, there is a special syntax for searching on specific properties :\n\n<ul>\n  <li>Find photos using the 'dc' namespace :    <code>\"machine_tags\" => \"dc:\"</code></li>\n\n  <li> Find photos with a title in the 'dc' namespace : <code>\"machine_tags\" => \"dc:title=\"</code></li>\n\n  <li>Find photos titled \"mr. camera\" in the 'dc' namespace : <code>\"machine_tags\" => \"dc:title=\\\"mr. camera\\\"</code></li>\n\n  <li>Find photos whose value is \"mr. camera\" : <code>\"machine_tags\" => \"*:*=\\\"mr. camera\\\"\"</code></li>\n\n  <li>Find photos that have a title, in any namespace : <code>\"machine_tags\" => \"*:title=\"</code></li>\n\n  <li>Find photos that have a title, in any namespace, whose value is \"mr. camera\" : <code>\"machine_tags\" => \"*:title=\\\"mr. camera\\\"\"</code></li>\n\n  <li>Find photos, in the 'dc' namespace whose value is \"mr. camera\" : <code>\"machine_tags\" => \"dc:*=\\\"mr. camera\\\"\"</code></li>\n\n </ul>\n\nMultiple machine tags may be queried by passing a comma-separated list. The number of machine tags you can pass in a single query depends on the tag mode (AND or OR) that you are querying with. \"AND\" queries are limited to (16) machine tags. \"OR\" queries are limited\nto (8)."
       },
       {
         "name": "machine_tag_mode",
@@ -116,12 +116,12 @@
       {
         "name": "woe_id",
         "optional": "1",
-        "_content": "A 32-bit identifier that uniquely represents spatial entities. (not used if bbox argument is present). \r\n<br /><br />\r\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\r\n<br /><br />\r\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
+        "_content": "A 32-bit identifier that uniquely represents spatial entities. (not used if bbox argument is present). \n<br /><br />\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\n<br /><br />\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
       },
       {
         "name": "place_id",
         "optional": "1",
-        "_content": "A Flickr place id.  (not used if bbox argument is present).\r\n<br /><br />\r\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\r\n<br /><br />\r\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
+        "_content": "A Flickr place id.  (not used if bbox argument is present).\n<br /><br />\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\n<br /><br />\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
       },
       {
         "name": "media",
@@ -131,22 +131,22 @@
       {
         "name": "has_geo",
         "optional": "1",
-        "_content": "Any photo that has been geotagged, or if the value is \"0\" any photo that has <i>not</i> been geotagged.\r\n<br /><br />\r\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\r\n<br /><br />\r\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
+        "_content": "Any photo that has been geotagged, or if the value is \"0\" any photo that has <i>not</i> been geotagged.\n<br /><br />\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\n<br /><br />\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
       },
       {
         "name": "geo_context",
         "optional": "1",
-        "_content": "Geo context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to search for photos that were taken \"indoors\" or \"outdoors\". <br /><br />\r\nThe current list of context IDs is :<br /><br/>\r\n<ul>\r\n<li><strong>0</strong>, not defined.</li>\r\n<li><strong>1</strong>, indoors.</li>\r\n<li><strong>2</strong>, outdoors.</li>\r\n</ul>\r\n<br /><br />\r\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\r\n<br /><br />\r\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
+        "_content": "Geo context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to search for photos that were taken \"indoors\" or \"outdoors\". <br /><br />\nThe current list of context IDs is :<br /><br/>\n<ul>\n<li><strong>0</strong>, not defined.</li>\n<li><strong>1</strong>, indoors.</li>\n<li><strong>2</strong>, outdoors.</li>\n</ul>\n<br /><br />\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\n<br /><br />\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
       },
       {
         "name": "lat",
         "optional": "1",
-        "_content": "A valid latitude, in decimal format, for doing radial geo queries.\r\n<br /><br />\r\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\r\n<br /><br />\r\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
+        "_content": "A valid latitude, in decimal format, for doing radial geo queries.\n<br /><br />\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\n<br /><br />\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
       },
       {
         "name": "lon",
         "optional": "1",
-        "_content": "A valid longitude, in decimal format, for doing radial geo queries.\r\n<br /><br />\r\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\r\n<br /><br />\r\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
+        "_content": "A valid longitude, in decimal format, for doing radial geo queries.\n<br /><br />\nGeo queries require some sort of limiting agent in order to prevent the database from crying. This is basically like the check against \"parameterless searches\" for queries without a geo component.\n<br /><br />\nA tag, for instance, is considered a limiting agent as are user defined min_date_taken and min_date_upload parameters &mdash; If no limiting factor is passed we return only photos added in the last 12 hours (though we may extend the limit in the future)."
       },
       {
         "name": "radius",
@@ -213,6 +213,11 @@
         "_content": "The logged in user (if any) does not have permission to view the pool for this group."
       },
       {
+        "code": "5",
+        "message": "User deleted",
+        "_content": "The user id passed did not match a Flickr user."
+      },
+      {
         "code": "10",
         "message": "Sorry, the Flickr search API is not currently available.",
         "_content": "The Flickr API search databases are temporarily unavailable."
@@ -256,6 +261,11 @@
         "code": "18",
         "message": "Illogical arguments",
         "_content": "The request contained contradictory arguments."
+      },
+      {
+        "code": "19",
+        "message": "Similarity search invalid.",
+        "_content": "The similarity_id param contains an invalid photo id or the viewer does not have permission to view the photo."
       },
       {
         "code": "20",

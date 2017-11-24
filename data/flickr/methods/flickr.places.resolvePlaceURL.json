@@ -5,10 +5,10 @@
     "needssigning": 0,
     "requiredperms": 0,
     "description": {
-      "_content": "Find Flickr Places information by Place URL.<br /><br />\r\nThis method has been deprecated. It won't be removed but you should use <a href=\"/services/api/flickr.places.getInfoByUrl.html\">flickr.places.getInfoByUrl</a> instead.\r\n"
+      "_content": "Find Flickr Places information by Place URL.<br /><br />\nThis method has been deprecated. It won't be removed but you should use <a href=\"/services/api/flickr.places.getInfoByUrl.html\">flickr.places.getInfoByUrl</a> instead.\n"
     },
     "response": {
-      "_content": "<location place_id=\"kH8dLOubBZRvX_YZ\" woeid=\"2487956\" \r\n                latitude=\"37.779\" longitude=\"-122.420\"\r\n                place_url=\"/United+States/California/San+Francisco\"\r\n                place_type=\"locality\">\r\n   <locality place_id=\"kH8dLOubBZRvX_YZ\" woeid=\"2487956\"\r\n                 latitude=\"37.779\" longitude=\"-122.420\" \r\n                 place_url=\"/United+States/California/San+Francisco\">San Francisco</locality>\r\n   <county place_id=\"hCca8XSYA5nn0X1Sfw\" woeid=\"12587707\"\r\n                 latitude=\"37.759\" longitude=\"-122.435\" \r\n                 place_url=\"/hCca8XSYA5nn0X1Sfw\">San Francisco</county>\r\n   <region place_id=\"SVrAMtCbAphCLAtP\" woeid=\"2347563\" \r\n                latitude=\"37.271\" longitude=\"-119.270\" \r\n                place_url=\"/United+States/California\">California</region>\r\n   <country place_id=\"4KO02SibApitvSBieQ\" woeid=\"23424977\"\r\n                  latitude=\"48.890\" longitude=\"-116.982\" \r\n                  place_url=\"/United+States\">United States</country>\r\n</location>"
+      "_content": "<location place_id=\"kH8dLOubBZRvX_YZ\" woeid=\"2487956\" \n                latitude=\"37.779\" longitude=\"-122.420\"\n                place_url=\"/United+States/California/San+Francisco\"\n                place_type=\"locality\">\n   <locality place_id=\"kH8dLOubBZRvX_YZ\" woeid=\"2487956\"\n                 latitude=\"37.779\" longitude=\"-122.420\" \n                 place_url=\"/United+States/California/San+Francisco\">San Francisco</locality>\n   <county place_id=\"hCca8XSYA5nn0X1Sfw\" woeid=\"12587707\"\n                 latitude=\"37.759\" longitude=\"-122.435\" \n                 place_url=\"/hCca8XSYA5nn0X1Sfw\">San Francisco</county>\n   <region place_id=\"SVrAMtCbAphCLAtP\" woeid=\"2347563\" \n                latitude=\"37.271\" longitude=\"-119.270\" \n                place_url=\"/United+States/California\">California</region>\n   <country place_id=\"4KO02SibApitvSBieQ\" woeid=\"23424977\"\n                  latitude=\"48.890\" longitude=\"-116.982\" \n                  place_url=\"/United+States\">United States</country>\n</location>"
     }
   },
   "arguments": {
@@ -21,7 +21,7 @@
       {
         "name": "url",
         "optional": "0",
-        "_content": "A Flickr Places URL.  \r\n<br /><br />\r\nFlickr Place URLs are of the form /country/region/city"
+        "_content": "A Flickr Places URL.  \n<br /><br />\nFlickr Place URLs are of the form /country/region/city"
       }
     ]
   },

@@ -8,7 +8,7 @@
       "_content": "Returns a user NSID, given the url to a user's photos or profile."
     },
     "response": {
-      "_content": "<user id=\"12037949632@N01\">\r\n\t<username>Stewart</username> \r\n</user>"
+      "_content": "<user id=\"12037949632@N01\">\n\t<username>Stewart</username> \n</user>"
     }
   },
   "arguments": {

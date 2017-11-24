@@ -8,7 +8,7 @@
       "_content": "Return a list of locations with public photos that are parented by a Where on Earth (WOE) or Places ID."
     },
     "response": {
-      "_content": "<places total=\"79\">\r\n   <place place_id=\"HznQfdKbB58biy8sdA\" woeid=\"26332794\"\r\n      latitude=\"45.498\" longitude=\"-73.575\"\r\n      place_url=\"/Canada/Quebec/Montreal  /Montreal+Golden+Square+Mile\"\r\n      place_type=\"neighbourhood\" photo_count=\"2717\">\r\n      Montreal Golden Square Mile, Montreal, QC, CA, Canada\r\n   </place>\r\n   <place place_id=\"K1rYWmGbB59rwn7lOA\" woeid=\"26332799\"\r\n      latitude=\"45.502\" longitude=\"-73.578\"\r\n      place_url=\"/Canada/Quebec/Montreal/Downtown+Montr%C3%A9al\"\r\n      place_type=\"neighbourhood\" photo_count=\"2317\">\r\n      Downtown Montréal, Montreal, QC, CA, Canada\r\n  </place>\r\n\r\n   <!-- and so on... -->\r\n\r\n</places>"
+      "_content": "<places total=\"79\">\n   <place place_id=\"HznQfdKbB58biy8sdA\" woeid=\"26332794\"\n      latitude=\"45.498\" longitude=\"-73.575\"\n      place_url=\"/Canada/Quebec/Montreal  /Montreal+Golden+Square+Mile\"\n      place_type=\"neighbourhood\" photo_count=\"2717\">\n      Montreal Golden Square Mile, Montreal, QC, CA, Canada\n   </place>\n   <place place_id=\"K1rYWmGbB59rwn7lOA\" woeid=\"26332799\"\n      latitude=\"45.502\" longitude=\"-73.578\"\n      place_url=\"/Canada/Quebec/Montreal/Downtown+Montr%C3%A9al\"\n      place_type=\"neighbourhood\" photo_count=\"2317\">\n      Downtown Montréal, Montreal, QC, CA, Canada\n  </place>\n\n   <!-- and so on... -->\n\n</places>"
     }
   },
   "arguments": {

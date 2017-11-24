@@ -8,7 +8,7 @@
       "_content": "Returns a tree (or sub tree) of collections belonging to a given user."
     },
     "response": {
-      "_content": "<collections>\r\n<collection id=\"12-72157594586579649\" title=\"All My Photos\" description=\"a collection\" iconlarge=\"http://farm1.static.flickr.com/187/cols/37_43fac2cf79_l.jpg\" \r\niconsmall=\"http://farm1.static.flickr.com/187/cols/56_43fac2cf79_s.jpg\">\r\n<set id=\"92157594171298291\" title=\"kitesurfing\" description=\"a set\"/>\r\n<set id=\"72157594247596158\" title=\"faves\" description=\"some favorites.\"/>\r\n</collection>\r\n</collections>"
+      "_content": "<collections>\n<collection id=\"12-72157594586579649\" title=\"All My Photos\" description=\"a collection\" iconlarge=\"http://farm1.static.flickr.com/187/cols/37_43fac2cf79_l.jpg\" \niconsmall=\"http://farm1.static.flickr.com/187/cols/56_43fac2cf79_s.jpg\">\n<set id=\"92157594171298291\" title=\"kitesurfing\" description=\"a set\"/>\n<set id=\"72157594247596158\" title=\"faves\" description=\"some favorites.\"/>\n</collection>\n</collections>"
     },
     "explanation": {
       "_content": "A nested tree of collections, and the collections and sets they contain."

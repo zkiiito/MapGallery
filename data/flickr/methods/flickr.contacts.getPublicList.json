@@ -8,7 +8,7 @@
       "_content": "Get the contact list for a user."
     },
     "response": {
-      "_content": "<contacts page=\"1\" pages=\"1\" perpage=\"1000\" total=\"3\">\r\n\t<contact nsid=\"12037949629@N01\" username=\"Eric\" iconserver=\"1\" ignored=\"1\" /> \r\n\t<contact nsid=\"12037949631@N01\" username=\"neb\" iconserver=\"1\" ignored=\"0\" /> \r\n\t<contact nsid=\"41578656547@N01\" username=\"cal_abc\" iconserver=\"1\" ignored=\"0\" />\r\n</contacts>"
+      "_content": "<contacts page=\"1\" pages=\"1\" perpage=\"1000\" total=\"3\">\n\t<contact nsid=\"12037949629@N01\" username=\"Eric\" iconserver=\"1\" ignored=\"1\" /> \n\t<contact nsid=\"12037949631@N01\" username=\"neb\" iconserver=\"1\" ignored=\"0\" /> \n\t<contact nsid=\"41578656547@N01\" username=\"cal_abc\" iconserver=\"1\" ignored=\"0\" />\n</contacts>"
     },
     "explanation": {
       "_content": "<p>See <a href=\"/services/api/flickr.contacts.getList.html\">flickr.contacts.getList</a> for an explanation of the response.</p>"

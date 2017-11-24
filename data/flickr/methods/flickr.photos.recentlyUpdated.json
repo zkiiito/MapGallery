@@ -5,10 +5,10 @@
     "needssigning": 1,
     "requiredperms": "1",
     "description": {
-      "_content": "<p>Return a list of your photos that have been recently created or which have been recently modified.</p>\r\n\r\n<p>Recently modified may mean that the photo's metadata (title, description, tags) may have been changed or a comment has been added (or just modified somehow :-)</p>"
+      "_content": "<p>Return a list of your photos that have been recently created or which have been recently modified.</p>\n\n<p>Recently modified may mean that the photo's metadata (title, description, tags) may have been changed or a comment has been added (or just modified somehow :-)</p>"
     },
     "response": {
-      "_content": "<photos page=\"1\" pages=\"1\" perpage=\"100\" total=\"2\">\r\n        <photo id=\"169885459\" owner=\"35034348999@N01\" \r\n               secret=\"c85114c195\" server=\"46\" title=\"Doubting Michael\"\r\n               ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" lastupdate=\"1150755888\" />\r\n        <photo id=\"85022332\" owner=\"35034348999@N01\"\r\n               secret=\"23de6de0c0\" server=\"41\"\r\n               title=\"&quot;Do you think we're allowed to tape stuff to the walls?&quot;\"\r\n               ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" lastupdate=\"1150564974\" />\r\n</photos>"
+      "_content": "<photos page=\"1\" pages=\"1\" perpage=\"100\" total=\"2\">\n        <photo id=\"169885459\" owner=\"35034348999@N01\" \n               secret=\"c85114c195\" server=\"46\" title=\"Doubting Michael\"\n               ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" lastupdate=\"1150755888\" />\n        <photo id=\"85022332\" owner=\"35034348999@N01\"\n               secret=\"23de6de0c0\" server=\"41\"\n               title=\"&quot;Do you think we're allowed to tape stuff to the walls?&quot;\"\n               ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" lastupdate=\"1150564974\" />\n</photos>"
     },
     "explanation": {
       "_content": "<p>Photos are sorted by their date updated timestamp, in descending order.</p>"

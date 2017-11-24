@@ -5,7 +5,7 @@
     "needssigning": 1,
     "requiredperms": "3",
     "description": {
-      "_content": "Leave a group.\r\n\r\n<br /><br />If the user is the only administrator left, and there are other members, the oldest member will be promoted to administrator.\r\n\r\n<br /><br />If the user is the last person in the group, the group will be deleted."
+      "_content": "Leave a group.\n\n<br /><br />If the user is the only administrator left, and there are other members, the oldest member will be promoted to administrator.\n\n<br /><br />If the user is the last person in the group, the group will be deleted."
     }
   },
   "arguments": {

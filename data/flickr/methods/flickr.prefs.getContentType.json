@@ -8,7 +8,7 @@
       "_content": "Returns the default content type preference for the user."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<person nsid=\"12037949754@N01\" content_type=\"1\" />\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<person nsid=\"12037949754@N01\" content_type=\"1\" />\n</rsp>"
     }
   },
   "arguments": {

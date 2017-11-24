@@ -5,7 +5,7 @@
     "needssigning": 1,
     "requiredperms": "1",
     "description": {
-      "_content": "Return a list of contacts for a user who have recently uploaded photos along with the total count of photos uploaded.<br /><br />\r\n\r\nThis method is still considered experimental. We don't plan for it to change or to go away but so long as this notice is present you should write your code accordingly."
+      "_content": "Return a list of contacts for a user who have recently uploaded photos along with the total count of photos uploaded.<br /><br />\n\nThis method is still considered experimental. We don't plan for it to change or to go away but so long as this notice is present you should write your code accordingly."
     }
   },
   "arguments": {
@@ -18,12 +18,12 @@
       {
         "name": "date_lastupload",
         "optional": "1",
-        "_content": "Limits the resultset to contacts that have uploaded photos since this date. The date should be in the form of a Unix timestamp.\r\n\r\nThe default offset is (1) hour and the maximum (24) hours. "
+        "_content": "Limits the resultset to contacts that have uploaded photos since this date. The date should be in the form of a Unix timestamp.\n\nThe default offset is (1) hour and the maximum (24) hours. "
       },
       {
         "name": "filter",
         "optional": "1",
-        "_content": "Limit the result set to all contacts or only those who are friends or family. Valid options are:\r\n\r\n<ul>\r\n<li><strong>ff</strong> friends and family</li>\r\n<li><strong>all</strong> all your contacts</li>\r\n</ul>\r\nDefault value is \"all\"."
+        "_content": "Limit the result set to all contacts or only those who are friends or family. Valid options are:\n\n<ul>\n<li><strong>ff</strong> friends and family</li>\n<li><strong>all</strong> all your contacts</li>\n</ul>\nDefault value is \"all\"."
       }
     ]
   },

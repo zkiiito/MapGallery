@@ -8,10 +8,10 @@
       "_content": "List the photos with the most views, comments or favorites"
     },
     "response": {
-      "_content": "<photos page=\"2\" pages=\"89\" perpage=\"10\" total=\"881\">\r\n\t<photo id=\"2636\" owner=\"47058503995@N01\" \r\n\t\tsecret=\"a123456\" server=\"2\" title=\"test_04\"\r\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\">\r\n\t\t<stats views=\"941\" comments=\"18\" favorites=\"2\"/>\r\n\t</photo>\r\n\t<photo id=\"2635\" owner=\"47058503995@N01\"\r\n\t\tsecret=\"b123456\" server=\"2\" title=\"test_03\"\r\n\t\tispublic=\"0\" isfriend=\"1\" isfamily=\"1\">\r\n\t\t<stats views=\"141\" comments=\"1\" favorites=\"2\"/>\r\n\t</photo>\r\n</photos>"
+      "_content": "<photos page=\"2\" pages=\"89\" perpage=\"10\" total=\"881\">\n\t<photo id=\"2636\" owner=\"47058503995@N01\" \n\t\tsecret=\"a123456\" server=\"2\" title=\"test_04\"\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\">\n\t\t<stats views=\"941\" comments=\"18\" favorites=\"2\"/>\n\t</photo>\n\t<photo id=\"2635\" owner=\"47058503995@N01\"\n\t\tsecret=\"b123456\" server=\"2\" title=\"test_03\"\n\t\tispublic=\"0\" isfriend=\"1\" isfamily=\"1\">\n\t\t<stats views=\"141\" comments=\"1\" favorites=\"2\"/>\n\t</photo>\n</photos>"
     },
     "explanation": {
-      "_content": "<p>This method returns the standard photo list xml.</p>\r\n\r\n<p>In addition each photo element contains a <code>&lt;stats&gt;</code> element. This has attributes for the view, comment and favorite counts for the requested day.</p>\r\n\r\n<p>To map <code>&lt;photo&gt;</code> elements to urls, please read the <a href=\"misc.urls.html\">url documentation</a>.</p>\r\n"
+      "_content": "<p>This method returns the standard photo list xml.</p>\n\n<p>In addition each photo element contains a <code>&lt;stats&gt;</code> element. This has attributes for the view, comment and favorite counts for the requested day.</p>\n\n<p>To map <code>&lt;photo&gt;</code> elements to urls, please read the <a href=\"misc.urls.html\">url documentation</a>.</p>\n"
     }
   },
   "arguments": {
@@ -24,12 +24,12 @@
       {
         "name": "date",
         "optional": "1",
-        "_content": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. \r\n\r\nA day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.\r\n\r\nIf no date is provided, all time view counts will be returned."
+        "_content": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. \n\nA day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.\n\nIf no date is provided, all time view counts will be returned."
       },
       {
         "name": "sort",
         "optional": "1",
-        "_content": "The order in which to sort returned photos. Defaults to views. The possible values are views, comments and favorites. \r\n\r\nOther sort options are available through <a href=\"/services/api/flickr.photos.search.html\">flickr.photos.search</a>."
+        "_content": "The order in which to sort returned photos. Defaults to views. The possible values are views, comments and favorites. \n\nOther sort options are available through <a href=\"/services/api/flickr.photos.search.html\">flickr.photos.search</a>."
       },
       {
         "name": "per_page",

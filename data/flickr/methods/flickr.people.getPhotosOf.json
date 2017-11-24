@@ -8,10 +8,10 @@
       "_content": "Returns a list of photos containing a particular Flickr member."
     },
     "response": {
-      "_content": "<photos page=\"2\" has_next_page=\"1\" perpage=\"10\">\r\n\t<photo id=\"2636\" owner=\"47058503995@N01\" \r\n\t\tsecret=\"a123456\" server=\"2\" title=\"test_04\"\r\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\r\n\t<photo id=\"2635\" owner=\"47058503995@N01\"\r\n\t\tsecret=\"b123456\" server=\"2\" title=\"test_03\"\r\n\t\tispublic=\"0\" isfriend=\"1\" isfamily=\"1\" />\r\n\t<photo id=\"2633\" owner=\"47058503995@N01\"\r\n\t\tsecret=\"c123456\" server=\"2\" title=\"test_01\"\r\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\r\n\t<photo id=\"2610\" owner=\"12037949754@N01\"\r\n\t\tsecret=\"d123456\" server=\"2\" title=\"00_tall\"\r\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\r\n</photos>"
+      "_content": "<photos page=\"2\" has_next_page=\"1\" perpage=\"10\">\n\t<photo id=\"2636\" owner=\"47058503995@N01\" \n\t\tsecret=\"a123456\" server=\"2\" title=\"test_04\"\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<photo id=\"2635\" owner=\"47058503995@N01\"\n\t\tsecret=\"b123456\" server=\"2\" title=\"test_03\"\n\t\tispublic=\"0\" isfriend=\"1\" isfamily=\"1\" />\n\t<photo id=\"2633\" owner=\"47058503995@N01\"\n\t\tsecret=\"c123456\" server=\"2\" title=\"test_01\"\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n\t<photo id=\"2610\" owner=\"12037949754@N01\"\n\t\tsecret=\"d123456\" server=\"2\" title=\"00_tall\"\n\t\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\" />\n</photos>"
     },
     "explanation": {
-      "_content": "<p>This method returns a variant of the standard photo list xml.</p>\r\n\r\n<p>For queries about a member other than the currently authenticated one, pagination data (\"total\" and \"pages\" attributes) will not be available.</p>\r\n\r\n<p>Instead, the <photos> element will contain a boolean value 'has_next_page' which will tell you whether or not there are more photos to fetch.</p>"
+      "_content": "<p>This method returns a variant of the standard photo list xml.</p>\n\n<p>For queries about a member other than the currently authenticated one, pagination data (\"total\" and \"pages\" attributes) will not be available.</p>\n\n<p>Instead, the <photos> element will contain a boolean value 'has_next_page' which will tell you whether or not there are more photos to fetch.</p>"
     }
   },
   "arguments": {

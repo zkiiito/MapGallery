@@ -8,7 +8,7 @@
       "_content": "Returns the comments for a photoset."
     },
     "response": {
-      "_content": "<comments photoset_id=\"109722179\">\r\n    <comment id=\"6065-109722179-72057594077818641\"\r\n         author=\"35468159852@N01\" authorname=\"Rev Dan Catt\" date_create=\"1141841470\"\r\n         permalink=\"http://www.flickr.com/photos/straup/109722179/#comment72057594077818641\"\r\n         >Umm, I'm not sure, can I get back to you on that one?</comment>\r\n</comments>"
+      "_content": "<comments photoset_id=\"109722179\">\n    <comment id=\"6065-109722179-72057594077818641\"\n         author=\"35468159852@N01\" authorname=\"Rev Dan Catt\" date_create=\"1141841470\"\n         permalink=\"http://www.flickr.com/photos/straup/109722179/#comment72057594077818641\"\n         >Umm, I'm not sure, can I get back to you on that one?</comment>\n</comments>"
     }
   },
   "arguments": {

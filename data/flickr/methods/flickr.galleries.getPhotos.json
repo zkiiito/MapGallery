@@ -8,7 +8,7 @@
       "_content": "Return the list of photos for a gallery"
     },
     "response": {
-      "_content": "<photos page=\"1\" pages=\"1\" perpage=\"500\" total=\"2\">\r\n\t<photo id=\"2822546461\" owner=\"78398753@N00\" secret=\"2dbcdb589f\" server=\"1\" farm=\"1\" title=\"FOO\" \r\n     ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" is_primary=\"1\" has_comment=\"1\">\r\n\t\t<comment>best cat picture ever!</comment>\r\n\t</photo>\r\n\t<photo id=\"2822544806\" owner=\"78398753@N00\" secret=\"bd93cbe917\" server=\"1\" farm=\"1\" title=\"OOK\" \r\n     ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" is_primary=\"0\" has_comment=\"0\" />\r\n</photos>"
+      "_content": "<photos page=\"1\" pages=\"1\" perpage=\"500\" total=\"2\">\n\t<photo id=\"2822546461\" owner=\"78398753@N00\" secret=\"2dbcdb589f\" server=\"1\" farm=\"1\" title=\"FOO\" \n     ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" is_primary=\"1\" has_comment=\"1\">\n\t\t<comment>best cat picture ever!</comment>\n\t</photo>\n\t<photo id=\"2822544806\" owner=\"78398753@N00\" secret=\"bd93cbe917\" server=\"1\" farm=\"1\" title=\"OOK\" \n     ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" is_primary=\"0\" has_comment=\"0\" />\n</photos>"
     },
     "explanation": {
       "_content": "Returns a <a href=\"http://code.flickr.com/blog/2008/08/19/standard-photos-response-apis-for-civilized-age/\">standard photo response</a>.  Additionally if the gallery creator has included a comment with the photo this will be then the photo element will have the attribute has_comment=\"1\" and the child element \"comment\" will be present."

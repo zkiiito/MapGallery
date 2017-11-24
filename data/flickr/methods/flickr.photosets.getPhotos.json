@@ -8,7 +8,7 @@
       "_content": "Get the list of photos in a set."
     },
     "response": {
-      "_content": "<photoset id=\"4\" primary=\"2483\" page=\"1\" perpage=\"500\" pages=\"1\" total=\"2\">\r\n\t<photo id=\"2484\" secret=\"123456\" server=\"1\"\r\n\t\ttitle=\"my photo\" isprimary=\"0\" /> \r\n\t<photo id=\"2483\" secret=\"123456\" server=\"1\"\r\n\t\ttitle=\"flickr rocks\" isprimary=\"1\" /> \r\n</photoset>"
+      "_content": "<photoset id=\"4\" primary=\"2483\" page=\"1\" perpage=\"500\" pages=\"1\" total=\"2\">\n\t<photo id=\"2484\" secret=\"123456\" server=\"1\"\n\t\ttitle=\"my photo\" isprimary=\"0\" /> \n\t<photo id=\"2483\" secret=\"123456\" server=\"1\"\n\t\ttitle=\"flickr rocks\" isprimary=\"1\" /> \n</photoset>"
     }
   },
   "arguments": {
@@ -26,7 +26,7 @@
       {
         "name": "user_id",
         "optional": "0",
-        "_content": "The user_id here is the owner of the set passed in photoset_id. This is optional, but passing this gives better performance. "
+        "_content": "The user_id here is the owner of the set passed in photoset_id."
       },
       {
         "name": "extras",
@@ -46,7 +46,7 @@
       {
         "name": "privacy_filter",
         "optional": "1",
-        "_content": "Return photos only matching a certain privacy level. This only applies when making an authenticated call to view a photoset you own. Valid values are:\r\n<ul>\r\n<li>1 public photos</li>\r\n<li>2 private photos visible to friends</li>\r\n<li>3 private photos visible to family</li>\r\n<li>4 private photos visible to friends &amp; family</li>\r\n<li>5 completely private photos</li>\r\n</ul>\r\n"
+        "_content": "Return photos only matching a certain privacy level. This only applies when making an authenticated call to view a photoset you own. Valid values are:\n<ul>\n<li>1 public photos</li>\n<li>2 private photos visible to friends</li>\n<li>3 private photos visible to family</li>\n<li>4 private photos visible to friends &amp; family</li>\n<li>5 completely private photos</li>\n</ul>\n"
       },
       {
         "name": "media",
@@ -66,6 +66,11 @@
         "code": "2",
         "message": "User not found",
         "_content": ""
+      },
+      {
+        "code": "3",
+        "message": "Conflicting photoset IDs received",
+        "_content": "Both share_code and photoset_id are provided, and the photoset_id doesn't match the photoset ID referred to by the share_code"
       },
       {
         "code": 100,

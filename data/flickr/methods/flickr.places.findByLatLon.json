@@ -5,10 +5,10 @@
     "needssigning": 0,
     "requiredperms": 0,
     "description": {
-      "_content": "Return a place ID for a latitude, longitude and accuracy triple.<br /><br />\r\nThe flickr.places.findByLatLon method is not meant to be a (reverse) geocoder in the traditional sense. It is designed to allow users to find photos for \"places\" and will round up to the nearest place type to which corresponding place IDs apply.<br /><br />\r\nFor example, if you pass it a street level coordinate it will return the city that contains the point rather than the street, or building, itself.<br /><br />\r\nIt will also truncate latitudes and longitudes to three decimal points.\r\n\r\n"
+      "_content": "Return a place ID for a latitude, longitude and accuracy triple.<br /><br />\nThe flickr.places.findByLatLon method is not meant to be a (reverse) geocoder in the traditional sense. It is designed to allow users to find photos for \"places\" and will round up to the nearest place type to which corresponding place IDs apply.<br /><br />\nFor example, if you pass it a street level coordinate it will return the city that contains the point rather than the street, or building, itself.<br /><br />\nIt will also truncate latitudes and longitudes to three decimal points.\n\n"
     },
     "response": {
-      "_content": "<places latitude=\"37.76513627957266\" longitude=\"-122.42020770907402\" accuracy=\"16\" total=\"1\">\r\n   <place place_id=\"Y12JWsKbApmnSQpbQg\" woeid=\"23512048\"\r\n      latitude=\"37.765\" longitude=\"-122.424\" \r\n      place_url=\"/United+States/California/San+Francisco/Mission+Dolores\"\r\n      place_type=\"neighbourhood\" place_type_id=\"22\" \r\n      timezone=\"America/Los_Angeles\"\r\n      name=\"Mission Dolores, San Francisco, CA, US, United States\"/>\r\n</places>"
+      "_content": "<places latitude=\"37.76513627957266\" longitude=\"-122.42020770907402\" accuracy=\"16\" total=\"1\">\n   <place place_id=\"Y12JWsKbApmnSQpbQg\" woeid=\"23512048\"\n      latitude=\"37.765\" longitude=\"-122.424\" \n      place_url=\"/United+States/California/San+Francisco/Mission+Dolores\"\n      place_type=\"neighbourhood\" place_type_id=\"22\" \n      timezone=\"America/Los_Angeles\"\n      name=\"Mission Dolores, San Francisco, CA, US, United States\"/>\n</places>"
     }
   },
   "arguments": {

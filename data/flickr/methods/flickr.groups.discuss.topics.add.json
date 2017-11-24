@@ -18,7 +18,7 @@
       {
         "name": "group_id",
         "optional": "0",
-        "_content": "The NSID or path alias of the group to add a topic to.\r\n"
+        "_content": "The NSID or path alias of the group to add a topic to.\n"
       },
       {
         "name": "subject",

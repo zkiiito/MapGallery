@@ -8,7 +8,7 @@
       "_content": "Get the geo data (latitude and longitude and the accuracy level) for a photo."
     },
     "response": {
-      "_content": "<photo id=\"123\">\r\n        <location latitude=\"-17.685895\" longitude=\"-63.36914\" accuracy=\"6\" />\r\n</photo>"
+      "_content": "<photo id=\"123\">\n        <location latitude=\"-17.685895\" longitude=\"-63.36914\" accuracy=\"6\" />\n</photo>"
     }
   },
   "arguments": {

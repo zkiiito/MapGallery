@@ -5,10 +5,10 @@
     "needssigning": 1,
     "requiredperms": "1",
     "description": {
-      "_content": "Returns the default privacy level preference for the user.\r\n\r\nPossible values are:\r\n<ul>\r\n<li>1 : Public</li>\r\n<li>2 : Friends only</li>\r\n<li>3 : Family only</li>\r\n<li>4 : Friends and Family</li>\r\n<li>5 : Private</li>\r\n</ul>"
+      "_content": "Returns the default privacy level preference for the user.\n\nPossible values are:\n<ul>\n<li>1 : Public</li>\n<li>2 : Friends only</li>\n<li>3 : Family only</li>\n<li>4 : Friends and Family</li>\n<li>5 : Private</li>\n</ul>"
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<person nsid=\"12037949754@N01\" privacy=\"1\" />\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<person nsid=\"12037949754@N01\" privacy=\"1\" />\n</rsp>"
     }
   },
   "arguments": {

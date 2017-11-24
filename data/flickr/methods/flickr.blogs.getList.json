@@ -8,7 +8,7 @@
       "_content": "Get a list of configured blogs for the calling user."
     },
     "response": {
-      "_content": "<blogs>\r\n\t<blog id=\"73\" name=\"Bloxus test\" needspassword=\"0\"\r\n\t\turl=\"http://remote.bloxus.com/\" /> \r\n\t<blog id=\"74\" name=\"Manila Test\" needspassword=\"1\"\r\n\t\turl=\"http://flickrtest1.userland.com/\" /> \r\n</blogs>"
+      "_content": "<blogs>\n\t<blog id=\"73\" name=\"Bloxus test\" needspassword=\"0\"\n\t\turl=\"http://remote.bloxus.com/\" /> \n\t<blog id=\"74\" name=\"Manila Test\" needspassword=\"1\"\n\t\turl=\"http://flickrtest1.userland.com/\" /> \n</blogs>"
     },
     "explanation": {
       "_content": "<p>The <code>needspassword</code> attribute indicates whether a call to <code>flickr.blogs.postPhoto</code> for this blog will require a password to be sent. When flickr has a password already stored, <code>needspassword</code> is 0</p>"

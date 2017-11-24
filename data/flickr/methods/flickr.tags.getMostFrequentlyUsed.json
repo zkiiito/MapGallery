@@ -8,7 +8,7 @@
       "_content": "Returns a list of most frequently used tags for a user."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<who id=\"30135021@N05\">\r\n\t<tags>\r\n\t\t<tag count=\"1\">blah</tag>\r\n\t\t<tag count=\"5\">publicdomain</tag>\r\n\t</tags>\r\n</who>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<who id=\"30135021@N05\">\n\t<tags>\n\t\t<tag count=\"1\">blah</tag>\n\t\t<tag count=\"5\">publicdomain</tag>\n\t</tags>\n</who>\n</rsp>"
     }
   },
   "arguments": {

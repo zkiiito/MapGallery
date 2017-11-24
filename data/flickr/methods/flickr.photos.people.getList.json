@@ -8,7 +8,7 @@
       "_content": "Get a list of people in a given photo."
     },
     "response": {
-      "_content": "<people total=\"1\">\r\n  <person nsid=\"87944415@N00\" username=\"hitherto\" iconserver=\"1\" iconfarm=\"1\"\r\n          realname=\"Simon Batistoni\" added_by=\"12037949754@N01\" x=\"50\" y=\"50\"\r\n          w=\"100\" h=\"100\"/>\r\n</people>"
+      "_content": "<people total=\"1\">\n  <person nsid=\"87944415@N00\" username=\"hitherto\" iconserver=\"1\" iconfarm=\"1\"\n          realname=\"Simon Batistoni\" added_by=\"12037949754@N01\" x=\"50\" y=\"50\"\n          w=\"100\" h=\"100\"/>\n</people>"
     },
     "explanation": {
       "_content": "x, y, w and h correspond to the coordinates of the \"bounding box\" around a person in a photo. Since these co-ordinates are optional, these elements may not be present for every person."

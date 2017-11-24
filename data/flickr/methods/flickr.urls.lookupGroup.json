@@ -8,7 +8,7 @@
       "_content": "Returns a group NSID, given the url to a group's page or photo pool."
     },
     "response": {
-      "_content": "<group id=\"34427469792@N01\">\r\n\t<groupname>FlickrCentral</groupname> \r\n</group>"
+      "_content": "<group id=\"34427469792@N01\">\n\t<groupname>FlickrCentral</groupname> \n</group>"
     }
   },
   "arguments": {

@@ -23,7 +23,7 @@
       {
         "name": "safe_search",
         "optional": "1",
-        "_content": "Safe search setting:\r\n\r\n<ul>\r\n<li>1 for safe.</li>\r\n<li>2 for moderate.</li>\r\n<li>3 for restricted.</li>\r\n</ul>\r\n\r\n(Please note: Un-authed calls can only see Safe content.)"
+        "_content": "Safe search setting:\n\n<ul>\n<li>1 for safe.</li>\n<li>2 for moderate.</li>\n<li>3 for restricted.</li>\n</ul>\n\n(Please note: Un-authed calls can only see Safe content.)"
       },
       {
         "name": "min_upload_date",
@@ -48,12 +48,12 @@
       {
         "name": "content_type",
         "optional": "1",
-        "_content": "Content Type setting:\r\n<ul>\r\n<li>1 for photos only.</li>\r\n<li>2 for screenshots only.</li>\r\n<li>3 for 'other' only.</li>\r\n<li>4 for photos and screenshots.</li>\r\n<li>5 for screenshots and 'other'.</li>\r\n<li>6 for photos and 'other'.</li>\r\n<li>7 for photos, screenshots, and 'other' (all).</li>\r\n</ul>"
+        "_content": "Content Type setting:\n<ul>\n<li>1 for photos only.</li>\n<li>2 for screenshots only.</li>\n<li>3 for 'other' only.</li>\n<li>4 for photos and screenshots.</li>\n<li>5 for screenshots and 'other'.</li>\n<li>6 for photos and 'other'.</li>\n<li>7 for photos, screenshots, and 'other' (all).</li>\n</ul>"
       },
       {
         "name": "privacy_filter",
         "optional": "1",
-        "_content": "Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:\r\n<ul>\r\n<li>1 public photos</li>\r\n<li>2 private photos visible to friends</li>\r\n<li>3 private photos visible to family</li>\r\n<li>4 private photos visible to friends & family</li>\r\n<li>5 completely private photos</li>\r\n</ul>"
+        "_content": "Return photos only matching a certain privacy level. This only applies when making an authenticated call to view photos you own. Valid values are:\n<ul>\n<li>1 public photos</li>\n<li>2 private photos visible to friends</li>\n<li>3 private photos visible to family</li>\n<li>4 private photos visible to friends & family</li>\n<li>5 completely private photos</li>\n</ul>"
       },
       {
         "name": "extras",
@@ -83,6 +83,11 @@
         "code": "2",
         "message": "Unknown user",
         "_content": "A user_id was passed which did not match a valid flickr user."
+      },
+      {
+        "code": "5",
+        "message": "User deleted",
+        "_content": "The user id passed did not match a Flickr user."
       },
       {
         "code": 100,

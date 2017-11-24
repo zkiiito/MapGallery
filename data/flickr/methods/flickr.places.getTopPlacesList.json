@@ -8,7 +8,7 @@
       "_content": "Return the top 100 most geotagged places for a day."
     },
     "response": {
-      "_content": "<places total=\"100\" date_start=\"1246320000\" date_stop=\"1246406399\">\r\n   <place place_id=\"4KO02SibApitvSBieQ\" woeid=\"23424977\"\r\n       latitude=\"48.890\" longitude=\"-116.982\" \r\n       place_url=\"/United+States\" place_type=\"country\" \r\n       place_type_id=\"12\" photo_count=\"23371\">United States</place>\r\n   <!-- and so on... -->\r\n</places>"
+      "_content": "<places total=\"100\" date_start=\"1246320000\" date_stop=\"1246406399\">\n   <place place_id=\"4KO02SibApitvSBieQ\" woeid=\"23424977\"\n       latitude=\"48.890\" longitude=\"-116.982\" \n       place_url=\"/United+States\" place_type=\"country\" \n       place_type_id=\"12\" photo_count=\"23371\">United States</place>\n   <!-- and so on... -->\n</places>"
     }
   },
   "arguments": {
@@ -21,7 +21,7 @@
       {
         "name": "place_type_id",
         "optional": "0",
-        "_content": "The numeric ID for a specific place type to cluster photos by. <br /><br />\r\n\r\nValid place type IDs are :\r\n\r\n<ul>\r\n<li><strong>22</strong>: neighbourhood</li>\r\n<li><strong>7</strong>: locality</li>\r\n<li><strong>8</strong>: region</li>\r\n<li><strong>12</strong>: country</li>\r\n<li><strong>29</strong>: continent</li>\r\n</ul>"
+        "_content": "The numeric ID for a specific place type to cluster photos by. <br /><br />\n\nValid place type IDs are :\n\n<ul>\n<li><strong>22</strong>: neighbourhood</li>\n<li><strong>7</strong>: locality</li>\n<li><strong>8</strong>: region</li>\n<li><strong>12</strong>: country</li>\n<li><strong>29</strong>: continent</li>\n</ul>"
       },
       {
         "name": "date",

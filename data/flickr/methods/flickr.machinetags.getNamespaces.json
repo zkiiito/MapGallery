@@ -8,7 +8,7 @@
       "_content": "Return a list of unique namespaces, optionally limited by a given predicate, in alphabetical order."
     },
     "response": {
-      "_content": "<namespaces page=\"1\" total=\"5\" perpage=\"500\" pages=\"1\">\r\n  <namespace usage=\"6538\" predicates=\"13\">aero</namespace>\r\n  <namespace usage=\"9072\" predicates=\"24\">flickr</namespace>\r\n  <namespace usage=\"670270\" predicates=\"35\">geo</namespace>\r\n  <namespace usage=\"23903\" predicates=\"36\">taxonomy</namespace>\r\n  <namespace usage=\"50449\" predicates=\"4\">upcoming</namespace>\r\n</namespaces>\r\n"
+      "_content": "<namespaces page=\"1\" total=\"5\" perpage=\"500\" pages=\"1\">\n  <namespace usage=\"6538\" predicates=\"13\">aero</namespace>\n  <namespace usage=\"9072\" predicates=\"24\">flickr</namespace>\n  <namespace usage=\"670270\" predicates=\"35\">geo</namespace>\n  <namespace usage=\"23903\" predicates=\"36\">taxonomy</namespace>\n  <namespace usage=\"50449\" predicates=\"4\">upcoming</namespace>\n</namespaces>\n"
     },
     "explanation": {
       "_content": "\"Usage\" gives you roughly how popular a machine tags, while \"predicates\" is the count of distinct predicates a namespace has."

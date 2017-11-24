@@ -18,7 +18,7 @@
       {
         "name": "date_lastcomment",
         "optional": "1",
-        "_content": "Limits the resultset to photos that have been commented on since this date. The date should be in the form of a Unix timestamp.<br /><br />\r\nThe default, and maximum, offset is (1) hour.\r\n\r\n\r\n"
+        "_content": "Limits the resultset to photos that have been commented on since this date. The date should be in the form of a Unix timestamp.<br /><br />\nThe default, and maximum, offset is (1) hour.\n\n\n"
       },
       {
         "name": "contacts_filter",

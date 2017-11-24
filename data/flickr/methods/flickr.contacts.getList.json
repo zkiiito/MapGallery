@@ -8,7 +8,7 @@
       "_content": "Get a list of contacts for the calling user."
     },
     "response": {
-      "_content": "<contacts page=\"1\" pages=\"1\" perpage=\"1000\" total=\"3\">\r\n\t<contact nsid=\"12037949629@N01\" username=\"Eric\" iconserver=\"1\"\r\n\t\trealname=\"Eric Costello\"\r\n\t\tfriend=\"1\" family=\"0\" ignored=\"1\" /> \r\n\t<contact nsid=\"12037949631@N01\" username=\"neb\" iconserver=\"1\"\r\n\t\trealname=\"Ben Cerveny\"\r\n\t\tfriend=\"0\" family=\"0\" ignored=\"0\" /> \r\n\t<contact nsid=\"41578656547@N01\" username=\"cal_abc\" iconserver=\"1\"\r\n\t\trealname=\"Cal Henderson\"\r\n\t\tfriend=\"1\" family=\"1\" ignored=\"0\" />\r\n</contacts>"
+      "_content": "<contacts page=\"1\" pages=\"1\" perpage=\"1000\" total=\"3\">\n\t<contact nsid=\"12037949629@N01\" username=\"Eric\" iconserver=\"1\"\n\t\trealname=\"Eric Costello\"\n\t\tfriend=\"1\" family=\"0\" ignored=\"1\" /> \n\t<contact nsid=\"12037949631@N01\" username=\"neb\" iconserver=\"1\"\n\t\trealname=\"Ben Cerveny\"\n\t\tfriend=\"0\" family=\"0\" ignored=\"0\" /> \n\t<contact nsid=\"41578656547@N01\" username=\"cal_abc\" iconserver=\"1\"\n\t\trealname=\"Cal Henderson\"\n\t\tfriend=\"1\" family=\"1\" ignored=\"0\" />\n</contacts>"
     }
   },
   "arguments": {
@@ -21,7 +21,7 @@
       {
         "name": "filter",
         "optional": "1",
-        "_content": "An optional filter of the results. The following values are valid:<br />\r\n&nbsp;\r\n<dl>\r\n\t<dt><b><code>friends</code></b></dt>\r\n\t<dl>Only contacts who are friends (and not family)</dl>\r\n\r\n\t<dt><b><code>family</code></b></dt>\r\n\t<dl>Only contacts who are family (and not friends)</dl>\r\n\r\n\t<dt><b><code>both</code></b></dt>\r\n\t<dl>Only contacts who are both friends and family</dl>\r\n\r\n\t<dt><b><code>neither</code></b></dt>\r\n\t<dl>Only contacts who are neither friends nor family</dl>\r\n</dl>"
+        "_content": "An optional filter of the results. The following values are valid:<br />\n&nbsp;\n<dl>\n\t<dt><b><code>friends</code></b></dt>\n\t<dl>Only contacts who are friends (and not family)</dl>\n\n\t<dt><b><code>family</code></b></dt>\n\t<dl>Only contacts who are family (and not friends)</dl>\n\n\t<dt><b><code>both</code></b></dt>\n\t<dl>Only contacts who are both friends and family</dl>\n\n\t<dt><b><code>neither</code></b></dt>\n\t<dl>Only contacts who are neither friends nor family</dl>\n</dl>"
       },
       {
         "name": "page",

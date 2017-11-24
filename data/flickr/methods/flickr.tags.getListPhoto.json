@@ -8,7 +8,7 @@
       "_content": "Get the tag list for a given photo."
     },
     "response": {
-      "_content": "<photo id=\"2619\">\r\n\t<tags>\r\n\t\t<tag id=\"156\" author=\"12037949754@N01\"\r\n\t\t\tauthorname=\"Bees\" raw=\"tag 1\">tag1</tag> \r\n\t\t<tag id=\"157\" author=\"12037949754@N01\"\r\n\t\t\tauthorname=\"Bees\" raw=\"tag 2\">tag2</tag> \r\n\t</tags>\r\n</photo>"
+      "_content": "<photo id=\"2619\">\n\t<tags>\n\t\t<tag id=\"156\" author=\"12037949754@N01\"\n\t\t\tauthorname=\"Bees\" raw=\"tag 1\">tag1</tag> \n\t\t<tag id=\"157\" author=\"12037949754@N01\"\n\t\t\tauthorname=\"Bees\" raw=\"tag 2\">tag2</tag> \n\t</tags>\n</photo>"
     },
     "explanation": {
       "_content": "<p>For an explanation of the <code>tag</code> element, please read the <a href=\"/services/api/misc.tags.html\">tags documentation</a>.</p>"

@@ -8,7 +8,7 @@
       "_content": "Returns the default safety level preference for the user."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<person nsid=\"12037949754@N01\" safety_level=\"1\" />\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<person nsid=\"12037949754@N01\" safety_level=\"1\" />\n</rsp>"
     }
   },
   "arguments": {

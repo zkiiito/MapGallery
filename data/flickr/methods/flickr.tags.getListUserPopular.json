@@ -8,7 +8,7 @@
       "_content": "Get the popular tags for a given user (or the currently logged in user)."
     },
     "response": {
-      "_content": "<who id=\"12037949754@N01\">\r\n\t<tags>\r\n\t\t<tag count=\"10\">bar</tag> \r\n\t\t<tag count=\"11\">foo</tag> \r\n\t\t<tag count=\"147\">gull</tag> \r\n\t\t<tag count=\"3\">tags</tag> \r\n\t\t<tag count=\"3\">test</tag> \r\n\t</tags>\r\n</who>"
+      "_content": "<who id=\"12037949754@N01\">\n\t<tags>\n\t\t<tag count=\"10\">bar</tag> \n\t\t<tag count=\"11\">foo</tag> \n\t\t<tag count=\"147\">gull</tag> \n\t\t<tag count=\"3\">tags</tag> \n\t\t<tag count=\"3\">test</tag> \n\t</tags>\n</who>"
     }
   },
   "arguments": {

@@ -8,10 +8,10 @@
       "_content": "Returns information for the calling user related to photo uploads."
     },
     "response": {
-      "_content": "<user id=\"12037949754@N01\" ispro=\"1\">\r\n\t<username>Bees</username> \r\n\t<bandwidth\r\n\t\tmaxbytes=\"2147483648\" maxkb=\"2097152\"\r\n\t\tusedbytes=\"383724\" usedkb=\"374\"\r\n\t\tremainingbytes=\"2147099924\" remainingkb=\"2096777\"\r\n\t /> \r\n\t<filesize\r\n\t\tmaxbytes=\"10485760\" maxkb=\"10240\"\r\n\t/> \r\n\t<sets\r\n\t\tcreated=\"27\"\r\n\t\tremaining=\"lots\"\r\n\t/>\r\n\t<videos\r\n\t\tuploaded=\"5\"\r\n\t\tremaining=\"lots\"\r\n\t/>\r\n</user>"
+      "_content": "<user id=\"12037949754@N01\" ispro=\"1\">\n\t<username>Bees</username> \n\t<bandwidth\n\t\tmaxbytes=\"2147483648\" maxkb=\"2097152\"\n\t\tusedbytes=\"383724\" usedkb=\"374\"\n\t\tremainingbytes=\"2147099924\" remainingkb=\"2096777\"\n\t /> \n\t<filesize\n\t\tmaxbytes=\"10485760\" maxkb=\"10240\"\n\t/> \n\t<sets\n\t\tcreated=\"27\"\n\t\tremaining=\"lots\"\n\t/>\n\t<videos\n\t\tuploaded=\"5\"\n\t\tremaining=\"lots\"\n\t/>\n</user>"
     },
     "explanation": {
-      "_content": "<p>Bandwidth and filesize numbers are provided in bytes and kilobytes. If you're using 32bit numbers, stick to using the kilobyte values - they shouldn't ever exceed 2/4 billion, while the byte values will.</p>\r\n\r\n<p>Bandwidth is specified in bytes/kb per month.</p>\r\n\r\n\r\n<p>All accounts display \"lots\" for the number of remaining sets, but remains in the response for backwards compatibility.</p>\r\n\r\n<p>Pro accounts display \"lots\" for the number of remaining videos, while free users will display 0, 1, or 2.</p>\r\n"
+      "_content": "<p>Bandwidth and filesize numbers are provided in bytes and kilobytes. If you're using 32bit numbers, stick to using the kilobyte values - they shouldn't ever exceed 2/4 billion, while the byte values will.</p>\n\n<p>Bandwidth is specified in bytes/kb per month.</p>\n\n\n<p>All accounts display \"lots\" for the number of remaining sets, but remains in the response for backwards compatibility.</p>\n\n<p>Pro accounts display \"lots\" for the number of remaining videos, while free users will display 0, 1, or 2.</p>\n"
     }
   },
   "arguments": {

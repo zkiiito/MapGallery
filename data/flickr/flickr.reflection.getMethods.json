@@ -104,6 +104,9 @@
         "_content": "flickr.galleries.getPhotos"
       },
       {
+        "_content": "flickr.galleries.removePhoto"
+      },
+      {
         "_content": "flickr.groups.browse"
       },
       {
@@ -294,6 +297,9 @@
       },
       {
         "_content": "flickr.photos.getPerms"
+      },
+      {
+        "_content": "flickr.photos.getPopular"
       },
       {
         "_content": "flickr.photos.getRecent"
@@ -503,6 +509,9 @@
         "_content": "flickr.prefs.getSafetyLevel"
       },
       {
+        "_content": "flickr.profile.getProfile"
+      },
+      {
         "_content": "flickr.push.getSubscriptions"
       },
       {
@@ -600,6 +609,45 @@
       },
       {
         "_content": "flickr.test.null"
+      },
+      {
+        "_content": "flickr.testimonials.addTestimonial"
+      },
+      {
+        "_content": "flickr.testimonials.approveTestimonial"
+      },
+      {
+        "_content": "flickr.testimonials.deleteTestimonial"
+      },
+      {
+        "_content": "flickr.testimonials.editTestimonial"
+      },
+      {
+        "_content": "flickr.testimonials.getAllTestimonialsAbout"
+      },
+      {
+        "_content": "flickr.testimonials.getAllTestimonialsAboutBy"
+      },
+      {
+        "_content": "flickr.testimonials.getAllTestimonialsBy"
+      },
+      {
+        "_content": "flickr.testimonials.getPendingTestimonialsAbout"
+      },
+      {
+        "_content": "flickr.testimonials.getPendingTestimonialsAboutBy"
+      },
+      {
+        "_content": "flickr.testimonials.getPendingTestimonialsBy"
+      },
+      {
+        "_content": "flickr.testimonials.getTestimonialsAbout"
+      },
+      {
+        "_content": "flickr.testimonials.getTestimonialsAboutBy"
+      },
+      {
+        "_content": "flickr.testimonials.getTestimonialsBy"
       },
       {
         "_content": "flickr.urls.getGroup"

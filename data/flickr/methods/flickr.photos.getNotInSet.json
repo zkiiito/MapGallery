@@ -33,7 +33,7 @@
       {
         "name": "privacy_filter",
         "optional": "1",
-        "_content": "Return photos only matching a certain privacy level. Valid values are:\r\n<ul>\r\n<li>1 public photos</li>\r\n<li>2 private photos visible to friends</li>\r\n<li>3 private photos visible to family</li>\r\n<li>4 private photos visible to friends &amp; family</li>\r\n<li>5 completely private photos</li>\r\n</ul>\r\n"
+        "_content": "Return photos only matching a certain privacy level. Valid values are:\n<ul>\n<li>1 public photos</li>\n<li>2 private photos visible to friends</li>\n<li>3 private photos visible to family</li>\n<li>4 private photos visible to friends &amp; family</li>\n<li>5 completely private photos</li>\n</ul>\n"
       },
       {
         "name": "media",

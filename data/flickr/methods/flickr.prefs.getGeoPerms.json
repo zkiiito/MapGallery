@@ -5,10 +5,10 @@
     "needssigning": 1,
     "requiredperms": "1",
     "description": {
-      "_content": "Returns the default privacy level for geographic information attached to the user's photos and whether or not the user has chosen to use geo-related EXIF information to automatically geotag their photos.\r\n\r\nPossible values, for viewing geotagged photos, are:\r\n\r\n<ul>\r\n<li>0 : <i>No default set</i></li>\r\n<li>1 : Public</li>\r\n<li>2 : Contacts only</li>\r\n<li>3 : Friends and Family only</li>\r\n<li>4 : Friends only</li>\r\n<li>5 : Family only</li>\r\n<li>6 : Private</li>\r\n</ul>\r\n\r\nUsers can edit this preference at <a href=\"http://www.flickr.com/account/geo/privacy/\">http://www.flickr.com/account/geo/privacy/</a>.\r\n<br /><br />\r\nPossible values for whether or not geo-related EXIF information will be used to geotag a photo are:\r\n\r\n<ul>\r\n<li>0: Geo-related EXIF information will be ignored</li>\r\n<li>1: Geo-related EXIF information will be used to try and geotag photos on upload</li>\r\n</ul>\r\n\r\nUsers can edit this preference at <a href=\"http://www.flickr.com/account/geo/exif/?from=privacy\">http://www.flickr.com/account/geo/exif/?from=privacy</a>"
+      "_content": "Returns the default privacy level for geographic information attached to the user's photos and whether or not the user has chosen to use geo-related EXIF information to automatically geotag their photos.\n\nPossible values, for viewing geotagged photos, are:\n\n<ul>\n<li>0 : <i>No default set</i></li>\n<li>1 : Public</li>\n<li>2 : Contacts only</li>\n<li>3 : Friends and Family only</li>\n<li>4 : Friends only</li>\n<li>5 : Family only</li>\n<li>6 : Private</li>\n</ul>\n\nUsers can edit this preference at <a href=\"http://www.flickr.com/account/geo/privacy/\">http://www.flickr.com/account/geo/privacy/</a>.\n<br /><br />\nPossible values for whether or not geo-related EXIF information will be used to geotag a photo are:\n\n<ul>\n<li>0: Geo-related EXIF information will be ignored</li>\n<li>1: Geo-related EXIF information will be used to try and geotag photos on upload</li>\n</ul>\n\nUsers can edit this preference at <a href=\"http://www.flickr.com/account/geo/exif/?from=privacy\">http://www.flickr.com/account/geo/exif/?from=privacy</a>"
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<person nsid=\"12037949754@N01\" geoperms=\"1\" importgeoexif=\"0\" />\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<person nsid=\"12037949754@N01\" geoperms=\"1\" importgeoexif=\"0\" />\n</rsp>"
     }
   },
   "arguments": {

@@ -8,7 +8,7 @@
       "_content": "A testing method which echo's all parameters back in the response."
     },
     "response": {
-      "_content": "<method>echo</method>\r\n<foo>bar</foo>"
+      "_content": "<method>echo</method>\n<foo>bar</foo>"
     }
   },
   "arguments": {

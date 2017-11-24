@@ -8,10 +8,10 @@
       "_content": "Get a list of referrers from a given domain to a collection"
     },
     "response": {
-      "_content": "<domain page=\"1\" perpage=\"25\" pages=\"1\" total=\"3\" name=\"flickr.com\">\r\n\t<referrer url=\"http://flickr.com/\" views=\"11\"/>\r\n\t<referrer url=\"http://flickr.com/photos/friends/\" views=\"8\"/>\r\n\t<referrer url=\"http://flickr.com/search/?q=stats+api\" views=\"2\" searchterm=\"stats api\"/>\r\n</domain>\r\n"
+      "_content": "<domain page=\"1\" perpage=\"25\" pages=\"1\" total=\"3\" name=\"flickr.com\">\n\t<referrer url=\"http://flickr.com/\" views=\"11\"/>\n\t<referrer url=\"http://flickr.com/photos/friends/\" views=\"8\"/>\n\t<referrer url=\"http://flickr.com/search/?q=stats+api\" views=\"2\" searchterm=\"stats api\"/>\n</domain>\n"
     },
     "explanation": {
-      "_content": "<p>There is one <code>&lt;referrer&gt;</code> element for each referring page, with attributes for the url and the number of views.</p>\r\n\r\n<p>Where the referring page is a search engine and we have identified the search term it will be given in the searchterm attribute.</p>"
+      "_content": "<p>There is one <code>&lt;referrer&gt;</code> element for each referring page, with attributes for the url and the number of views.</p>\n\n<p>Where the referring page is a search engine and we have identified the search term it will be given in the searchterm attribute.</p>"
     }
   },
   "arguments": {
@@ -24,7 +24,7 @@
       {
         "name": "date",
         "optional": "0",
-        "_content": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. \r\n\r\nA day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day."
+        "_content": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format. \n\nA day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day."
       },
       {
         "name": "domain",

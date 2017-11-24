@@ -8,7 +8,7 @@
       "_content": "Returns all visible sets and pools the photo belongs to."
     },
     "response": {
-      "_content": "<set id=\"392\" title=\"记忆群组\" />\r\n<pool id=\"34427465471@N01\" title=\"FlickrDiscuss\" />"
+      "_content": "<set id=\"392\" title=\"记忆群组\" />\n<pool id=\"34427465471@N01\" title=\"FlickrDiscuss\" />"
     }
   },
   "arguments": {

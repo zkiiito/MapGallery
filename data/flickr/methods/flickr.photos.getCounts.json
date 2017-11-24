@@ -8,7 +8,7 @@
       "_content": "Gets a list of photo counts for the given date ranges for the calling user."
     },
     "response": {
-      "_content": "<photocounts>\r\n\t<photocount count=\"4\" fromdate=\"1093566950\" todate=\"1093653350\" /> \r\n\t<photocount count=\"0\" fromdate=\"1093653350\" todate=\"1093739750\" /> \r\n\t<photocount count=\"0\" fromdate=\"1093739750\" todate=\"1093826150\" /> \r\n\t<photocount count=\"2\" fromdate=\"1093826150\" todate=\"1093912550\" /> \r\n\t<photocount count=\"0\" fromdate=\"1093912550\" todate=\"1093998950\" /> \r\n\t<photocount count=\"0\" fromdate=\"1093998950\" todate=\"1094085350\" /> \r\n\t<photocount count=\"0\" fromdate=\"1094085350\" todate=\"1094171750\" /> \r\n</photocounts>\r\n"
+      "_content": "<photocounts>\n\t<photocount count=\"4\" fromdate=\"1093566950\" todate=\"1093653350\" /> \n\t<photocount count=\"0\" fromdate=\"1093653350\" todate=\"1093739750\" /> \n\t<photocount count=\"0\" fromdate=\"1093739750\" todate=\"1093826150\" /> \n\t<photocount count=\"2\" fromdate=\"1093826150\" todate=\"1093912550\" /> \n\t<photocount count=\"0\" fromdate=\"1093912550\" todate=\"1093998950\" /> \n\t<photocount count=\"0\" fromdate=\"1093998950\" todate=\"1094085350\" /> \n\t<photocount count=\"0\" fromdate=\"1094085350\" todate=\"1094171750\" /> \n</photocounts>\n"
     }
   },
   "arguments": {

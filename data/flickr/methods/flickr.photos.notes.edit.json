@@ -5,7 +5,7 @@
     "needssigning": 1,
     "requiredperms": "2",
     "description": {
-      "_content": "Edit a note on a photo. Coordinates and sizes are in pixels, based on the 500px image size shown on individual photo pages.\r\n"
+      "_content": "Edit a note on a photo. Coordinates and sizes are in pixels, based on the 500px image size shown on individual photo pages.\n"
     }
   },
   "arguments": {

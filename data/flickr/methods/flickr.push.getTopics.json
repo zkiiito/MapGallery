@@ -5,10 +5,10 @@
     "needssigning": 0,
     "requiredperms": 0,
     "description": {
-      "_content": "All the different flavours of anteater.\r\n<br><br>\r\n<i>(this method is experimental and may change)</i>"
+      "_content": "All the different flavours of anteater.\n<br><br>\n<i>(this method is experimental and may change)</i>"
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n  <topics>\r\n    <topic name=\"contacts_photos\" />\r\n    <topic name=\"contacts_faves\" />\r\n  </topics>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n  <topics>\n    <topic name=\"contacts_photos\" />\n    <topic name=\"contacts_faves\" />\n  </topics>\n</rsp>"
     }
   },
   "arguments": {

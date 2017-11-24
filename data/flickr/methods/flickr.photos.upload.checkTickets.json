@@ -8,7 +8,7 @@
       "_content": "Checks the status of one or more asynchronous photo upload tickets."
     },
     "response": {
-      "_content": "<uploader>\r\n\t<ticket id=\"128\" complete=\"1\" photoid=\"2995\" />\r\n\t<ticket id=\"129\" complete=\"0\" />\r\n\t<ticket id=\"130\" complete=\"2\" />\r\n\t<ticket id=\"131\" invalid=\"1\" />\r\n</uploader>\r\n"
+      "_content": "<uploader>\n\t<ticket id=\"128\" complete=\"1\" photoid=\"2995\" />\n\t<ticket id=\"129\" complete=\"0\" />\n\t<ticket id=\"130\" complete=\"2\" />\n\t<ticket id=\"131\" invalid=\"1\" />\n</uploader>\n"
     },
     "explanation": {
       "_content": "<p>There is one <code>&lt;ticket&gt;</code> element for each ticket id supplied. The <code>id</code> attribute contains the corresponding ticket id. If the ticket wasn't found, the <code>invalid</code> attribute is set. The status of the ticket is passed in the <code>status</code> attribute; 0 means not completed, 1 means completed and 2 means the ticket failed (indicating there was a problem converting the file). When the status is 1, the photo id is passed in the <code>photoid</code> attribute. The photo id can then be used as with the <a href=\"/services/api/upload.api.html\">synchronous upload API</a>."

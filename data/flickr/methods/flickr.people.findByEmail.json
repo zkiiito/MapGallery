@@ -8,7 +8,7 @@
       "_content": "Return a user's NSID, given their email address"
     },
     "response": {
-      "_content": "<user nsid=\"12037949632@N01\">\r\n\t<username>Stewart</username> \r\n</user>"
+      "_content": "<user nsid=\"12037949632@N01\">\n\t<username>Stewart</username> \n</user>"
     }
   },
   "arguments": {

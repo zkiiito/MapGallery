@@ -8,7 +8,7 @@
       "_content": "Get the tag list for a given user (or the currently logged in user)."
     },
     "response": {
-      "_content": "<who id=\"12037949754@N01\">\r\n\t<tags>\r\n\t\t<tag>gull</tag> \r\n\t\t<tag>tag1</tag> \r\n\t\t<tag>tag2</tag> \r\n\t\t<tag>tags</tag> \r\n\t\t<tag>test</tag> \r\n\t</tags>\r\n</who>"
+      "_content": "<who id=\"12037949754@N01\">\n\t<tags>\n\t\t<tag>gull</tag> \n\t\t<tag>tag1</tag> \n\t\t<tag>tag2</tag> \n\t\t<tag>tags</tag> \n\t\t<tag>test</tag> \n\t</tags>\n</who>"
     }
   },
   "arguments": {

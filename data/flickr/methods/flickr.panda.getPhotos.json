@@ -5,10 +5,10 @@
     "needssigning": 0,
     "requiredperms": 0,
     "description": {
-      "_content": "Ask the <a href=\"http://www.flickr.com/explore/panda\">Flickr Pandas</a> for a list of recent public (and \"safe\") photos.\r\n<br/><br/>\r\nMore information about the pandas can be found on the <a href=\"http://code.flickr.com/blog/2009/03/03/panda-tuesday-the-history-of-the-panda-new-apis-explore-and-you/\">dev blog</a>."
+      "_content": "Ask the <a href=\"http://www.flickr.com/explore/panda\">Flickr Pandas</a> for a list of recent public (and \"safe\") photos.\n<br/><br/>\nMore information about the pandas can be found on the <a href=\"http://code.flickr.com/blog/2009/03/03/panda-tuesday-the-history-of-the-panda-new-apis-explore-and-you/\">dev blog</a>."
     },
     "response": {
-      "_content": "<photos interval=\"60000\" lastupdate=\"1235765058272\" total=\"120\" panda=\"ling ling\">\r\n    <photo title=\"Shorebirds at Pillar Point\" id=\"3313428913\" secret=\"2cd3cb44cb\"\r\n        server=\"3609\" farm=\"4\" owner=\"72442527@N00\" ownername=\"Pat Ulrich\"/>\r\n    <photo title=\"Battle of the sky\" id=\"3313713993\" secret=\"3f7f51500f\"\r\n        server=\"3382\" farm=\"4\" owner=\"10459691@N05\" ownername=\"Sven Ericsson\"/>\r\n    <!-- and so on -->\r\n</photos>"
+      "_content": "<photos interval=\"60000\" lastupdate=\"1235765058272\" total=\"120\" panda=\"ling ling\">\n    <photo title=\"Shorebirds at Pillar Point\" id=\"3313428913\" secret=\"2cd3cb44cb\"\n        server=\"3609\" farm=\"4\" owner=\"72442527@N00\" ownername=\"Pat Ulrich\"/>\n    <photo title=\"Battle of the sky\" id=\"3313713993\" secret=\"3f7f51500f\"\n        server=\"3382\" farm=\"4\" owner=\"10459691@N05\" ownername=\"Sven Ericsson\"/>\n    <!-- and so on -->\n</photos>"
     },
     "explanation": {
       "_content": "When calling this API method please ensure that your code uses the <strong>lastupdate</strong> and <strong>interval</strong> attributes to determine when to request new photos. <em>lastupdate</em> is a Unix timestamp indicating when the list of photos was generated and <em>interval</em> is the number of seconds to wait before polling the Flickr API again."
@@ -24,7 +24,7 @@
       {
         "name": "panda_name",
         "optional": "0",
-        "_content": "The name of the panda to ask for photos from. There are currently three pandas named:<br /><br />\r\n\r\n<ul>\r\n<li><strong><a href=\"http://flickr.com/photos/ucumari/126073203/\">ling ling</a></strong></li>\r\n<li><strong><a href=\"http://flickr.com/photos/lynnehicks/136407353\">hsing hsing</a></strong></li>\r\n<li><strong><a href=\"http://flickr.com/photos/perfectpandas/1597067182/\">wang wang</a></strong></li>\r\n</ul>\r\n\r\n<br />You can fetch a list of all the current pandas using the <a href=\"/services/api/flickr.panda.getList.html\">flickr.panda.getList</a> API method."
+        "_content": "The name of the panda to ask for photos from. There are currently three pandas named:<br /><br />\n\n<ul>\n<li><strong><a href=\"http://flickr.com/photos/ucumari/126073203/\">ling ling</a></strong></li>\n<li><strong><a href=\"http://flickr.com/photos/lynnehicks/136407353\">hsing hsing</a></strong></li>\n<li><strong><a href=\"http://flickr.com/photos/perfectpandas/1597067182/\">wang wang</a></strong></li>\n</ul>\n\n<br />You can fetch a list of all the current pandas using the <a href=\"/services/api/flickr.panda.getList.html\">flickr.panda.getList</a> API method."
       },
       {
         "name": "extras",

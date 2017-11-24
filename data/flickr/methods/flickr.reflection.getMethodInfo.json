@@ -8,7 +8,7 @@
       "_content": "Returns information for a given flickr API method."
     },
     "response": {
-      "_content": "<method name=\"flickr.fakeMethod\" needslogin=\"1\">\r\n\t<description>A fake method</description> \r\n\t<response>xml-response-example</response> \r\n\t<explanation>explanation of example response</explanation> \r\n\t<arguments>\r\n\t\t<argument name=\"api_key\" optional=\"0\">\r\n\t\t\tYou API application key.</argument> \r\n\t\t<argument name=\"color\" optional=\"1\">\r\n\t\t\tYour favorite color.</argument> \r\n\t</arguments>\r\n\t<errors>\r\n\t\t<error code=\"1\" message=\"Photo not found\">\r\n\t\t\tFull explanation...</error> \r\n\t\t<error code=\"100\" message=\"Invalid API Key\">\r\n\t\t\tFull explanation...</error> \r\n\t</errors>\r\n</method>\r\n"
+      "_content": "<method name=\"flickr.fakeMethod\" needslogin=\"1\">\n\t<description>A fake method</description> \n\t<response>xml-response-example</response> \n\t<explanation>explanation of example response</explanation> \n\t<arguments>\n\t\t<argument name=\"api_key\" optional=\"0\">\n\t\t\tYou API application key.</argument> \n\t\t<argument name=\"color\" optional=\"1\">\n\t\t\tYour favorite color.</argument> \n\t</arguments>\n\t<errors>\n\t\t<error code=\"1\" message=\"Photo not found\">\n\t\t\tFull explanation...</error> \n\t\t<error code=\"100\" message=\"Invalid API Key\">\n\t\t\tFull explanation...</error> \n\t</errors>\n</method>\n"
     }
   },
   "arguments": {

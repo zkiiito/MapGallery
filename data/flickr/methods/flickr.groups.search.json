@@ -8,7 +8,7 @@
       "_content": "Search for groups. 18+ groups will only be returned for authenticated calls where the authenticated user is over 18."
     },
     "response": {
-      "_content": "<groups page=\"1\" pages=\"14\" perpage=\"5\" total=\"67\">\r\n\t<group nsid=\"3000@N02\"\r\n\t\tname=\"Frito's Test Group\" eighteenplus=\"0\" /> \r\n\t<group nsid=\"32825757@N00\"\r\n\t\tname=\"Free for All\" eighteenplus=\"0\" /> \r\n\t<group nsid=\"33335981560@N01\"\r\n\t\tname=\"joly's mothers\" eighteenplus=\"0\" /> \r\n\t<group nsid=\"33853651681@N01\"\r\n\t\tname=\"Wintermute tower\" eighteenplus=\"0\" /> \r\n\t<group nsid=\"33853651696@N01\"\r\n\t\tname=\"Art and Literature Hoedown\" eighteenplus=\"0\" /> \r\n</groups>"
+      "_content": "<groups page=\"1\" pages=\"14\" perpage=\"5\" total=\"67\">\n\t<group nsid=\"3000@N02\"\n\t\tname=\"Frito's Test Group\" eighteenplus=\"0\" /> \n\t<group nsid=\"32825757@N00\"\n\t\tname=\"Free for All\" eighteenplus=\"0\" /> \n\t<group nsid=\"33335981560@N01\"\n\t\tname=\"joly's mothers\" eighteenplus=\"0\" /> \n\t<group nsid=\"33853651681@N01\"\n\t\tname=\"Wintermute tower\" eighteenplus=\"0\" /> \n\t<group nsid=\"33853651696@N01\"\n\t\tname=\"Art and Literature Hoedown\" eighteenplus=\"0\" /> \n</groups>"
     }
   },
   "arguments": {

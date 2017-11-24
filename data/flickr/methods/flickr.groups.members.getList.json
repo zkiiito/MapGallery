@@ -8,7 +8,7 @@
       "_content": "Get a list of the members of a group.  The call must be signed on behalf of a Flickr member, and the ability to see the group membership will be determined by the Flickr member's group privileges."
     },
     "response": {
-      "_content": "<members page=\"1\" pages=\"1\" perpage=\"100\" total=\"33\">\r\n<member nsid=\"123456@N01\" username=\"foo\" iconserver=\"1\" iconfarm=\"1\" membertype=\"2\"/>\r\n<member nsid=\"118210@N07\" username=\"kewlchops666\" iconserver=\"0\" iconfarm=\"0\" membertype=\"4\"/>\r\n<member nsid=\"119377@N07\" username=\"Alpha Shanan\" iconserver=\"0\" iconfarm=\"0\" membertype=\"2\"/>\r\n<member nsid=\"67783977@N00\" username=\"fakedunstanp1\" iconserver=\"1003\" iconfarm=\"2\" membertype=\"3\"/>\r\n...\r\n</members>"
+      "_content": "<members page=\"1\" pages=\"1\" perpage=\"100\" total=\"33\">\n<member nsid=\"123456@N01\" username=\"foo\" iconserver=\"1\" iconfarm=\"1\" membertype=\"2\"/>\n<member nsid=\"118210@N07\" username=\"kewlchops666\" iconserver=\"0\" iconfarm=\"0\" membertype=\"4\"/>\n<member nsid=\"119377@N07\" username=\"Alpha Shanan\" iconserver=\"0\" iconfarm=\"0\" membertype=\"2\"/>\n<member nsid=\"67783977@N00\" username=\"fakedunstanp1\" iconserver=\"1003\" iconfarm=\"2\" membertype=\"3\"/>\n...\n</members>"
     }
   },
   "arguments": {
@@ -26,7 +26,7 @@
       {
         "name": "membertypes",
         "optional": "1",
-        "_content": "Comma separated list of member types\r\n<ul>\r\n<li>2: member</li>\r\n<li>3: moderator</li>\r\n<li>4: admin</li>\r\n</ul>\r\nBy default returns all types.  (Returning super rare member type \"1: narwhal\" isn't supported by this API method)"
+        "_content": "Comma separated list of member types\n<ul>\n<li>2: member</li>\n<li>3: moderator</li>\n<li>4: admin</li>\n</ul>\nBy default returns all types.  (Returning super rare member type \"1: narwhal\" isn't supported by this API method)"
       },
       {
         "name": "per_page",

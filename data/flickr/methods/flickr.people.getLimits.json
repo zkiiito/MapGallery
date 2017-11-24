@@ -8,10 +8,10 @@
       "_content": "Returns the photo and video limits that apply to the calling user account."
     },
     "response": {
-      "_content": "<person nsid=\"30135021@N05\">\r\n\t<photos maxdisplaypx=\"1024\" maxupload=\"15728640\" />\r\n\t<videos maxduration=\"90\" maxupload=\"157286400\" />\r\n</person>"
+      "_content": "<person nsid=\"30135021@N05\">\n\t<photos maxdisplaypx=\"1024\" maxupload=\"15728640\" />\n\t<videos maxduration=\"90\" maxupload=\"157286400\" />\n</person>"
     },
     "explanation": {
-      "_content": "<ul>\r\n<li>photos/@maxdisplaypx: maximum size in pixels for photos displayed on the site (0 means that no limit is in place). No limit is placed on the dimension of photos uploaded.</li>\r\n<li>photos/@maxupload: maximum file size in bytes for photo uploads.</li>\r\n<li>videos/@maxduration: maximum duration in seconds of a video.</li>\r\n<li>videos/@maxupload: maximum file size in bytes for video uploads.</li>\r\n</ul>\r\n\r\n<p>For more details, see the documentation about <a href=\"http://www.flickr.com/help/limits/\">limits</a>.</p>"
+      "_content": "<ul>\n<li>photos/@maxdisplaypx: maximum size in pixels for photos displayed on the site (0 means that no limit is in place). No limit is placed on the dimension of photos uploaded.</li>\n<li>photos/@maxupload: maximum file size in bytes for photo uploads.</li>\n<li>videos/@maxduration: maximum duration in seconds of a video.</li>\n<li>videos/@maxupload: maximum file size in bytes for video uploads.</li>\n</ul>\n\n<p>For more details, see the documentation about <a href=\"http://www.flickr.com/help/limits/\">limits</a>.</p>"
     }
   },
   "arguments": {

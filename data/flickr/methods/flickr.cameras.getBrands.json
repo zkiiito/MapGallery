@@ -8,7 +8,7 @@
       "_content": "Returns all the brands of cameras that Flickr knows about."
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n<brands>\r\n\t<brand id=\"canon\">Canon</brand>\r\n\t<brand id=\"nikon\">Nikon</brand>\r\n        <brand id=\"apple\">Apple</brand>\r\n</brands>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n<brands>\n\t<brand id=\"canon\">Canon</brand>\n\t<brand id=\"nikon\">Nikon</brand>\n        <brand id=\"apple\">Apple</brand>\n</brands>\n</rsp>"
     }
   },
   "arguments": {

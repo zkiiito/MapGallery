@@ -8,7 +8,7 @@
       "_content": "Return a list of unique namespace and predicate pairs, optionally limited by predicate or namespace, in alphabetical order."
     },
     "response": {
-      "_content": "<pairs page=\"1\" total=\"1228\" perpage=\"500\" pages=\"3\">\r\n   <pair namespace=\"aero\" predicate=\"airline\" usage=\"1093\">aero:airline</pair>\r\n   <pair namespace=\"aero\" predicate=\"icao\" usage=\"4\">aero:icao</pair>\r\n   <pair namespace=\"aero\" predicate=\"model\" usage=\"1026\">aero:model</pair>\r\n   <pair namespace=\"aero\" predicate=\"tail\" usage=\"1048\">aero:tail</pair>\r\n</pairs>"
+      "_content": "<pairs page=\"1\" total=\"1228\" perpage=\"500\" pages=\"3\">\n   <pair namespace=\"aero\" predicate=\"airline\" usage=\"1093\">aero:airline</pair>\n   <pair namespace=\"aero\" predicate=\"icao\" usage=\"4\">aero:icao</pair>\n   <pair namespace=\"aero\" predicate=\"model\" usage=\"1026\">aero:model</pair>\n   <pair namespace=\"aero\" predicate=\"tail\" usage=\"1048\">aero:tail</pair>\n</pairs>"
     }
   },
   "arguments": {

@@ -5,7 +5,7 @@
     "needssigning": 1,
     "requiredperms": "1",
     "description": {
-      "_content": "Why would you want to do this?\r\n<br><br>\r\n<i>(this method is experimental and may change)</i>"
+      "_content": "Why would you want to do this?\n<br><br>\n<i>(this method is experimental and may change)</i>"
     }
   },
   "arguments": {

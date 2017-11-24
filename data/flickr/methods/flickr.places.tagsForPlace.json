@@ -8,7 +8,7 @@
       "_content": "Return a list of the top 100 unique tags for a Flickr Places or Where on Earth (WOE) ID"
     },
     "response": {
-      "_content": "<tags total=\"100\">\r\n   <tag count=\"31775\">montreal</tag>\r\n   <tag count=\"20585\">canada</tag>\r\n   <tag count=\"12319\">montréal</tag>\r\n   <tag count=\"12154\">quebec</tag>\r\n   <tag count=\"6471\">québec</tag>\r\n   <tag count=\"2173\">sylvainmichaud</tag>\r\n   <tag count=\"2091\">nikon</tag>\r\n   <tag count=\"1541\">lucbus</tag>\r\n   <tag count=\"1539\">music</tag>\r\n   <tag count=\"1479\">urban</tag>\r\n   <tag count=\"1425\">lucbussieres</tag>\r\n   <tag count=\"1419\">festival</tag>\r\n   <!-- and so on -->\r\n</tags>"
+      "_content": "<tags total=\"100\">\n   <tag count=\"31775\">montreal</tag>\n   <tag count=\"20585\">canada</tag>\n   <tag count=\"12319\">montréal</tag>\n   <tag count=\"12154\">quebec</tag>\n   <tag count=\"6471\">québec</tag>\n   <tag count=\"2173\">sylvainmichaud</tag>\n   <tag count=\"2091\">nikon</tag>\n   <tag count=\"1541\">lucbus</tag>\n   <tag count=\"1539\">music</tag>\n   <tag count=\"1479\">urban</tag>\n   <tag count=\"1425\">lucbussieres</tag>\n   <tag count=\"1419\">festival</tag>\n   <!-- and so on -->\n</tags>"
     }
   },
   "arguments": {
@@ -21,12 +21,12 @@
       {
         "name": "woe_id",
         "optional": "1",
-        "_content": "A Where on Earth identifier to use to filter photo clusters.<br /><br />\r\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
+        "_content": "A Where on Earth identifier to use to filter photo clusters.<br /><br />\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
       },
       {
         "name": "place_id",
         "optional": "1",
-        "_content": "A Flickr Places identifier to use to filter photo clusters.<br /><br />\r\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
+        "_content": "A Flickr Places identifier to use to filter photo clusters.<br /><br />\n<span style=\"font-style:italic;\">(While optional, you must pass either a valid Places ID or a WOE ID.)</span>"
       },
       {
         "name": "min_upload_date",

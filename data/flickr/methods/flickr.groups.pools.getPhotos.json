@@ -8,7 +8,7 @@
       "_content": "Returns a list of pool photos for a given group, based on the permissions of the group and the user logged in (if any)."
     },
     "response": {
-      "_content": "<photos page=\"1\" pages=\"1\" perpage=\"1\" total=\"1\">\r\n\t<photo id=\"2645\" owner=\"12037949754@N01\" title=\"36679_o\"\r\n\tsecret=\"a9f4a06091\" server=\"2\"\r\n\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\"\r\n\townername=\"Bees / ?\" dateadded=\"1089918707\" /> \r\n</photos>"
+      "_content": "<photos page=\"1\" pages=\"1\" perpage=\"1\" total=\"1\">\n\t<photo id=\"2645\" owner=\"12037949754@N01\" title=\"36679_o\"\n\tsecret=\"a9f4a06091\" server=\"2\"\n\tispublic=\"1\" isfriend=\"0\" isfamily=\"0\"\n\townername=\"Bees / ?\" dateadded=\"1089918707\" /> \n</photos>"
     }
   },
   "arguments": {

@@ -8,7 +8,7 @@
       "_content": "Return a list of Flickr supported blogging services"
     },
     "response": {
-      "_content": "<services>\r\n<service id=\"beta.blogger.com\">Blogger</service>\r\n<service id=\"Typepad\">Typepad</service>\r\n<service id=\"MovableType\">Movable Type</service>\r\n<service id=\"LiveJournal\">LiveJournal</service>\r\n<service id=\"MetaWeblogAPI\">Wordpress</service>\r\n<service id=\"MetaWeblogAPI\">MetaWeblogAPI</service>\r\n<service id=\"Manila\">Manila</service>\r\n<service id=\"AtomAPI\">AtomAPI</service>\r\n<service id=\"BloggerAPI\">BloggerAPI</service>\r\n<service id=\"Vox\">Vox</service>\r\n<service id=\"Twitter\">Twitter</service>\r\n</services>"
+      "_content": "<services>\n<service id=\"beta.blogger.com\">Blogger</service>\n<service id=\"Typepad\">Typepad</service>\n<service id=\"MovableType\">Movable Type</service>\n<service id=\"LiveJournal\">LiveJournal</service>\n<service id=\"MetaWeblogAPI\">Wordpress</service>\n<service id=\"MetaWeblogAPI\">MetaWeblogAPI</service>\n<service id=\"Manila\">Manila</service>\n<service id=\"AtomAPI\">AtomAPI</service>\n<service id=\"BloggerAPI\">BloggerAPI</service>\n<service id=\"Vox\">Vox</service>\n<service id=\"Twitter\">Twitter</service>\n</services>"
     }
   },
   "arguments": {

@@ -23,7 +23,7 @@
       {
         "name": "safe_search",
         "optional": "1",
-        "_content": "Safe search setting:\r\n\r\n<ul>\r\n<li>1 for safe.</li>\r\n<li>2 for moderate.</li>\r\n<li>3 for restricted.</li>\r\n</ul>\r\n\r\n(Please note: Un-authed calls can only see Safe content.)"
+        "_content": "Safe search setting:\n\n<ul>\n<li>1 for safe.</li>\n<li>2 for moderate.</li>\n<li>3 for restricted.</li>\n</ul>\n\n(Please note: Un-authed calls can only see Safe content.)"
       },
       {
         "name": "extras",

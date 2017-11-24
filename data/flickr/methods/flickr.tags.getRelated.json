@@ -8,7 +8,7 @@
       "_content": "Returns a list of tags 'related' to the given tag, based on clustered usage analysis."
     },
     "response": {
-      "_content": "<tags source=\"london\">\r\n\t<tag>england</tag>\r\n\t<tag>thames</tag>\r\n\t<tag>tube</tag>\r\n\t<tag>bigben</tag>\r\n\t<tag>uk</tag>\r\n</tags>\r\n"
+      "_content": "<tags source=\"london\">\n\t<tag>england</tag>\n\t<tag>thames</tag>\n\t<tag>tube</tag>\n\t<tag>bigben</tag>\n\t<tag>uk</tag>\n</tags>\n"
     }
   },
   "arguments": {

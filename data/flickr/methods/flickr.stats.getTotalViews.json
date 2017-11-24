@@ -8,7 +8,7 @@
       "_content": "Get the overall view counts for an account"
     },
     "response": {
-      "_content": "<stats>\r\n\t<total views=\"469\" />\r\n\t<photos views=\"386\" />\r\n\t<photostream views=\"72\" />\r\n\t<sets views=\"11\" />\r\n\t<collections views=\"0\" />\r\n</stats>"
+      "_content": "<stats>\n\t<total views=\"469\" />\n\t<photos views=\"386\" />\n\t<photostream views=\"72\" />\n\t<sets views=\"11\" />\n\t<collections views=\"0\" />\n</stats>"
     }
   },
   "arguments": {
@@ -21,7 +21,7 @@
       {
         "name": "date",
         "optional": "1",
-        "_content": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.\r\n\r\nA day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.\r\n\r\nIf no date is provided, all time view counts will be returned."
+        "_content": "Stats will be returned for this date. This should be in either be in YYYY-MM-DD or unix timestamp format.\n\nA day according to Flickr Stats starts at midnight GMT for all users, and timestamps will automatically be rounded down to the start of the day.\n\nIf no date is provided, all time view counts will be returned."
       }
     ]
   },

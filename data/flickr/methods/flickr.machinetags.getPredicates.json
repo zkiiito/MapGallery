@@ -8,7 +8,7 @@
       "_content": "Return a list of unique predicates, optionally limited by a given namespace."
     },
     "response": {
-      "_content": "<predicates page=\"1\" pages=\"1\" total=\"3\" perpage=\"500\">\r\n    <predicate usage=\"20\" namespaces=\"1\">elbow</predicate>\r\n    <predicate usage=\"52\" namespaces=\"2\">face</predicate>\r\n    <predicate usage=\"10\" namespaces=\"1\">hand</predicate>\r\n</predicates>\r\n"
+      "_content": "<predicates page=\"1\" pages=\"1\" total=\"3\" perpage=\"500\">\n    <predicate usage=\"20\" namespaces=\"1\">elbow</predicate>\n    <predicate usage=\"52\" namespaces=\"2\">face</predicate>\n    <predicate usage=\"10\" namespaces=\"1\">hand</predicate>\n</predicates>\n"
     }
   },
   "arguments": {

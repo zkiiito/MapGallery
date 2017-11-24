@@ -5,10 +5,10 @@
     "needssigning": 1,
     "requiredperms": "1",
     "description": {
-      "_content": "Returns a list of the subscriptions for the logged-in user.\r\n<br><br>\r\n<i>(this method is experimental and may change)</i>"
+      "_content": "Returns a list of the subscriptions for the logged-in user.\n<br><br>\n<i>(this method is experimental and may change)</i>"
     },
     "response": {
-      "_content": "<rsp stat=\"ok\">\r\n  <subscriptions>\r\n    <subscription topic=\"contacts_photos\" callback=\"http://example.com/contacts_photos_endpoint?user=12345\" pending=\"0\" date_create=\"1309293755\" lease_seconds=\"0\" expiry=\"1309380155\" verify_attempts=\"0\" />\r\n    <subscription topic=\"contacts_faves\" callback=\"http://example.com/contacts_faves_endpoint?user=12345\" pending=\"0\" date_create=\"1309293785\" lease_seconds=\"0\" expiry=\"1309380185\" verify_attempts=\"0\" />\r\n  </subscriptions>\r\n</rsp>"
+      "_content": "<rsp stat=\"ok\">\n  <subscriptions>\n    <subscription topic=\"contacts_photos\" callback=\"http://example.com/contacts_photos_endpoint?user=12345\" pending=\"0\" date_create=\"1309293755\" lease_seconds=\"0\" expiry=\"1309380155\" verify_attempts=\"0\" />\n    <subscription topic=\"contacts_faves\" callback=\"http://example.com/contacts_faves_endpoint?user=12345\" pending=\"0\" date_create=\"1309293785\" lease_seconds=\"0\" expiry=\"1309380185\" verify_attempts=\"0\" />\n  </subscriptions>\n</rsp>"
     }
   },
   "arguments": {

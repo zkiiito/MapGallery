@@ -8,7 +8,7 @@
       "_content": "Returns the list of public groups a user is a member of."
     },
     "response": {
-      "_content": "<groups>\r\n\t<group nsid=\"34427469792@N01\" name=\"FlickrCentral\"\r\n\t\tadmin=\"0\" eighteenplus=\"0\" invitation_only=\"0\" /> \r\n\t<group nsid=\"37114057624@N01\" name=\"Cal's Test Group\"\r\n\t\tadmin=\"1\" eighteenplus=\"0\" invitation_only=\"1\" /> \r\n\t<group nsid=\"34955637532@N01\" name=\"18+ Group\"\r\n\t\tadmin=\"1\" eighteenplus=\"1\" invitation_only=\"0\" /> \r\n</groups>"
+      "_content": "<groups>\n\t<group nsid=\"34427469792@N01\" name=\"FlickrCentral\"\n\t\tadmin=\"0\" eighteenplus=\"0\" invitation_only=\"0\" /> \n\t<group nsid=\"37114057624@N01\" name=\"Cal's Test Group\"\n\t\tadmin=\"1\" eighteenplus=\"0\" invitation_only=\"1\" /> \n\t<group nsid=\"34955637532@N01\" name=\"18+ Group\"\n\t\tadmin=\"1\" eighteenplus=\"1\" invitation_only=\"0\" /> \n</groups>"
     },
     "explanation": {
       "_content": "<p>The <code>admin</code> attribute indicates whether the user is an administrator of the group. The <code>eighteenplus</code> attribute indicates if the group is visible to members over 18 only. The <code>invite_only</code> attribute indicates whether a user can join the group without administrator approval.</p>"

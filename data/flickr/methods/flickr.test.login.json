@@ -8,7 +8,7 @@
       "_content": "A testing method which checks if the caller is logged in then returns their username."
     },
     "response": {
-      "_content": "<user id=\"12037949754@N01\">\r\n\t<username>Bees</username> \r\n</user>\r\n"
+      "_content": "<user id=\"12037949754@N01\">\n\t<username>Bees</username> \n</user>\n"
     }
   },
   "arguments": {

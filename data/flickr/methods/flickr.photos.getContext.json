@@ -8,7 +8,7 @@
       "_content": "Returns next and previous photos for a photo in a photostream."
     },
     "response": {
-      "_content": "<prevphoto id=\"2980\" secret=\"973da1e709\"\r\n\ttitle=\"boo!\" url=\"/photos/bees/2980/\" /> \r\n<nextphoto id=\"2985\" secret=\"059b664012\"\r\n\ttitle=\"Amsterdam Amstel\" url=\"/photos/bees/2985/\" /> "
+      "_content": "<prevphoto id=\"2980\" secret=\"973da1e709\"\n\ttitle=\"boo!\" url=\"/photos/bees/2980/\" /> \n<nextphoto id=\"2985\" secret=\"059b664012\"\n\ttitle=\"Amsterdam Amstel\" url=\"/photos/bees/2985/\" /> "
     },
     "explanation": {
       "_content": "<p>When either the previous of next photo is unavailable, the element is still returned, but contains <code>id=\"0\"</code></p>"

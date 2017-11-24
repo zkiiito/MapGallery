@@ -8,7 +8,7 @@
       "_content": "Returns a list of hot tags for the given period."
     },
     "response": {
-      "_content": "<hottags period=\"day\" count=\"6\">\r\n\t<tag score=\"20\">northerncalifornia</tag>\r\n\t<tag score=\"18\">top20</tag>\r\n\t<tag score=\"15\">keychain</tag>\r\n\t<tag score=\"10\">zb</tag>\r\n\t<tag score=\"9\">selfportraittuesday</tag>\r\n\t<tag score=\"4\">jan06</tag>\r\n</hottags>"
+      "_content": "<hottags period=\"day\" count=\"6\">\n\t<tag score=\"20\">northerncalifornia</tag>\n\t<tag score=\"18\">top20</tag>\n\t<tag score=\"15\">keychain</tag>\n\t<tag score=\"10\">zb</tag>\n\t<tag score=\"9\">selfportraittuesday</tag>\n\t<tag score=\"4\">jan06</tag>\n</hottags>"
     }
   },
   "arguments": {

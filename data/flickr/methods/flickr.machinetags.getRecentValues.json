@@ -8,7 +8,7 @@
       "_content": "Fetch recently used (or created) machine tags values."
     },
     "response": {
-      "_content": "<values namespace=\"taxonomy\" predicate=\"common\" page=\"1\" total=\"500\" perpage=\"500\" pages=\"1\">\r\n    <value usage=\"4\" namespace=\"taxonomy\" predicate=\"common\"\r\n           first_added=\"1244232796\" last_added=\"1244232796\">maui chaff flower</value>\r\n\r\n    <!-- and so on... -->\r\n</values>"
+      "_content": "<values namespace=\"taxonomy\" predicate=\"common\" page=\"1\" total=\"500\" perpage=\"500\" pages=\"1\">\n    <value usage=\"4\" namespace=\"taxonomy\" predicate=\"common\"\n           first_added=\"1244232796\" last_added=\"1244232796\">maui chaff flower</value>\n\n    <!-- and so on... -->\n</values>"
     }
   },
   "arguments": {

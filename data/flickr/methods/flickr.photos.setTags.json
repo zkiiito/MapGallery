@@ -18,7 +18,7 @@
       {
         "name": "photo_id",
         "optional": "0",
-        "_content": "The id of the photo to set tags for.\r\n"
+        "_content": "The id of the photo to set tags for.\n"
       },
       {
         "name": "tags",

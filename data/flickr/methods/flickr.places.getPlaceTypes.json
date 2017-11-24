@@ -8,7 +8,7 @@
       "_content": "Fetches a list of available place types for Flickr."
     },
     "response": {
-      "_content": "<place_types>\r\n   <place_type place_type_id=\"22\">neighbourhood</place_type>\r\n   <place_type place_type_id=\"7\">locality</place_type>\r\n   <place_type place_type_id=\"9\">county</place_type>\r\n   <place_type place_type_id=\"8\">region</place_type>\r\n   <place_type place_type_id=\"12\">country</place_type>\r\n   <place_type place_type_id=\"29\">continent</place_type>\r\n</place_types>"
+      "_content": "<place_types>\n   <place_type place_type_id=\"22\">neighbourhood</place_type>\n   <place_type place_type_id=\"7\">locality</place_type>\n   <place_type place_type_id=\"9\">county</place_type>\n   <place_type place_type_id=\"8\">region</place_type>\n   <place_type place_type_id=\"12\">country</place_type>\n   <place_type place_type_id=\"29\">continent</place_type>\n</place_types>"
     }
   },
   "arguments": {

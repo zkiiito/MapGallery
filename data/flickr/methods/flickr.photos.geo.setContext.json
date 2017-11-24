@@ -5,7 +5,7 @@
     "needssigning": 1,
     "requiredperms": "2",
     "description": {
-      "_content": "Indicate the state of a photo's geotagginess beyond latitude and longitude.<br /><br />\r\nNote : photos passed to this method must already be geotagged (using the <q>flickr.photos.geo.setLocation</q> method)."
+      "_content": "Indicate the state of a photo's geotagginess beyond latitude and longitude.<br /><br />\nNote : photos passed to this method must already be geotagged (using the <q>flickr.photos.geo.setLocation</q> method)."
     }
   },
   "arguments": {
@@ -23,7 +23,7 @@
       {
         "name": "context",
         "optional": "0",
-        "_content": "Context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to indicate that a photo was taken \"indoors\" or \"outdoors\". <br /><br />\r\nThe current list of context IDs is :<br /><br/>\r\n<ul>\r\n<li><strong>0</strong>, not defined.</li>\r\n<li><strong>1</strong>, indoors.</li>\r\n<li><strong>2</strong>, outdoors.</li>\r\n</ul>"
+        "_content": "Context is a numeric value representing the photo's geotagginess beyond latitude and longitude. For example, you may wish to indicate that a photo was taken \"indoors\" or \"outdoors\". <br /><br />\nThe current list of context IDs is :<br /><br/>\n<ul>\n<li><strong>0</strong>, not defined.</li>\n<li><strong>1</strong>, indoors.</li>\n<li><strong>2</strong>, outdoors.</li>\n</ul>"
       }
     ]
   },

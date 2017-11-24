@@ -8,7 +8,7 @@
       "_content": "Returns gallery info, by url."
     },
     "response": {
-      "_content": "<gallery id=\"6065-72157617483228192\" url=\"/photos/straup/galleries/72157617483228192\" owner=\"35034348999@N01\" \r\nprimary_photo_id=\"292882708\" \r\ndate_create=\"1241028772\" date_update=\"1270111667\" \r\ncount_photos=\"17\" count_videos=\"0\" server=\"112\" farm=\"1\" secret=\"7f29861bc4\">\r\n\t<title>Cat Pictures I've Sent To Kevin Collins</title>\r\n\t<description />\r\n</gallery>"
+      "_content": "<gallery id=\"6065-72157617483228192\" url=\"/photos/straup/galleries/72157617483228192\" owner=\"35034348999@N01\" \nprimary_photo_id=\"292882708\" \ndate_create=\"1241028772\" date_update=\"1270111667\" \ncount_photos=\"17\" count_videos=\"0\" server=\"112\" farm=\"1\" secret=\"7f29861bc4\">\n\t<title>Cat Pictures I've Sent To Kevin Collins</title>\n\t<description />\n</gallery>"
     },
     "explanation": {
       "_content": "This is the same format returned by <a href=\"http://www.flickr.com/services/api/flickr.galleries.getInfo.html\">flickr.galleries.getInfo</a>."
