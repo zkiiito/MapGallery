@@ -13,11 +13,16 @@ body, html, .fullscreen {
     position: relative;
 }
 
-#gallery {
+#gallery, .gallery {
     background: rgba(0, 0, 0, 0.6) no-repeat fixed center;
-    background-size: contain;
     position: absolute;
     top: 0;
+    display: none;
+}
+
+.gallery {
+    background: rgba(0, 0, 0, 0) no-repeat fixed center;
+    background-size: contain;
 }
 
 #btnPrev, #btnNext {

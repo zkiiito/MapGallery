@@ -1,5 +1,7 @@
 /*global MapAnimator, $ */
 "use strict";
+var fadeSpeed = "fast";
+
 var MapGallery = {
     pos: -1,
     waypoints: [],
@@ -26,8 +28,6 @@ var MapGallery = {
 
             $('#btnFlickr').show();
         }
-
-        this.el.hide();
 
         this.waypoints = waypoints;
 
@@ -87,7 +87,7 @@ var MapGallery = {
             hashPos;
 
         this.el.hide();
-        this.el.css('background-image', '');
+        this.el.empty();
 
         hashPos = parseInt(window.location.hash.substr(1), 10);
 
@@ -116,29 +116,38 @@ var MapGallery = {
         $('#btnHelper').hide();
         that.openFullscreen();
         MapAnimator.stopAnimation();
-        this.el.fadeOut(100, function () {
-            that.pos += dir;
-            var next = that.waypoints[that.pos];
 
-            if (next) {
-                that.preload(that.pos + 1);
+        var currentSlide = this.el.find('.gallery').first();
 
-                if (next.from !== undefined) {
+        that.pos += dir;
+        var next = that.waypoints[that.pos];
+
+        currentSlide.fadeOut(fadeSpeed, function () {
+            currentSlide.remove();
+        });
+
+        if (next) {
+            that.preload(that.pos + 1);
+
+            if (next.from !== undefined) {
+                this.el.fadeOut(fadeSpeed, function () {
                     MapAnimator.showRoute(next, function () {
                         that.move(1);
                     });
-                } else {
-                    $(this).css('background-image', 'url("' + that.getImageUrl(that.pos) + '")');
-                    $(this).fadeIn("fast");
-                }
+                });
             } else {
-                that.pos -= dir;
+                var nextSlide = $('<div>').css('background-image', 'url("' + that.getImageUrl(that.pos) + '")').addClass('gallery').addClass('fullscreen');
+                this.el.append(nextSlide);
+                nextSlide.fadeIn(fadeSpeed);
+                this.el.fadeIn(fadeSpeed);
             }
-            that.watchHashChange = false;
-            window.location.hash = (that.pos + 1).toString();
+        } else {
+            that.pos -= dir;
+        }
+        that.watchHashChange = false;
+        window.location.hash = (that.pos + 1).toString();
 
-            that.updateBtns();
-        });
+        that.updateBtns();
     },
 
     updateBtns: function () {
