@@ -5,28 +5,28 @@ var fadeSpeed = "fast";
 var MapGallery = {
     pos: -1,
     waypoints: [],
-    el: $('#gallery'),
-    imgdir: 'images/',
+    slideHolder: $("#gallery"),
+    imgdir: "images/",
     fullscreen: false,
     watchHashChange: true,
 
     initialize: function (waypoints, startLocation) {
         var that = this;
 
-        if ($('body').data('isflickr')) {
-            if (!$('body').data('ispublic')) {
-                $('#btnFlickrLink').hide();
-                $('#btnFlickr').find('br').hide();
+        if ($("body").data("isflickr")) {
+            if (!$("body").data("ispublic")) {
+                $("#btnFlickrLink").hide();
+                $("#btnFlickr").find("br").hide();
             }
 
             var isHd = this.getHdParam();
 
-            $('#btnHd').html('HD <span class="status">' + (isHd ? 'on' : 'off') + "</span>").click(function (e) {
+            $("#btnHd").html("HD <span class='status'>" + (isHd ? "on" : "off") + "</span>").click(function (e) {
                 e.preventDefault();
-                document.location.search = '?hd=' + (isHd ? '0' : '1');
+                document.location.search = "?hd=" + (isHd ? "0" : "1");
             });
 
-            $('#btnFlickr').show();
+            $("#btnFlickr").show();
         }
 
         this.waypoints = waypoints;
@@ -48,15 +48,15 @@ var MapGallery = {
             }
         });
 
-        $('#btnPrev').click(function () {
+        $("#btnPrev").click(function () {
             that.move(-1);
         });
 
-        $('#btnNext, #btnHelper').click(function () {
+        $("#btnNext, #btnHelper").click(function () {
             that.move(1);
         });
 
-        this.el.on("click", function () {
+        this.slideHolder.on("click", function () {
             that.move(1);
         });
 
@@ -86,15 +86,15 @@ var MapGallery = {
         var that = this,
             hashPos;
 
-        this.el.hide();
-        this.el.empty();
+        this.slideHolder.hide();
+        this.slideHolder.empty();
 
         hashPos = parseInt(window.location.hash.substr(1), 10);
 
         if (!isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
             this.pos = hashPos - 2;//-1 because of 0.., -1 because we have to move to this.
         } else {
-            $('#btnHelper').show();
+            $("#btnHelper").show();
         }
 
         startLocation = startLocation || this.getFirstLocation();
@@ -113,11 +113,11 @@ var MapGallery = {
 
     move: function (dir) {
         var that = this;
-        $('#btnHelper').hide();
+        $("#btnHelper").hide();
         that.openFullscreen();
         MapAnimator.stopAnimation();
 
-        var currentSlide = this.el.find('.gallery').first();
+        var currentSlide = this.slideHolder.find(".gallery").first();
 
         that.pos += dir;
         var next = that.waypoints[that.pos];
@@ -130,16 +130,16 @@ var MapGallery = {
             that.preload(that.pos + 1);
 
             if (next.from !== undefined) {
-                this.el.fadeOut(fadeSpeed, function () {
+                this.slideHolder.fadeOut(fadeSpeed, function () {
                     MapAnimator.showRoute(next, function () {
                         that.move(1);
                     });
                 });
             } else {
-                var nextSlide = $('<div>').css('background-image', 'url("' + that.getImageUrl(that.pos) + '")').addClass('gallery').addClass('fullscreen');
-                this.el.append(nextSlide);
+                var nextSlide = $("<div>").css("background-image", "url('" + that.getImageUrl(that.pos) + "')").addClass("gallery").addClass("fullscreen");
+                this.slideHolder.append(nextSlide);
                 nextSlide.fadeIn(fadeSpeed);
-                this.el.fadeIn(fadeSpeed);
+                this.slideHolder.fadeIn(fadeSpeed);
             }
         } else {
             that.pos -= dir;
@@ -152,17 +152,17 @@ var MapGallery = {
 
     updateBtns: function () {
         if (this.pos <= 0) {
-            $('#btnPrev').hide();
-            $('#btnNext').addClass('hover');
+            $("#btnPrev").hide();
+            $("#btnNext").addClass("hover");
         } else {
-            $('#btnPrev').show();
-            $('#btnNext').removeClass('hover');
+            $("#btnPrev").show();
+            $("#btnNext").removeClass("hover");
         }
 
         if (this.pos + 1 >= this.waypoints.length) {
-            $('#btnNext').hide();
+            $("#btnNext").hide();
         } else {
-            $('#btnNext').show();
+            $("#btnNext").show();
         }
     },
 
@@ -175,7 +175,7 @@ var MapGallery = {
 
     getImageUrl: function (pos) {
         var url = this.waypoints[pos];
-        if (url.substr(0, 4) !== 'http') {
+        if (url.substr(0, 4) !== "http") {
             url = this.imgdir + url;
         }
         return url;
@@ -230,14 +230,14 @@ var MapGallery = {
 
     save: function () {
         var data = JSON.stringify(this.waypoints);
-        localStorage.setItem('MapGallery', data);
-        console.log('MapGallery.initialize(' + data.replace(/,"/g, ",\n\"") + ');');
+        localStorage.setItem("MapGallery", data);
+        console.log("MapGallery.initialize(" + data.replace(/,"/g, ",\n\"") + ");");
     },
 
     load: function () {
-        if (localStorage.getItem('MapGallery')) {
-          this.waypoints = JSON.parse(localStorage.getItem('MapGallery'));
-          this.move(0);
+        if (localStorage.getItem("MapGallery")) {
+            this.waypoints = JSON.parse(localStorage.getItem("MapGallery"));
+            this.move(0);
         }
     }
 };
