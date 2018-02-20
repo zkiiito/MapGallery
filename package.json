@@ -19,7 +19,7 @@
   "homepage": "https://github.com/zkiiito/MapGallery",
   "dependencies": {
     "express": "^4.16.2",
-    "fbbk-json": "^1.0.1",
+    "fbbk-json": "^1.1.0",
     "flickrapi": "^0.6.0"
   }
 }
