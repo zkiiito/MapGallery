@@ -1,17 +1,11 @@
 {
   "method": {
-    "name": "flickr.galleries.getPhotos",
+    "name": "flickr.photos.getPopular",
     "needslogin": 0,
     "needssigning": 0,
     "requiredperms": 0,
     "description": {
-      "_content": "Return the list of photos for a gallery"
-    },
-    "response": {
-      "_content": "<photos page=\"1\" pages=\"1\" perpage=\"500\" total=\"2\">\n\t<photo id=\"2822546461\" owner=\"78398753@N00\" secret=\"2dbcdb589f\" server=\"1\" farm=\"1\" title=\"FOO\" \n     ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" is_primary=\"1\" has_comment=\"1\">\n\t\t<comment>best cat picture ever!</comment>\n\t</photo>\n\t<photo id=\"2822544806\" owner=\"78398753@N00\" secret=\"bd93cbe917\" server=\"1\" farm=\"1\" title=\"OOK\" \n     ispublic=\"1\" isfriend=\"0\" isfamily=\"0\" is_primary=\"0\" has_comment=\"0\" />\n</photos>"
-    },
-    "explanation": {
-      "_content": "Returns a <a href=\"http://code.flickr.com/blog/2008/08/19/standard-photos-response-apis-for-civilized-age/\">standard photo response</a>.  Additionally if the gallery creator has included a comment with the photo this will be then the photo element will have the attribute has_comment=\"1\" and the child element \"comment\" will be present."
+      "_content": "Returns a list of popular photos"
     }
   },
   "arguments": {
@@ -22,29 +16,14 @@
         "_content": "Your API application key. <a href=\"/services/api/misc.api_keys.html\">See here</a> for more details."
       },
       {
-        "name": "gallery_id",
-        "optional": "0",
-        "_content": "The ID of the gallery of photos to return"
+        "name": "user_id",
+        "optional": "1",
+        "_content": "The NSID of the user to get a galleries list for. If none is specified, the calling user is assumed."
       },
       {
-        "name": "continuation",
+        "name": "sort",
         "optional": "1",
-        "_content": "Using this parameter indicates to the server that the client is using the new, continuation based pagination rather than the older page/per_page based pagination. \nThe first request must pass the \"continuation\" parameter with the value of \"0\". The server responds back with a response that includes the \"continuation\" field along with the \"per_page\" field in the response. For the subsequent requests, the client must relay the value of the \"continuation\" response field as the value of the \"continuation\" request parameter. On the last page of results, the server will respond with a continuation value of \"-1\"."
-      },
-      {
-        "name": "per_page",
-        "optional": "1",
-        "_content": "chunk size to fetch"
-      },
-      {
-        "name": "get_user_info",
-        "optional": "1",
-        "_content": "set to 1 if user details should be returned"
-      },
-      {
-        "name": "get_gallery_info",
-        "optional": "1",
-        "_content": "if set to 1, info about the gallery is also returned"
+        "_content": "The sort order. One of <code>faves</code>, <code>views</code>, <code>comments</code> or <code>interesting</code>. Deafults to <code>interesting</code>."
       },
       {
         "name": "extras",
@@ -65,6 +44,16 @@
   },
   "errors": {
     "error": [
+      {
+        "code": "1",
+        "message": "Invalid user id",
+        "_content": "An invalid NSID was passed"
+      },
+      {
+        "code": "2",
+        "message": "Popular photos disabled by user",
+        "_content": ""
+      },
       {
         "code": 100,
         "message": "Invalid API Key",

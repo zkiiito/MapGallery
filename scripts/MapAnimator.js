@@ -17,17 +17,17 @@ var MapAnimator = {
     initialize: function () {
         // Create a map and center it on address
         var myOptions = {
-                zoom: 13,
-                mapTypeId: google.maps.MapTypeId.ROADMAP,
-                keyboardShortcuts: false,
-                panControl: false,
-                streetViewControl: false,
-                fullscreenControl: false,
-                zoomControlOptions: {
-                    style: google.maps.ZoomControlStyle.SMALL
-                },
-                mapTypeControl: false
-            };
+            zoom: 13,
+            mapTypeId: google.maps.MapTypeId.ROADMAP,
+            keyboardShortcuts: false,
+            panControl: false,
+            streetViewControl: false,
+            fullscreenControl: false,
+            zoomControlOptions: {
+                style: google.maps.ZoomControlStyle.SMALL
+            },
+            mapTypeControl: false
+        };
 
         this.map = new google.maps.Map(this.mapdiv, myOptions);
     },
