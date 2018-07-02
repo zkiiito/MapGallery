@@ -117,7 +117,7 @@ var MapGallery = {
         that.openFullscreen();
         MapAnimator.stopAnimation();
 
-        var currentSlide = this.slideHolder.find(".gallery").first();
+        var currentSlide = this.slideHolder.find(".gallery");
 
         that.pos += dir;
         var next = that.waypoints[that.pos];

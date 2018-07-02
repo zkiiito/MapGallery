@@ -92,12 +92,12 @@ var MapAnimator = {
 
         this.directionsDisplay = new google.maps.DirectionsRenderer({map: this.map});
 
-        if (routeParams.mode === undefined || routeParams.mode === google.maps.DirectionsTravelMode.DRIVING) {
-            this.getDrivingPath(routeParams, function () {
+        if (routeParams.mode === "FLYING") {
+            this.getFlyingPath(routeParams, function () {
                 that.startAnimation();
             });
         } else {
-            this.getFlyingPath(routeParams, function () {
+            this.getDrivingPath(routeParams, function () {
                 that.startAnimation();
             });
         }
