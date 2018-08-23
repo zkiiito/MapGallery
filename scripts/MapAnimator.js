@@ -1,8 +1,8 @@
-/*global google, $ */
+/*global google */
 "use strict";
 var MapAnimator = {
     map: null,
-    mapdiv: $('#map_canvas')[0],
+    mapdiv: 'map_canvas',
     marker: null,
     polyline: null,
     directionsDisplay: null,
@@ -13,6 +13,7 @@ var MapAnimator = {
     tick: 100, // milliseconds
     distance: null,
     callback: null,
+    animationTriggerEvent: 'tilesloaded',
 
     initialize: function () {
         // Create a map and center it on address
@@ -29,7 +30,7 @@ var MapAnimator = {
             mapTypeControl: false
         };
 
-        this.map = new google.maps.Map(this.mapdiv, myOptions);
+        this.map = new google.maps.Map(document.getElementById(this.mapdiv), myOptions);
     },
 
     showStartLocation: function (address, callbackImmediately, callback) {
@@ -69,6 +70,7 @@ var MapAnimator = {
 
         if (this.timerHandle) {
             clearTimeout(this.timerHandle);
+            this.timerHandle = null;
         }
         if (this.marker) {
             this.marker.setMap(null);
@@ -144,7 +146,7 @@ var MapAnimator = {
                 that.map.fitBounds(bounds);
                 callback();
             } else {
-                console.log(status);
+                throw status;
             }
         });
     },
@@ -180,7 +182,7 @@ var MapAnimator = {
                             callback();
                         }
                     } else {
-                        console.log(status);
+                        throw status;
                     }
                 };
             }(idx)));
@@ -190,11 +192,14 @@ var MapAnimator = {
     startAnimation: function () {
         var that = this;
         this.distance = this.polyline.Distance();
-        this.map.setCenter(this.polyline.getPath().getAt(0));
 
-        google.maps.event.addListenerOnce(this.map, 'tilesloaded', function () {
-            that.animate(that.step);
+        google.maps.event.addListenerOnce(this.map, this.animationTriggerEvent, function () {
+            if (that.timerHandle === null) {
+                that.animate(that.step);
+            }
         });
+
+        this.map.setCenter(this.polyline.getPath().getAt(0));
     },
 
     animate: function (d) {
@@ -227,6 +232,7 @@ var MapAnimator = {
 
     stopAnimation: function () {
         if (this.timerHandle) {
+            google.maps.event.clearListeners(this.map, this.animationTriggerEvent);
             clearTimeout(this.timerHandle);
             this.timerHandle = null;
             this.map.panTo(this.endLocation.latlng);

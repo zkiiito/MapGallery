@@ -131,9 +131,13 @@ var MapGallery = {
 
             if (next.from !== undefined) {
                 this.slideHolder.fadeOut(fadeSpeed, function () {
-                    MapAnimator.showRoute(next, function () {
-                        that.move(1);
-                    });
+                    try {
+                        MapAnimator.showRoute(next, function () {
+                            that.move(1);
+                        });
+                    } catch (err) {
+                        console.log(err);
+                    }
                 });
             } else {
                 var nextSlide = $("<div>").css("background-image", "url('" + that.getImageUrl(that.pos) + "')").addClass("gallery").addClass("fullscreen");
