@@ -95,11 +95,17 @@ var MapAnimator = {
         this.directionsDisplay = new google.maps.DirectionsRenderer({map: this.map});
 
         if (routeParams.mode === "FLYING") {
-            this.getFlyingPath(routeParams, function () {
+            this.getFlyingPath(routeParams, function (err) {
+                if (err) {
+                    return callback(err);
+                }
                 that.startAnimation();
             });
         } else {
-            this.getDrivingPath(routeParams, function () {
+            this.getDrivingPath(routeParams, function (err) {
+                if (err) {
+                    return callback(err);
+                }
                 that.startAnimation();
             });
         }
@@ -146,7 +152,7 @@ var MapAnimator = {
                 that.map.fitBounds(bounds);
                 callback();
             } else {
-                throw status;
+                callback(status);
             }
         });
     },
@@ -182,7 +188,7 @@ var MapAnimator = {
                             callback();
                         }
                     } else {
-                        throw status;
+                        callback(status);
                     }
                 };
             }(idx)));
