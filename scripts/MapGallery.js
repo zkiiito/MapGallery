@@ -13,22 +13,6 @@ var MapGallery = {
     initialize: function (waypoints, startLocation) {
         var that = this;
 
-        if ($("body").data("isflickr")) {
-            if (!$("body").data("ispublic")) {
-                $("#btnFlickrLink").hide();
-                $("#btnFlickr").find("br").hide();
-            }
-
-            var isHd = this.getHdParam();
-
-            $("#btnHd").html("HD <span class='status'>" + (isHd ? "on" : "off") + "</span>").click(function (e) {
-                e.preventDefault();
-                document.location.search = "?hd=" + (isHd ? "0" : "1");
-            });
-
-            $("#btnFlickr").show();
-        }
-
         this.waypoints = waypoints;
 
         $(document).keydown(function (e) {
@@ -38,13 +22,6 @@ var MapGallery = {
             } else if ((e.which === 38) || (e.which === 39) || (e.which === 32)) {
                 e.preventDefault();
                 that.move(1);
-            } else if (e.which === 88) { //x delete from waypoints
-                e.preventDefault();
-                that.removeImage();
-            } else if (e.which === 83) { //[s]ave to localStorage
-                that.save();
-            } else if (e.which === 76) { //[l]oad from localStorage
-                that.load();
             }
         });
 
@@ -69,17 +46,6 @@ var MapGallery = {
             }
             that.watchHashChange = true;
         };
-    },
-
-    getHdParam: function () {
-        var regex = /[^a-z]*hd=(\d+)/g;
-        var matched = regex.exec(document.location.search);
-
-        if (matched) {
-            return parseInt(matched[1], 10) > 0;
-        }
-
-        return true;
     },
 
     initStep: function (startLocation) {
@@ -131,7 +97,10 @@ var MapGallery = {
 
             if (next.from !== undefined) {
                 this.slideHolder.fadeOut(fadeSpeed, function () {
-                    MapAnimator.showRoute(next, function () {
+                    MapAnimator.showRoute(next, function (err) {
+                        if (err) {
+                            console.log(err);
+                        }
                         that.move(1);
                     });
                 });
@@ -221,23 +190,5 @@ var MapGallery = {
         });
 
         return lastLocation;
-    },
-
-    removeImage: function () {
-        this.waypoints.splice(this.pos, 1);
-        this.move(0);
-    },
-
-    save: function () {
-        var data = JSON.stringify(this.waypoints);
-        localStorage.setItem("MapGallery", data);
-        console.log("MapGallery.initialize(" + data.replace(/,"/g, ",\n\"") + ");");
-    },
-
-    load: function () {
-        if (localStorage.getItem("MapGallery")) {
-            this.waypoints = JSON.parse(localStorage.getItem("MapGallery"));
-            this.move(0);
-        }
     }
 };
