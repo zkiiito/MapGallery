@@ -17,9 +17,5 @@
     "url": "https://github.com/zkiiito/MapGallery/issues"
   },
   "homepage": "https://github.com/zkiiito/MapGallery",
-  "dependencies": {
-    "express": "^4.16.3",
-    "fbbk-json": "^1.1.1",
-    "flickrapi": "^0.6.0"
-  }
+  "dependencies": {}
 }
