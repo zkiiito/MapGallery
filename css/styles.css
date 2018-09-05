@@ -65,37 +65,3 @@ body, html, .fullscreen {
     font-size: 15px;
     cursor: pointer;
 }
-
-#btnFlickr {
-    display: none;
-    position: absolute;
-    top: 1px;
-    right: 1px;
-    text-align: right;
-}
-
-#btnFlickr a {
-    opacity: 0.3;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-#btnFlickr a:hover {
-    opacity: 0.9;
-}
-
-#btnHd {
-    display: block;
-    width: 60px;
-    height: 26px;
-    line-height: 26px;
-    text-align: center;
-    color: #0063dc;
-    font-size: 14px;
-    border-radius: 5px;
-    background-color: #eeeeee;
-}
-
-#btnHd span.status {
-    color: #ff0084;
-}
