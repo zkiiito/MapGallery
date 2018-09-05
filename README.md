@@ -17,22 +17,12 @@ Prev photo: left arrow, up arrow
 1. Download and unzip the .zip file or clone the repo.
 2. Copy your photos to the /images folder
 3. Edit scripts/demo.js
-4. Access the index.html page.
+4. Edit index.html, add your [google maps key](https://developers.google.com/maps/documentation/javascript/get-api-key). 
+5. Access the index.html page.
 
 ### Flickr images
 
-First, you must add the map directions to the description field of your images on flickr, like this:
-
-```
-{"from":"New York JFK","to":"Rome","speed":70000,"mode":"FLYING"}
-```
-
-
-1. Download and unzip the .zip file or clone the repo.
-2. npm install
-3. set up config.js with your flickr api key
-4. npm start
-5. open http://localhost:8000/[flickrSetId] in your browser
+See [map-gallery-flickr](https://github.com/zkiiito/map-gallery-flickr)
 
 ## Options
 
