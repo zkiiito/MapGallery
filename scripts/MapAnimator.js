@@ -240,6 +240,17 @@ var MapAnimator = {
         this.distance = this.polyline.Distance();
 
         google.maps.event.addListenerOnce(this.map, this.animationTriggerEvent, function () {
+            google.maps.event.clearListeners(that.map, 'click');
+            if (that.timerHandle === null) {
+                that.animate(that.step);
+            }
+        });
+
+        // if the animation does not trigger, because it has already loaded,
+        // at least start on click. it could start on timeout, but we do not
+        // know if tiles are loading or not.
+        google.maps.event.addListenerOnce(this.map, 'click', function () {
+            google.maps.event.clearListeners(that.map, that.animationTriggerEvent);
             if (that.timerHandle === null) {
                 that.animate(that.step);
             }
