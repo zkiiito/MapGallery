@@ -14,6 +14,8 @@ var MapAnimator = {
     distance: null,
     callback: null,
     animationTriggerEvent: 'tilesloaded',
+    geocodeCache: {},
+    directionsCache: {},
 
     initialize: function () {
         // Create a map and center it on address
@@ -99,21 +101,42 @@ var MapAnimator = {
                 if (err) {
                     return callback(err);
                 }
-                that.startAnimation();
+                if (!routeParams.displayOnly) {
+                    that.startAnimation();
+                }
             });
         } else {
             this.getDrivingPath(routeParams, function (err) {
                 if (err) {
                     return callback(err);
                 }
-                that.startAnimation();
+                if (!routeParams.displayOnly) {
+                    that.startAnimation();
+                }
             });
         }
     },
 
+    getDirections: function (request, callback) {
+        var that = this,
+            hash = JSON.stringify(request);
+
+        if (this.directionsCache[hash]) {
+            return callback(this.directionsCache[hash], google.maps.DirectionsStatus.OK);
+        }
+
+        var directionsService = new google.maps.DirectionsService();
+        directionsService.route(request, function (response, status) {
+            if (status === google.maps.DirectionsStatus.OK) {
+                that.directionsCache[hash] = response;
+            }
+
+            return callback(response, status);
+        });
+    },
+
     getDrivingPath: function (routeParams, callback) {
-        var directionsService = new google.maps.DirectionsService(),
-            that = this,
+        var that = this,
             request = {
                 origin: routeParams.from,
                 destination: routeParams.to,
@@ -125,7 +148,7 @@ var MapAnimator = {
 
         // Route the directions and pass the response to a
         // function to create markers for each step.
-        directionsService.route(request, function (response, status) {
+        this.getDirections(request, function (response, status) {
             if (status === google.maps.DirectionsStatus.OK) {
                 that.directionsDisplay.setDirections(response);
 
@@ -157,9 +180,26 @@ var MapAnimator = {
         });
     },
 
+    geocode: function (address, callback) {
+        var that = this,
+            hash = JSON.stringify(address);
+
+        if (this.geocodeCache[hash]) {
+            return callback(this.geocodeCache[hash], google.maps.GeocoderStatus.OK);
+        }
+
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({'address': address}, function (results, status) {
+            if (status === google.maps.GeocoderStatus.OK) {
+                that.geocodeCache[hash] = results;
+            }
+
+            return callback(results, status);
+        });
+    },
+
     getFlyingPath: function (routeParams, callback) {
-        var geocoder = new google.maps.Geocoder(),
-            locations = [],
+        var locations = [],
             waypoints = routeParams.waypoints || [],
             that = this,
             bounds = new google.maps.LatLngBounds(),
@@ -172,7 +212,7 @@ var MapAnimator = {
         locations.push(routeParams.to);
 
         locations.forEach(function (location, idx) {
-            geocoder.geocode({'address': location}, (function (idx) {
+            that.geocode(location, (function (idx) {
                 return function (results, status) {
                     if (status === google.maps.GeocoderStatus.OK) {
                         that.polyline.getPath().setAt(idx, results[0].geometry.location);
