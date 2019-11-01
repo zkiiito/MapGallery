@@ -1,6 +1,6 @@
 /*global google */
 "use strict";
-var MapAnimator = {
+const MapAnimator = {
     map: null,
     mapdiv: 'map_canvas',
     marker: null,
@@ -19,7 +19,7 @@ var MapAnimator = {
 
     initialize: function () {
         // Create a map and center it on address
-        var myOptions = {
+        const myOptions = {
             zoom: 13,
             mapTypeId: google.maps.MapTypeId.ROADMAP,
             keyboardShortcuts: false,
@@ -36,16 +36,14 @@ var MapAnimator = {
     },
 
     showStartLocation: function (address, callbackImmediately, callback) {
-        var that = this;
-
-        this.geocode(address, function (location) {
-            that.map.setCenter(location);
-            that.marker = that.createMarker(location, "start");
+        this.geocode(address, (location) => {
+            this.map.setCenter(location);
+            this.marker = this.createMarker(location, "start");
 
             if (callbackImmediately) {
                 callback();
             } else {
-                google.maps.event.addListenerOnce(that.map, 'click', function () {
+                google.maps.event.addListenerOnce(this.map, 'click', () => {
                     callback();
                 });
             }
@@ -53,7 +51,7 @@ var MapAnimator = {
     },
 
     createMarker: function (latlng, label) {
-        var marker = new google.maps.Marker({
+        const marker = new google.maps.Marker({
             position: latlng,
             map: this.map,
             title: label,
@@ -65,7 +63,6 @@ var MapAnimator = {
     },
 
     showRoute: function (routeParams, callback) {
-        var that = this;
         this.callback = callback;
         this.step = routeParams.speed || this.defaultStep;
 
@@ -90,28 +87,28 @@ var MapAnimator = {
         google.maps.event.clearListeners(this.map, 'click');
 
         if (routeParams.mode === "FLYING") {
-            this.getFlyingPath(routeParams, function (err) {
+            this.getFlyingPath(routeParams, (err) => {
                 if (err) {
                     return callback(err);
                 }
                 if (!routeParams.displayOnly) {
-                    that.startAnimation();
+                    this.startAnimation();
                 }
             });
         } else {
-            this.getDrivingPath(routeParams, function (err) {
+            this.getDrivingPath(routeParams, (err) => {
                 if (err) {
                     return callback(err);
                 }
                 if (!routeParams.displayOnly) {
-                    that.startAnimation();
+                    this.startAnimation();
                 }
             });
         }
     },
 
     deserializeDirectionsResult: function(legs) {
-        legs.forEach(function (leg) {
+        legs.forEach((leg) => {
             leg.end_location = new google.maps.LatLng(leg.end_location.lat, leg.end_location.lng);
             leg.start_location = new google.maps.LatLng(leg.start_location.lat, leg.start_location.lng);
 
@@ -127,15 +124,14 @@ var MapAnimator = {
     },
 
     getDirections: function (request, callback) {
-        var that = this,
-            hash = JSON.stringify(request);
+        const hash = JSON.stringify(request);
 
         if (this.directionsCache[hash]) {
             return callback(this.directionsCache[hash], google.maps.DirectionsStatus.OK);
         }
 
         if (this.cacheServer) {
-            var url = this.cacheServer + '/geocode/directions?from=' + request.from + '&to=' + request.to;
+            let url = this.cacheServer + '/geocode/directions?from=' + request.from + '&to=' + request.to;
 
             if (request.mode) {
                 url += '&mode=' + request.mode;
@@ -150,11 +146,11 @@ var MapAnimator = {
                 .then((results) => {
                     // TODO: ERROR HANDLING
                     results = this.deserializeDirectionsResult(results);
-                    that.geocodeCache[hash] = results;
+                    this.geocodeCache[hash] = results;
                     callback(results, google.maps.GeocoderStatus.OK);
                 });
         } else {
-            var req = {
+            const req = {
                 origin: request.from,
                 destination: request.to,
                 travelMode: request.mode || google.maps.DirectionsTravelMode.DRIVING,
@@ -163,11 +159,11 @@ var MapAnimator = {
                 optimizeWaypoints: false
             };
 
-            var directionsService = new google.maps.DirectionsService();
-            directionsService.route(req, function (response, status) {
+            const directionsService = new google.maps.DirectionsService();
+            directionsService.route(req, (response, status) => {
                 if (status === google.maps.DirectionsStatus.OK) {
                     response = response.routes[0].legs;
-                    that.directionsCache[hash] = response;
+                    this.directionsCache[hash] = response;
                 }
 
                 return callback(response, status);
@@ -176,33 +172,31 @@ var MapAnimator = {
     },
 
     getDrivingPath: function (routeParams, callback) {
-        var that = this;
-
         // Route the directions and pass the response to a
         // function to create markers for each step.
-        this.getDirections(routeParams, function (response, status) {
+        this.getDirections(routeParams, (response, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
-                var bounds = new google.maps.LatLngBounds(),
-                    legs = response;
+                const bounds = new google.maps.LatLngBounds();
+                const legs = response;
 
                 // For each route, display summary information.
                 if (legs.length) {
-                    that.marker = that.createMarker(legs[0].start_location, "start");
+                    this.marker = this.createMarker(legs[0].start_location, "start");
 
-                    that.endLocation = {latlng: legs[legs.length - 1].end_location};
+                    this.endLocation = {latlng: legs[legs.length - 1].end_location};
 
-                    legs.forEach(function (leg) {
-                        leg.steps.forEach(function (step) {
-                            step.path.forEach(function (p) {
-                                that.polyline.getPath().push(p);
+                    legs.forEach((leg) => {
+                        leg.steps.forEach((step) => {
+                            step.path.forEach((p) => {
+                                this.polyline.getPath().push(p);
                                 bounds.extend(p);
                             });
                         });
                     });
                 }
 
-                that.polyline.setMap(that.map);
-                that.map.fitBounds(bounds);
+                this.polyline.setMap(this.map);
+                this.map.fitBounds(bounds);
                 callback();
             } else {
                 callback(status);
@@ -211,8 +205,7 @@ var MapAnimator = {
     },
 
     geocode: function (address, callback) {
-        var that = this,
-            hash = JSON.stringify(address);
+        const hash = JSON.stringify(address);
 
         if (this.geocodeCache[hash]) {
             return callback(this.geocodeCache[hash], google.maps.GeocoderStatus.OK);
@@ -224,15 +217,15 @@ var MapAnimator = {
                 .then((results) => {
                     // TODO: ERROR HANDLING
                     results = new google.maps.LatLng(results.lat, results.lng);
-                    that.geocodeCache[hash] = results;
+                    this.geocodeCache[hash] = results;
                     callback(results, google.maps.GeocoderStatus.OK);
                 });
         } else {
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode({'address': address}, function (results, status) {
+            const geocoder = new google.maps.Geocoder();
+            geocoder.geocode({'address': address}, (results, status) => {
                 if (status === google.maps.GeocoderStatus.OK) {
                     results = results[0].geometry.location;
-                    that.geocodeCache[hash] = results;
+                    this.geocodeCache[hash] = results;
                 }
 
                 return callback(results, status);
@@ -241,60 +234,56 @@ var MapAnimator = {
     },
 
     getFlyingPath: function (routeParams, callback) {
-        var locations = [],
-            waypoints = routeParams.waypoints || [],
-            that = this,
-            bounds = new google.maps.LatLngBounds(),
-            counter = 0;
+        const locations = [];
+        const waypoints = routeParams.waypoints || [];
+        const bounds = new google.maps.LatLngBounds();
+        let counter = 0;
 
         locations.push(routeParams.from);
-        waypoints.forEach(function (waypoint) {
+        waypoints.forEach((waypoint) => {
             locations.push(waypoint.location);
         });
         locations.push(routeParams.to);
 
-        locations.forEach(function (location, idx) {
-            that.geocode(location, (function (idx) {
-                return function (location, status) {
+        locations.forEach((location, idx) => {
+            this.geocode(location, (location, status) => {
                     if (status === google.maps.GeocoderStatus.OK) {
-                        that.polyline.getPath().setAt(idx, location);
+                        this.polyline.getPath().setAt(idx, location);
                         bounds.extend(location);
                         counter += 1;
 
                         if (counter === locations.length) {
-                            that.marker = that.createMarker(that.polyline.getPath().getAt(0), "start");
-                            that.endLocation = {latlng: that.polyline.getPath().getAt(counter - 1)};
+                            this.marker = this.createMarker(this.polyline.getPath().getAt(0), "start");
+                            this.endLocation = {latlng: this.polyline.getPath().getAt(counter - 1)};
 
-                            that.polyline.setMap(that.map);
-                            that.map.fitBounds(bounds);
+                            this.polyline.setMap(this.map);
+                            this.map.fitBounds(bounds);
                             callback();
                         }
                     } else {
                         callback(status);
                     }
-                };
-            }(idx)));
+                });
         });
     },
 
     startAnimation: function () {
-        var that = this;
         this.distance = this.polyline.Distance();
 
-        google.maps.event.addListenerOnce(this.map, this.animationTriggerEvent, function () {
-            google.maps.event.clearListeners(that.map, 'click');
-            if (that.timerHandle === null) {
-                that.animate(that.step);
+        google.maps.event.addListenerOnce(this.map, this.animationTriggerEvent, () => {
+            google.maps.event.clearListeners(this.map, 'click');
+            if (this.timerHandle === null) {
+                this.animate(this.step);
             }
         });
 
         // if the animation does not trigger, because it has already loaded,
         // at least start on click. it could start on timeout, but we do not
         // know if tiles are loading or not.
-        google.maps.event.addListenerOnce(this.map, 'click', function () {
-            google.maps.event.clearListeners(that.map, that.animationTriggerEvent);
-            if (that.timerHandle === null) {
-                that.animate(that.step);
+        google.maps.event.addListenerOnce(this.map, 'click', () => {
+            google.maps.event.clearListeners(this.map, this.animationTriggerEvent);
+            if (this.timerHandle === null) {
+                this.animate(this.step);
             }
         });
 
@@ -302,28 +291,25 @@ var MapAnimator = {
     },
 
     animate: function (d) {
-        var that = this,
-            p;
-
         if (d > this.distance) {
             this.map.panTo(this.endLocation.latlng);
             this.marker.setPosition(this.endLocation.latlng);
 
-            if (that.callback) {
-                google.maps.event.addListenerOnce(this.map, 'click', function () {
-                    that.callback();
+            if (this.callback) {
+                google.maps.event.addListenerOnce(this.map, 'click', () => {
+                    this.callback();
                 });
             }
             return;
         }
 
-        p = this.polyline.GetPointAtDistance(d);
+        const p = this.polyline.GetPointAtDistance(d);
 
         this.map.panTo(p);
         this.marker.setPosition(p);
         this.timerHandle = setTimeout(
-            function () {
-                that.animate(d + that.step);
+            () => {
+                this.animate(d + this.step);
             },
             this.tick
         );
