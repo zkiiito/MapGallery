@@ -1,46 +1,50 @@
-/*global MapAnimator, $ */
-"use strict";
-var fadeSpeed = "fast";
+/* global MapAnimator */
+const fadeSpeed = 200;
 
-var MapGallery = {
+// eslint-disable-next-line no-unused-vars
+const MapGallery = {
     pos: -1,
     waypoints: [],
-    slideHolder: $("#gallery"),
-    imgdir: "images/",
+    slideHolder: document.getElementById('gallery'),
+    imgdir: 'images/',
     fullscreen: false,
     watchHashChange: true,
 
-    initialize: function (waypoints, startLocation) {
-        var that = this;
+    initialize(waypoints, startLocation) {
+        const that = this;
 
         this.waypoints = waypoints;
 
-        $(document).keydown(function (e) {
-            if ((e.which === 37) || (e.which === 40)) {
+        document.addEventListener('keydown', (e) => {
+            if ((e.key === 'ArrowLeft') || (e.key === 'ArrowDown')) {
                 e.preventDefault();
-                that.move(-1);
-            } else if ((e.which === 38) || (e.which === 39) || (e.which === 32)) {
+                this.move(-1);
+            } else if ((e.key === 'ArrowRight') || (e.key === 'ArrowUp') || (e.code === 'Space')) {
                 e.preventDefault();
-                that.move(1);
+                this.move(1);
             }
         });
 
-        $("#btnPrev").click(function () {
-            that.move(-1);
+        document.getElementById('btnPrev').addEventListener('click', () => {
+            this.move(-1);
         });
 
-        $("#btnNext, #btnHelper").click(function () {
-            that.move(1);
+        document.getElementById('btnNext').addEventListener('click', () => {
+            this.move(1);
         });
 
-        this.slideHolder.on("click", function () {
-            that.move(1);
+        document.getElementById('btnHelper').addEventListener('click', () => {
+            this.move(1);
+        });
+
+        this.slideHolder.addEventListener('click', () => {
+            this.move(1);
         });
 
         MapAnimator.initialize();
         this.initStep(startLocation);
 
-        window.onhashchange = function () {
+        window.onhashchange = () => {
             if (that.watchHashChange) {
                 that.initStep();
             }
@@ -48,23 +52,20 @@ var MapGallery = {
         };
     },
 
-    initStep: function (startLocation) {
-        var that = this,
-            hashPos;
+    initStep(pStartLocation) {
+        this.slideHolder.classList.remove('show');
+        this.slideHolder.innerHTML = '';
 
-        this.slideHolder.hide();
-        this.slideHolder.empty();
+        const hashPos = parseInt(window.location.hash.substr(1), 10);
 
-        hashPos = parseInt(window.location.hash.substr(1), 10);
-
-        if (!isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
-            this.pos = hashPos - 2;//-1 because of 0.., -1 because we have to move to this.
+        if (!Number.isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
+            this.pos = hashPos - 2;// -1 because of 0.., -1 because we have to move to this.
         } else {
-            $("#btnHelper").show();
+            document.getElementById('btnHelper').style.display = '';
         }
 
-        startLocation = startLocation || this.getFirstLocation();
-        //if we come by a hash, and the current step is not a map
+        let startLocation = pStartLocation || this.getFirstLocation();
+        // if we come by a hash, and the current step is not a map
         if (hashPos && this.waypoints[this.pos + 1].from === undefined) {
             startLocation = this.getLastLocation() || startLocation;
         }
@@ -72,103 +73,114 @@ var MapGallery = {
         this.updateBtns();
 
         MapAnimator.stopAnimation();
-        MapAnimator.showStartLocation(startLocation, that.waypoints[that.pos + 1].from === undefined, function () {
-            that.move(1);
+        MapAnimator.showStartLocation(startLocation, this.waypoints[this.pos + 1].from === undefined, () => {
+            this.move(1);
         });
     },
 
-    move: function (dir) {
-        var that = this;
-        $("#btnHelper").hide();
-        that.openFullscreen();
+    move(dir) {
+        document.getElementById('btnHelper').style.display = 'none';
+        this.openFullscreen();
         MapAnimator.stopAnimation();
 
-        var currentSlide = this.slideHolder.find(".gallery");
+        const currentSlides = this.slideHolder.querySelectorAll('.gallery');
 
-        that.pos += dir;
-        var next = that.waypoints[that.pos];
+        this.pos += dir;
+        const next = this.waypoints[this.pos];
 
-        currentSlide.fadeOut(fadeSpeed, function () {
-            currentSlide.remove();
+        currentSlides.forEach((currentSlide) => {
+            currentSlide.classList.remove('show');
+
+            setTimeout(() => {
+                if (currentSlide.parentNode) {
+                    currentSlide.parentNode.removeChild(currentSlide);
+                }
+            }, fadeSpeed);
         });
 
         if (next) {
-            that.preload(that.pos + 1);
+            this.preload(this.pos + 1);
 
             if (next.from !== undefined) {
-                this.slideHolder.fadeOut(fadeSpeed, function () {
-                    MapAnimator.showRoute(next, function (err) {
+                this.slideHolder.classList.remove('show');
+                setTimeout(() => {
+                    this.slideHolder.style.display = 'none';
+                }, fadeSpeed);
+
+                setTimeout(() => {
+                    MapAnimator.showRoute(next, (err) => {
                         if (err) {
-                            console.log(err);
+                            // eslint-disable-next-line no-console
+                            console.error(err);
                         }
-                        that.move(1);
+                        this.move(1);
                     });
-                });
+                }, fadeSpeed);
             } else {
-                var nextSlide = $("<div>").css("background-image", "url('" + that.getImageUrl(that.pos) + "')").addClass("gallery").addClass("fullscreen");
-                this.slideHolder.append(nextSlide);
-                nextSlide.fadeIn(fadeSpeed);
-                this.slideHolder.fadeIn(fadeSpeed);
+                const nextSlide = document.createElement('div');
+                nextSlide.style.backgroundImage = `url('${this.getImageUrl(this.pos)}')`;
+                nextSlide.classList.add('gallery', 'fullscreen');
+
+                this.slideHolder.appendChild(nextSlide);
+                this.slideHolder.style.display = '';
+                this.slideHolder.classList.add('show');
+                setTimeout(() => nextSlide.classList.add('show'), 25);
             }
         } else {
-            that.pos -= dir;
+            this.pos -= dir;
         }
-        that.watchHashChange = false;
-        window.location.hash = (that.pos + 1).toString();
+        this.watchHashChange = false;
+        window.location.hash = (this.pos + 1).toString();
 
-        that.updateBtns();
+        this.updateBtns();
     },
 
-    updateBtns: function () {
+    updateBtns() {
         if (this.pos <= 0) {
-            $("#btnPrev").hide();
-            $("#btnNext").addClass("hover");
+            document.getElementById('btnPrev').style.display = 'none';
+            document.getElementById('btnNext').classList.add('hover');
         } else {
-            $("#btnPrev").show();
-            $("#btnNext").removeClass("hover");
+            document.getElementById('btnPrev').style.display = '';
+            document.getElementById('btnNext').classList.remove('hover');
         }
 
         if (this.pos + 1 >= this.waypoints.length) {
-            $("#btnNext").hide();
+            document.getElementById('btnNext').style.display = 'none';
         } else {
-            $("#btnNext").show();
+            document.getElementById('btnNext').style.display = '';
         }
     },
 
-    preload: function (pos) {
+    preload(pos) {
         if (this.waypoints[pos] && this.waypoints[pos].from === undefined) {
-            var img = new Image();
+            const img = new Image();
             img.src = this.getImageUrl(pos);
         }
     },
 
-    getImageUrl: function (pos) {
-        var url = this.waypoints[pos];
-        if (url.substr(0, 4) !== "http") {
+    getImageUrl(pos) {
+        let url = this.waypoints[pos];
+        if (url.substr(0, 4) !== 'http') {
             url = this.imgdir + url;
         }
         return url;
     },
 
-    openFullscreen: function () {
+    openFullscreen() {
         if (this.fullscreen) {
-            var divObj = document.documentElement;
+            const divObj = document.documentElement;
 
             if (divObj.requestFullscreen) {
                 divObj.requestFullscreen();
-            } else if (divObj.msRequestFullscreen) {
-                divObj.msRequestFullscreen();
-            } else if (divObj.mozRequestFullScreen) {
-                divObj.mozRequestFullScreen();
             } else if (divObj.webkitRequestFullscreen) {
                 divObj.webkitRequestFullscreen();
             }
         }
     },
 
-    getFirstLocation: function () {
-        var startLocation = null;
-        this.waypoints.slice(Math.max(this.pos, 0)).some(function (waypoint) {
+    getFirstLocation() {
+        let startLocation = null;
+        this.waypoints.slice(Math.max(this.pos, 0)).some((waypoint) => {
             if (waypoint.from !== undefined) {
                 startLocation = waypoint.from;
                 return true;
@@ -179,9 +191,9 @@ var MapGallery = {
         return startLocation;
     },
 
-    getLastLocation: function () {
-        var lastLocation = null;
-        this.waypoints.slice(0, this.pos + 1).reverse().some(function (waypoint) {
+    getLastLocation() {
+        let lastLocation = null;
+        this.waypoints.slice(0, this.pos + 1).reverse().some((waypoint) => {
             if (waypoint.to !== undefined) {
                 lastLocation = waypoint.to;
                 return true;
@@ -190,5 +202,5 @@ var MapGallery = {
         });
 
         return lastLocation;
-    }
+    },
 };

@@ -17,7 +17,8 @@ body, html, .fullscreen {
     background: rgba(0, 0, 0, 0.6) no-repeat fixed center;
     position: absolute;
     top: 0;
-    display: none;
+    opacity: 0;
+    transition: opacity 200ms;
 }
 
 .gallery {
@@ -64,4 +65,8 @@ body, html, .fullscreen {
     font-weight: bold;
     font-size: 15px;
     cursor: pointer;
+}
+
+.gallery.show, #gallery.show {
+    opacity: 1;
 }
