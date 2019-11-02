@@ -137,16 +137,21 @@ const MapAnimator = {
                 url += '&mode=' + request.mode;
             }
 
-            if (request.waypoints.length) {
+            if (request.waypoints && request.waypoints.length > 0) {
                 url += '&waypoints=' + JSON.stringify(request.waypoints.map(waypoint => waypoint.location));
             }
 
             fetch(url)
                 .then((results) => results.json())
                 .then((results) => {
-                    // TODO: ERROR HANDLING
+                    if (results.status) {
+                        return callback(null, results.status);
+                    }
+                    if (results.error) {
+                        return callback(null, results.error);
+                    }
                     results = this.deserializeDirectionsResult(results);
-                    this.geocodeCache[hash] = results;
+                    this.directionsCache[hash] = results;
                     callback(results, google.maps.GeocoderStatus.OK);
                 });
         } else {
@@ -215,7 +220,12 @@ const MapAnimator = {
             fetch(this.cacheServer + '/geocode/location/' + address)
                 .then((results) => results.json())
                 .then((results) => {
-                    // TODO: ERROR HANDLING
+                    if (results.status) {
+                        return callback(null, results.status);
+                    }
+                    if (results.error) {
+                        return callback(null, results.error);
+                    }
                     results = new google.maps.LatLng(results.lat, results.lng);
                     this.geocodeCache[hash] = results;
                     callback(results, google.maps.GeocoderStatus.OK);
