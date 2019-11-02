@@ -1,17 +1,17 @@
-/*global MapAnimator */
-"use strict";
+/* global MapAnimator */
 const fadeSpeed = 200;
 
+// eslint-disable-next-line no-unused-vars
 const MapGallery = {
     pos: -1,
     waypoints: [],
-    slideHolder: document.getElementById("gallery"),
-    imgdir: "images/",
+    slideHolder: document.getElementById('gallery'),
+    imgdir: 'images/',
     fullscreen: false,
     watchHashChange: true,
 
-    initialize: function (waypoints, startLocation) {
-        var that = this;
+    initialize(waypoints, startLocation) {
+        const that = this;
 
         this.waypoints = waypoints;
 
@@ -37,14 +37,14 @@ const MapGallery = {
             this.move(1);
         });
 
-        this.slideHolder.addEventListener("click", () => {
+        this.slideHolder.addEventListener('click', () => {
             this.move(1);
         });
 
         MapAnimator.initialize();
         this.initStep(startLocation);
 
-        window.onhashchange = function () {
+        window.onhashchange = () => {
             if (that.watchHashChange) {
                 that.initStep();
             }
@@ -52,20 +52,20 @@ const MapGallery = {
         };
     },
 
-    initStep: function (startLocation) {
+    initStep(pStartLocation) {
         this.slideHolder.classList.remove('show');
         this.slideHolder.innerHTML = '';
 
         const hashPos = parseInt(window.location.hash.substr(1), 10);
 
-        if (!isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
-            this.pos = hashPos - 2;//-1 because of 0.., -1 because we have to move to this.
+        if (!Number.isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
+            this.pos = hashPos - 2;// -1 because of 0.., -1 because we have to move to this.
         } else {
-            document.getElementById("btnHelper").style.display = '';
+            document.getElementById('btnHelper').style.display = '';
         }
 
-        startLocation = startLocation || this.getFirstLocation();
-        //if we come by a hash, and the current step is not a map
+        let startLocation = pStartLocation || this.getFirstLocation();
+        // if we come by a hash, and the current step is not a map
         if (hashPos && this.waypoints[this.pos + 1].from === undefined) {
             startLocation = this.getLastLocation() || startLocation;
         }
@@ -73,17 +73,17 @@ const MapGallery = {
         this.updateBtns();
 
         MapAnimator.stopAnimation();
-        MapAnimator.showStartLocation(startLocation, this.waypoints[this.pos + 1].from === undefined,  () => {
+        MapAnimator.showStartLocation(startLocation, this.waypoints[this.pos + 1].from === undefined, () => {
             this.move(1);
         });
     },
 
-    move: function (dir) {
-        document.getElementById("btnHelper").style.display = 'none';
+    move(dir) {
+        document.getElementById('btnHelper').style.display = 'none';
         this.openFullscreen();
         MapAnimator.stopAnimation();
 
-        const currentSlides = this.slideHolder.querySelectorAll(".gallery");
+        const currentSlides = this.slideHolder.querySelectorAll('.gallery');
 
         this.pos += dir;
         const next = this.waypoints[this.pos];
@@ -103,20 +103,23 @@ const MapGallery = {
 
             if (next.from !== undefined) {
                 this.slideHolder.classList.remove('show');
-                setTimeout(() => this.slideHolder.style.display = 'none', fadeSpeed);
+                setTimeout(() => {
+                    this.slideHolder.style.display = 'none';
+                }, fadeSpeed);
 
                 setTimeout(() => {
                     MapAnimator.showRoute(next, (err) => {
                         if (err) {
-                            console.log(err);
+                            // eslint-disable-next-line no-console
+                            console.error(err);
                         }
                         this.move(1);
                     });
                 }, fadeSpeed);
             } else {
                 const nextSlide = document.createElement('div');
-                nextSlide.style.backgroundImage = "url('" + this.getImageUrl(this.pos) + "')";
-                nextSlide.classList.add("gallery", "fullscreen");
+                nextSlide.style.backgroundImage = `url('${this.getImageUrl(this.pos)}')`;
+                nextSlide.classList.add('gallery', 'fullscreen');
 
                 this.slideHolder.appendChild(nextSlide);
                 this.slideHolder.style.display = '';
@@ -132,13 +135,13 @@ const MapGallery = {
         this.updateBtns();
     },
 
-    updateBtns: function () {
+    updateBtns() {
         if (this.pos <= 0) {
             document.getElementById('btnPrev').style.display = 'none';
-            document.getElementById('btnNext').classList.add("hover");
+            document.getElementById('btnNext').classList.add('hover');
         } else {
             document.getElementById('btnPrev').style.display = '';
-            document.getElementById('btnNext').classList.remove("hover");
+            document.getElementById('btnNext').classList.remove('hover');
         }
 
         if (this.pos + 1 >= this.waypoints.length) {
@@ -148,38 +151,34 @@ const MapGallery = {
         }
     },
 
-    preload: function (pos) {
+    preload(pos) {
         if (this.waypoints[pos] && this.waypoints[pos].from === undefined) {
             const img = new Image();
             img.src = this.getImageUrl(pos);
         }
     },
 
-    getImageUrl: function (pos) {
+    getImageUrl(pos) {
         let url = this.waypoints[pos];
-        if (url.substr(0, 4) !== "http") {
+        if (url.substr(0, 4) !== 'http') {
             url = this.imgdir + url;
         }
         return url;
     },
 
-    openFullscreen: function () {
+    openFullscreen() {
         if (this.fullscreen) {
-            var divObj = document.documentElement;
+            const divObj = document.documentElement;
 
             if (divObj.requestFullscreen) {
                 divObj.requestFullscreen();
-            } else if (divObj.msRequestFullscreen) {
-                divObj.msRequestFullscreen();
-            } else if (divObj.mozRequestFullScreen) {
-                divObj.mozRequestFullScreen();
             } else if (divObj.webkitRequestFullscreen) {
                 divObj.webkitRequestFullscreen();
             }
         }
     },
 
-    getFirstLocation: function () {
+    getFirstLocation() {
         let startLocation = null;
         this.waypoints.slice(Math.max(this.pos, 0)).some((waypoint) => {
             if (waypoint.from !== undefined) {
@@ -192,7 +191,7 @@ const MapGallery = {
         return startLocation;
     },
 
-    getLastLocation: function () {
+    getLastLocation() {
         let lastLocation = null;
         this.waypoints.slice(0, this.pos + 1).reverse().some((waypoint) => {
             if (waypoint.to !== undefined) {
@@ -203,5 +202,5 @@ const MapGallery = {
         });
 
         return lastLocation;
-    }
+    },
 };
