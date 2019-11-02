@@ -1,4 +1,4 @@
-var waypoints = [
+const waypoints = [
     {
         from: 'New York JFK',
         to: 'Rome',

@@ -103,6 +103,7 @@ const MapGallery = {
 
             if (next.from !== undefined) {
                 this.slideHolder.classList.remove('show');
+                setTimeout(() => this.slideHolder.style.display = 'none', fadeSpeed);
 
                 setTimeout(() => {
                     MapAnimator.showRoute(next, (err) => {
@@ -118,6 +119,7 @@ const MapGallery = {
                 nextSlide.classList.add("gallery", "fullscreen");
 
                 this.slideHolder.appendChild(nextSlide);
+                this.slideHolder.style.display = '';
                 this.slideHolder.classList.add('show');
                 setTimeout(() => nextSlide.classList.add('show'), 25);
             }
