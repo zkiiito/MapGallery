@@ -61,7 +61,7 @@ const MapGallery = {
         if (!Number.isNaN(hashPos) && this.waypoints[hashPos - 1] !== undefined) {
             this.pos = hashPos - 2;// -1 because of 0.., -1 because we have to move to this.
         } else {
-            document.getElementById('btnHelper').style.display = '';
+            document.getElementById('btnHelper').style.display = 'block';
         }
 
         let startLocation = pStartLocation || this.getFirstLocation();
