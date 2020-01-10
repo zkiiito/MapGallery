@@ -6,9 +6,9 @@ const MapAnimator = {
     polyline: null,
     endLocation: null,
     timerHandle: null,
-    defaultStep: 3000,
+    defaultStep: 1200,
     step: this.defaultStep,
-    tick: 100, // milliseconds
+    tick: 40, // milliseconds
     distance: null,
     callback: null,
     animationTriggerEvent: 'tilesloaded',
