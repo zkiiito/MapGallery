@@ -343,14 +343,14 @@ const MapAnimator = {
         this.map.fitBounds(bounds);
     },
 
-    showAllRoutes(routes) {
+    showAllRoutes(routes, fit) {
         this.allPolylines.forEach((polyline) => {
             polyline.setMap(null);
         });
         this.allPolylines = [];
         let counter = 0;
 
-        routes.forEach((route) => {
+        routes.forEach((route, idx) => {
             this.getPath(route, (err, path) => {
                 if (path) {
                     const polyline = new google.maps.Polyline({
@@ -360,11 +360,11 @@ const MapAnimator = {
                     });
 
                     polyline.setMap(this.map);
-                    this.allPolylines.push(polyline);
+                    this.allPolylines[idx] = polyline;
                 }
 
                 counter += 1;
-                if (counter === routes.length) {
+                if (counter === routes.length && fit !== false) {
                     this.fitMapToPolylines(this.allPolylines);
                 }
             });
