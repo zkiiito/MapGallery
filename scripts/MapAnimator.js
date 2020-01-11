@@ -343,7 +343,7 @@ const MapAnimator = {
         this.map.fitBounds(bounds);
     },
 
-    showAllRoutes(routes, fit) {
+    showAllRoutes(routes, fit, callback) {
         this.allPolylines.forEach((polyline) => {
             polyline.setMap(null);
         });
@@ -364,8 +364,13 @@ const MapAnimator = {
                 }
 
                 counter += 1;
-                if (counter === routes.length && fit !== false) {
-                    this.fitMapToPolylines(this.allPolylines);
+                if (counter === routes.length) {
+                    if (fit !== false) {
+                        this.fitMapToPolylines(this.allPolylines);
+                    }
+                    if (callback) {
+                        callback();
+                    }
                 }
             });
         });
