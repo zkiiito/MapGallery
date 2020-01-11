@@ -62,6 +62,9 @@ const MapGallery = {
             this.pos = hashPos - 2;// -1 because of 0.., -1 because we have to move to this.
         } else {
             document.getElementById('btnHelper').style.display = 'block';
+            // kezdon vagyunk
+            MapAnimator.showAllRoutes(this.waypoints.filter((slide) => slide.from));
+            return;
         }
 
         let startLocation = pStartLocation || this.getFirstLocation();

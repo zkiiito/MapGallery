@@ -4,6 +4,7 @@ const MapAnimator = {
     mapdiv: 'map_canvas',
     marker: null,
     polyline: null,
+    allPolylines: [],
     endLocation: null,
     timerHandle: null,
     defaultStep: 1200,
@@ -77,35 +78,35 @@ const MapAnimator = {
             this.polyline.setMap(null);
         }
 
-        this.polyline = new google.maps.Polyline({
-            path: [],
-            strokeColor: '#FF0000',
-            strokeWeight: 3,
-        });
-
         google.maps.event.clearListeners(this.map, 'click');
 
-        if (routeParams.mode === 'FLYING') {
-            this.getFlyingPath(routeParams, (err) => {
-                if (err) {
-                    callback(err);
-                    return;
-                }
-                if (!routeParams.displayOnly) {
-                    this.startAnimation();
-                }
+        this.getPath(routeParams, (err, path) => {
+            if (err) {
+                callback(err);
+                return;
+            }
+
+            this.polyline = new google.maps.Polyline({
+                path,
+                strokeColor: '#FF0000',
+                strokeWeight: 3,
             });
-        } else {
-            this.getDrivingPath(routeParams, (err) => {
-                if (err) {
-                    callback(err);
-                    return;
-                }
-                if (!routeParams.displayOnly) {
-                    this.startAnimation();
-                }
-            });
-        }
+            this.polyline.setMap(this.map);
+            this.marker = this.createMarker(path[0], 'start');
+            this.endLocation = { latlng: path[path.length - 1] };
+            this.fitMapToPolylines([this.polyline]);
+
+            if (!routeParams.displayOnly) {
+                this.startAnimation();
+            } else {
+                callback(null);
+            }
+        });
+    },
+
+    getPath(routeParams, callback) {
+        const method = routeParams.mode === 'FLYING' ? 'getFlyingPath' : 'getDrivingPath';
+        this[method](routeParams, callback);
     },
 
     deserializeDirectionsResult(legs) {
@@ -186,28 +187,21 @@ const MapAnimator = {
         // function to create markers for each step.
         this.getDirections(routeParams, (response, status) => {
             if (status === google.maps.DirectionsStatus.OK) {
-                const bounds = new google.maps.LatLngBounds();
                 const legs = response;
+                const path = [];
 
                 // For each route, display summary information.
                 if (legs.length) {
-                    this.marker = this.createMarker(legs[0].start_location, 'start');
-
-                    this.endLocation = { latlng: legs[legs.length - 1].end_location };
-
                     legs.forEach((leg) => {
                         leg.steps.forEach((step) => {
                             step.path.forEach((p) => {
-                                this.polyline.getPath().push(p);
-                                bounds.extend(p);
+                                path.push(p);
                             });
                         });
                     });
                 }
 
-                this.polyline.setMap(this.map);
-                this.map.fitBounds(bounds);
-                callback();
+                callback(null, path);
             } else {
                 callback(status);
             }
@@ -255,7 +249,7 @@ const MapAnimator = {
     getFlyingPath(routeParams, callback) {
         const locations = [];
         const waypoints = routeParams.waypoints || [];
-        const bounds = new google.maps.LatLngBounds();
+        const path = [];
         let counter = 0;
 
         locations.push(routeParams.from);
@@ -267,17 +261,11 @@ const MapAnimator = {
         locations.forEach((location, idx) => {
             this.geocode(location, (latlng, status) => {
                 if (status === google.maps.GeocoderStatus.OK) {
-                    this.polyline.getPath().setAt(idx, latlng);
-                    bounds.extend(latlng);
+                    path[idx] = latlng;
                     counter += 1;
 
                     if (counter === locations.length) {
-                        this.marker = this.createMarker(this.polyline.getPath().getAt(0), 'start');
-                        this.endLocation = { latlng: this.polyline.getPath().getAt(counter - 1) };
-
-                        this.polyline.setMap(this.map);
-                        this.map.fitBounds(bounds);
-                        callback();
+                        callback(null, path);
                     }
                 } else {
                     callback(status);
@@ -342,5 +330,44 @@ const MapAnimator = {
             this.map.panTo(this.endLocation.latlng);
             this.marker.setPosition(this.endLocation.latlng);
         }
+    },
+
+    fitMapToPolylines(polylines) {
+        const bounds = new google.maps.LatLngBounds();
+        polylines.forEach((polyline) => {
+            polyline.getPath().forEach((latlng) => {
+                bounds.extend(latlng);
+            });
+        });
+
+        this.map.fitBounds(bounds);
+    },
+
+    showAllRoutes(routes) {
+        this.allPolylines.forEach((polyline) => {
+            polyline.setMap(null);
+        });
+        this.allPolylines = [];
+        let counter = 0;
+
+        routes.forEach((route) => {
+            this.getPath(route, (err, path) => {
+                if (path) {
+                    const polyline = new google.maps.Polyline({
+                        path,
+                        strokeColor: '#0000FF',
+                        strokeWeight: 2,
+                    });
+
+                    polyline.setMap(this.map);
+                    this.allPolylines.push(polyline);
+                }
+
+                counter += 1;
+                if (counter === routes.length) {
+                    this.fitMapToPolylines(this.allPolylines);
+                }
+            });
+        });
     },
 };
