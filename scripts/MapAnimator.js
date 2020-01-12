@@ -35,18 +35,21 @@ const MapAnimator = {
         this.map = new google.maps.Map(document.getElementById(this.mapdiv), myOptions);
     },
 
-    showStartLocation(address, callbackImmediately, callback) {
-        this.geocode(address, (location) => {
-            this.map.setCenter(location);
-            this.marker = this.createMarker(location, 'start');
+    showStartLocation(address, callbackImmediately) {
+        return new Promise((resolve) => {
+            this.geocode(address)
+                .then((location) => {
+                    this.map.setCenter(location);
+                    this.marker = this.createMarker(location, 'start');
 
-            if (callbackImmediately) {
-                callback();
-            } else {
-                google.maps.event.addListenerOnce(this.map, 'click', () => {
-                    callback();
+                    if (callbackImmediately) {
+                        resolve();
+                    } else {
+                        google.maps.event.addListenerOnce(this.map, 'click', () => {
+                            resolve();
+                        });
+                    }
                 });
-            }
         });
     },
 
@@ -80,34 +83,33 @@ const MapAnimator = {
 
         google.maps.event.clearListeners(this.map, 'click');
 
-        this.getPath(routeParams, (err, path) => {
-            if (err) {
+        this.getPath(routeParams)
+            .then((path) => {
+                this.polyline = new google.maps.Polyline({
+                    path,
+                    strokeColor: '#FF0000',
+                    strokeWeight: 3,
+                    zIndex: 100,
+                });
+                this.polyline.setMap(this.map);
+                this.marker = this.createMarker(path[0], 'start');
+                this.endLocation = { latlng: path[path.length - 1] };
+                this.fitMapToPolylines([this.polyline]);
+
+                if (!routeParams.displayOnly) {
+                    this.startAnimation();
+                } else {
+                    callback(null);
+                }
+            })
+            .catch((err) => {
                 callback(err);
-                return;
-            }
-
-            this.polyline = new google.maps.Polyline({
-                path,
-                strokeColor: '#FF0000',
-                strokeWeight: 3,
-                zIndex: 100,
             });
-            this.polyline.setMap(this.map);
-            this.marker = this.createMarker(path[0], 'start');
-            this.endLocation = { latlng: path[path.length - 1] };
-            this.fitMapToPolylines([this.polyline]);
-
-            if (!routeParams.displayOnly) {
-                this.startAnimation();
-            } else {
-                callback(null);
-            }
-        });
     },
 
-    getPath(routeParams, callback) {
+    getPath(routeParams) {
         const method = routeParams.mode === 'FLYING' ? 'getFlyingPath' : 'getDrivingPath';
-        this[method](routeParams, callback);
+        return this[method](routeParams);
     },
 
     deserializeDirectionsResult(legs) {
@@ -128,66 +130,68 @@ const MapAnimator = {
         return legs;
     },
 
-    getDirections(request, callback) {
-        const hash = JSON.stringify(request);
+    getDirections(request) {
+        return new Promise((resolve, reject) => {
+            const hash = JSON.stringify(request);
 
-        if (this.directionsCache[hash]) {
-            callback(this.directionsCache[hash], google.maps.DirectionsStatus.OK);
-            return;
-        }
-
-        if (this.cacheServer) {
-            let url = `${this.cacheServer}/geocode/directions?from=${request.from}&to=${request.to}`;
-
-            if (request.mode) {
-                url += `&mode=${request.mode}`;
+            if (this.directionsCache[hash]) {
+                resolve(this.directionsCache[hash]);
+                return;
             }
 
-            if (request.waypoints && request.waypoints.length > 0) {
-                url += `&waypoints=${JSON.stringify(request.waypoints.map((waypoint) => waypoint.location))}`;
-            }
+            if (this.cacheServer) {
+                let url = `${this.cacheServer}/geocode/directions?from=${request.from}&to=${request.to}`;
 
-            fetch(url)
-                .then((results) => results.json())
-                .then((results) => {
-                    if (results.status) {
-                        return callback(null, results.status);
-                    }
-                    if (results.error) {
-                        return callback(null, results.error);
-                    }
-                    const deserializedResults = this.deserializeDirectionsResult(results);
-                    this.directionsCache[hash] = deserializedResults;
-                    return callback(deserializedResults, google.maps.GeocoderStatus.OK);
-                });
-        } else {
-            const req = {
-                origin: request.from,
-                destination: request.to,
-                travelMode: request.mode || google.maps.DirectionsTravelMode.DRIVING,
-                waypoints: request.waypoints || [],
-                provideRouteAlternatives: false,
-                optimizeWaypoints: false,
-            };
-
-            const directionsService = new google.maps.DirectionsService();
-            directionsService.route(req, (response, status) => {
-                if (status === google.maps.DirectionsStatus.OK) {
-                    const result = response.routes[0].legs;
-                    this.directionsCache[hash] = result;
-                    return callback(result, status);
+                if (request.mode) {
+                    url += `&mode=${request.mode}`;
                 }
 
-                return callback(response, status);
-            });
-        }
+                if (request.waypoints && request.waypoints.length > 0) {
+                    url += `&waypoints=${JSON.stringify(request.waypoints.map((waypoint) => waypoint.location))}`;
+                }
+
+                fetch(url)
+                    .then((results) => results.json())
+                    .then((results) => {
+                        if (results.status) {
+                            return reject(results.status);
+                        }
+                        if (results.error) {
+                            return reject(results.error);
+                        }
+                        const deserializedResults = this.deserializeDirectionsResult(results);
+                        this.directionsCache[hash] = deserializedResults;
+                        return resolve(deserializedResults);
+                    });
+            } else {
+                const req = {
+                    origin: request.from,
+                    destination: request.to,
+                    travelMode: request.mode || google.maps.DirectionsTravelMode.DRIVING,
+                    waypoints: request.waypoints || [],
+                    provideRouteAlternatives: false,
+                    optimizeWaypoints: false,
+                };
+
+                const directionsService = new google.maps.DirectionsService();
+                directionsService.route(req, (response, status) => {
+                    if (status === google.maps.DirectionsStatus.OK) {
+                        const result = response.routes[0].legs;
+                        this.directionsCache[hash] = result;
+                        return resolve(result);
+                    }
+
+                    return reject(status);
+                });
+            }
+        });
     },
 
-    getDrivingPath(routeParams, callback) {
+    getDrivingPath(routeParams) {
         // Route the directions and pass the response to a
         // function to create markers for each step.
-        this.getDirections(routeParams, (response, status) => {
-            if (status === google.maps.DirectionsStatus.OK) {
+        return this.getDirections(routeParams)
+            .then((response) => {
                 const legs = response;
                 const path = [];
 
@@ -201,57 +205,52 @@ const MapAnimator = {
                         });
                     });
                 }
+                return path;
+            });
+    },
 
-                callback(null, path);
+    geocode(address) {
+        return new Promise((resolve, reject) => {
+            const hash = JSON.stringify(address);
+
+            if (this.geocodeCache[hash]) {
+                resolve(this.geocodeCache[hash]);
+                return;
+            }
+
+            if (this.cacheServer) {
+                fetch(`${this.cacheServer}/geocode/location/${address}`)
+                    .then((results) => results.json())
+                    .then((results) => {
+                        if (results.status) {
+                            return reject(results.status);
+                        }
+                        if (results.error) {
+                            return reject(results.error);
+                        }
+                        const resultsLatLng = new google.maps.LatLng(results.lat, results.lng);
+                        this.geocodeCache[hash] = resultsLatLng;
+                        return resolve(resultsLatLng);
+                    });
             } else {
-                callback(status);
+                const geocoder = new google.maps.Geocoder();
+                geocoder.geocode({ address }, (results, status) => {
+                    if (status === google.maps.GeocoderStatus.OK) {
+                        const resultsLatLng = results[0].geometry.location;
+                        this.geocodeCache[hash] = resultsLatLng;
+                        return resolve(resultsLatLng);
+                    }
+
+                    return reject(status);
+                });
             }
         });
     },
 
-    geocode(address, callback) {
-        const hash = JSON.stringify(address);
-
-        if (this.geocodeCache[hash]) {
-            callback(this.geocodeCache[hash], google.maps.GeocoderStatus.OK);
-            return;
-        }
-
-        if (this.cacheServer) {
-            fetch(`${this.cacheServer}/geocode/location/${address}`)
-                .then((results) => results.json())
-                .then((results) => {
-                    if (results.status) {
-                        callback(null, results.status);
-                        return;
-                    }
-                    if (results.error) {
-                        callback(null, results.error);
-                        return;
-                    }
-                    const resultsLatLng = new google.maps.LatLng(results.lat, results.lng);
-                    this.geocodeCache[hash] = resultsLatLng;
-                    callback(resultsLatLng, google.maps.GeocoderStatus.OK);
-                });
-        } else {
-            const geocoder = new google.maps.Geocoder();
-            geocoder.geocode({ address }, (results, status) => {
-                if (status === google.maps.GeocoderStatus.OK) {
-                    const resultsLatLng = results[0].geometry.location;
-                    this.geocodeCache[hash] = resultsLatLng;
-                    return callback(resultsLatLng, status);
-                }
-
-                return callback(results, status);
-            });
-        }
-    },
-
-    getFlyingPath(routeParams, callback) {
+    getFlyingPath(routeParams) {
         const locations = [];
         const waypoints = routeParams.waypoints || [];
         const path = [];
-        let counter = 0;
 
         locations.push(routeParams.from);
         waypoints.forEach((waypoint) => {
@@ -259,20 +258,12 @@ const MapAnimator = {
         });
         locations.push(routeParams.to);
 
-        locations.forEach((location, idx) => {
-            this.geocode(location, (latlng, status) => {
-                if (status === google.maps.GeocoderStatus.OK) {
+        return Promise.all(
+            locations.map((location, idx) => this.geocode(location)
+                .then((latlng) => {
                     path[idx] = latlng;
-                    counter += 1;
-
-                    if (counter === locations.length) {
-                        callback(null, path);
-                    }
-                } else {
-                    callback(status);
-                }
-            });
-        });
+                })),
+        ).then(() => path);
     },
 
     startAnimation() {
@@ -344,15 +335,14 @@ const MapAnimator = {
         this.map.fitBounds(bounds);
     },
 
-    showAllRoutes(routes, fit, callback) {
+    showAllRoutes(routes, fit) {
         this.allPolylines.forEach((polyline) => {
             polyline.setMap(null);
         });
         this.allPolylines = [];
-        let counter = 0;
 
-        routes.forEach((route, idx) => {
-            this.getPath(route, (err, path) => {
+        return Promise.all(routes.map((route, idx) => this.getPath(route)
+            .then((path) => {
                 if (path) {
                     const polyline = new google.maps.Polyline({
                         path,
@@ -363,17 +353,11 @@ const MapAnimator = {
                     polyline.setMap(this.map);
                     this.allPolylines[idx] = polyline;
                 }
-
-                counter += 1;
-                if (counter === routes.length) {
-                    if (fit !== false) {
-                        this.fitMapToPolylines(this.allPolylines);
-                    }
-                    if (callback) {
-                        callback();
-                    }
+            })))
+            .finally(() => {
+                if (fit !== false) {
+                    this.fitMapToPolylines(this.allPolylines);
                 }
             });
-        });
     },
 };

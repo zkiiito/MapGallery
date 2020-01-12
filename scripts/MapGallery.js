@@ -76,9 +76,11 @@ const MapGallery = {
         this.updateBtns();
 
         MapAnimator.stopAnimation();
-        MapAnimator.showStartLocation(startLocation, this.waypoints[this.pos + 1].from === undefined, () => {
-            this.move(1);
-        });
+        MapAnimator
+            .showStartLocation(startLocation, this.waypoints[this.pos + 1].from === undefined)
+            .then(() => {
+                this.move(1);
+            });
     },
 
     move(dir) {
