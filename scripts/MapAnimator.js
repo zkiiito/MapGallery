@@ -90,6 +90,7 @@ const MapAnimator = {
                 path,
                 strokeColor: '#FF0000',
                 strokeWeight: 3,
+                zIndex: 100,
             });
             this.polyline.setMap(this.map);
             this.marker = this.createMarker(path[0], 'start');
