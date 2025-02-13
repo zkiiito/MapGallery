@@ -164,25 +164,90 @@ const MapAnimator = {
                         return resolve(deserializedResults);
                     });
             } else {
-                const req = {
-                    origin: request.from,
-                    destination: request.to,
-                    travelMode: request.mode || google.maps.DirectionsTravelMode.DRIVING,
-                    waypoints: request.waypoints || [],
-                    provideRouteAlternatives: false,
-                    optimizeWaypoints: false,
-                };
+                // Convert origin and destination to LatLng if they're addresses
+                Promise.all([
+                    typeof request.from === 'string' ? this.geocode(request.from) : Promise.resolve(request.from),
+                    typeof request.to === 'string' ? this.geocode(request.to) : Promise.resolve(request.to),
+                    ...((request.waypoints || []).map((wp) => (typeof wp.location === 'string' ? this.geocode(wp.location) : Promise.resolve(wp.location)))),
+                ]).then(([origin, destination, ...waypointLocations]) => {
+                    const routesRequest = {
+                        origin: {
+                            location: {
+                                latLng: {
+                                    latitude: origin.lat(),
+                                    longitude: origin.lng(),
+                                },
+                            },
+                        },
+                        destination: {
+                            location: {
+                                latLng: {
+                                    latitude: destination.lat(),
+                                    longitude: destination.lng(),
+                                },
+                            },
+                        },
+                        travelMode: request.mode === 'DRIVING' ? 'DRIVE' : request.mode,
+                        computeAlternativeRoutes: false,
+                        languageCode: 'en-US',
+                    };
 
-                const directionsService = new google.maps.DirectionsService();
-                directionsService.route(req, (response, status) => {
-                    if (status === google.maps.DirectionsStatus.OK) {
-                        const result = response.routes[0].legs;
-                        this.directionsCache[hash] = result;
-                        return resolve(result);
+                    if (waypointLocations.length > 0) {
+                        routesRequest.intermediates = waypointLocations.map((location) => ({
+                            location: {
+                                latLng: {
+                                    latitude: location.lat(),
+                                    longitude: location.lng(),
+                                },
+                            },
+                        }));
                     }
 
-                    return reject(status);
-                });
+                    return fetch('https://routes.googleapis.com/directions/v2:computeRoutes', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Goog-Api-Key': 'AIzaSyBDPc1q5IiNhnTW_7of2UhOPswb2Zyks0g', // Make sure this is defined in your HTML
+                            'X-Goog-FieldMask': 'routes.legs.steps,routes.legs',
+                        },
+                        body: JSON.stringify(routesRequest),
+                    });
+                })
+                    .then((response) => response.json())
+                    .then((result) => {
+                        if (!result.routes || !result.routes[0]) {
+                            return reject(new Error('No routes found'));
+                        }
+
+                        // Convert the Routes API response to match the old Directions API format
+                        const legs = result.routes[0].legs.map((leg) => ({
+                            start_location: new google.maps.LatLng(
+                                leg.startLocation.latLng.latitude,
+                                leg.startLocation.latLng.longitude,
+                            ),
+                            end_location: new google.maps.LatLng(
+                                leg.endLocation.latLng.latitude,
+                                leg.endLocation.latLng.longitude,
+                            ),
+                            steps: leg.steps.map((step) => ({
+                                start_location: new google.maps.LatLng(
+                                    step.startLocation.latLng.latitude,
+                                    step.startLocation.latLng.longitude,
+                                ),
+                                end_location: new google.maps.LatLng(
+                                    step.endLocation.latLng.latitude,
+                                    step.endLocation.latLng.longitude,
+                                ),
+                                path: step.polyline.encodedPolyline
+                                    ? google.maps.geometry.encoding.decodePath(step.polyline.encodedPolyline)
+                                    : [],
+                            })),
+                        }));
+
+                        this.directionsCache[hash] = legs;
+                        resolve(legs);
+                    })
+                    .catch((error) => reject(error));
             }
         });
     },
