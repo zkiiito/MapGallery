@@ -30,6 +30,7 @@ const MapAnimator = {
                 style: google.maps.ZoomControlStyle.SMALL,
             },
             mapTypeControl: false,
+            mapId: 'DEMO_MAP_ID', // Add a valid Map ID
         };
 
         this.map = new google.maps.Map(document.getElementById(this.mapdiv), myOptions);
@@ -40,7 +41,7 @@ const MapAnimator = {
             this.geocode(address)
                 .then((location) => {
                     this.map.setCenter(location);
-                    this.marker = this.createMarker(location, 'start');
+                    this.marker = this.createMarker(location);
 
                     if (callbackImmediately) {
                         resolve();
@@ -53,16 +54,13 @@ const MapAnimator = {
         });
     },
 
-    createMarker(latlng, label) {
-        const marker = new google.maps.Marker({
+    createMarker(latlng) {
+        const markerView = new google.maps.marker.AdvancedMarkerElement({
             position: latlng,
             map: this.map,
-            title: label,
-            zIndex: Math.round(latlng.lat * -100000) * 32,
         });
-        marker.myname = label;
 
-        return marker;
+        return markerView;
     },
 
     showRoute(routeParams, callback) {
@@ -74,7 +72,7 @@ const MapAnimator = {
             this.timerHandle = null;
         }
         if (this.marker) {
-            this.marker.setMap(null);
+            this.marker.map = null;
         }
 
         if (this.polyline) {
@@ -92,7 +90,7 @@ const MapAnimator = {
                     zIndex: 100,
                 });
                 this.polyline.setMap(this.map);
-                this.marker = this.createMarker(path[0], 'start');
+                this.marker = this.createMarker(path[0]);
                 this.endLocation = { latlng: path[path.length - 1] };
                 this.fitMapToPolylines([this.polyline]);
 
@@ -168,7 +166,9 @@ const MapAnimator = {
                 Promise.all([
                     typeof request.from === 'string' ? this.geocode(request.from) : Promise.resolve(request.from),
                     typeof request.to === 'string' ? this.geocode(request.to) : Promise.resolve(request.to),
-                    ...((request.waypoints || []).map((wp) => (typeof wp.location === 'string' ? this.geocode(wp.location) : Promise.resolve(wp.location)))),
+                    ...((request.waypoints || []).map(
+                        (wp) => (typeof wp.location === 'string' ? this.geocode(wp.location) : Promise.resolve(wp.location)),
+                    )),
                 ]).then(([origin, destination, ...waypointLocations]) => {
                     const routesRequest = {
                         origin: {
@@ -203,11 +203,14 @@ const MapAnimator = {
                         }));
                     }
 
+                    const apiKey = document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')
+                        .src.split('key=')[1].split('&')[0];
+
                     return fetch('https://routes.googleapis.com/directions/v2:computeRoutes', {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
-                            'X-Goog-Api-Key': 'AIzaSyBDPc1q5IiNhnTW_7of2UhOPswb2Zyks0g', // Make sure this is defined in your HTML
+                            'X-Goog-Api-Key': apiKey,
                             'X-Goog-FieldMask': 'routes.legs.steps,routes.legs',
                         },
                         body: JSON.stringify(routesRequest),
@@ -245,7 +248,7 @@ const MapAnimator = {
                         }));
 
                         this.directionsCache[hash] = legs;
-                        resolve(legs);
+                        return resolve(legs);
                     })
                     .catch((error) => reject(error));
             }
@@ -357,7 +360,7 @@ const MapAnimator = {
     animate(d) {
         if (d > this.distance) {
             this.map.panTo(this.endLocation.latlng);
-            this.marker.setPosition(this.endLocation.latlng);
+            this.marker.position = this.endLocation.latlng;
 
             if (this.callback) {
                 google.maps.event.addListenerOnce(this.map, 'click', () => {
@@ -370,7 +373,7 @@ const MapAnimator = {
         const p = this.polyline.GetPointAtDistance(d);
 
         this.map.panTo(p);
-        this.marker.setPosition(p);
+        this.marker.position = p;
         this.timerHandle = setTimeout(
             () => {
                 this.animate(d + this.step);
@@ -385,7 +388,7 @@ const MapAnimator = {
             clearTimeout(this.timerHandle);
             this.timerHandle = null;
             this.map.panTo(this.endLocation.latlng);
-            this.marker.setPosition(this.endLocation.latlng);
+            this.marker.position = this.endLocation.latlng;
         }
     },
 
