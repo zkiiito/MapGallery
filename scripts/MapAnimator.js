@@ -30,6 +30,7 @@ const MapAnimator = {
                 style: google.maps.ZoomControlStyle.SMALL,
             },
             mapTypeControl: false,
+            mapId: 'DEMO_MAP_ID', // Add a valid Map ID
         };
 
         this.map = new google.maps.Map(document.getElementById(this.mapdiv), myOptions);
@@ -40,7 +41,7 @@ const MapAnimator = {
             this.geocode(address)
                 .then((location) => {
                     this.map.setCenter(location);
-                    this.marker = this.createMarker(location, 'start');
+                    this.marker = this.createMarker(location);
 
                     if (callbackImmediately) {
                         resolve();
@@ -53,16 +54,13 @@ const MapAnimator = {
         });
     },
 
-    createMarker(latlng, label) {
-        const marker = new google.maps.Marker({
+    createMarker(latlng) {
+        const markerView = new google.maps.marker.AdvancedMarkerElement({
             position: latlng,
             map: this.map,
-            title: label,
-            zIndex: Math.round(latlng.lat * -100000) * 32,
         });
-        marker.myname = label;
 
-        return marker;
+        return markerView;
     },
 
     showRoute(routeParams, callback) {
@@ -74,7 +72,7 @@ const MapAnimator = {
             this.timerHandle = null;
         }
         if (this.marker) {
-            this.marker.setMap(null);
+            this.marker.map = null;
         }
 
         if (this.polyline) {
@@ -92,7 +90,7 @@ const MapAnimator = {
                     zIndex: 100,
                 });
                 this.polyline.setMap(this.map);
-                this.marker = this.createMarker(path[0], 'start');
+                this.marker = this.createMarker(path[0]);
                 this.endLocation = { latlng: path[path.length - 1] };
                 this.fitMapToPolylines([this.polyline]);
 
@@ -164,25 +162,95 @@ const MapAnimator = {
                         return resolve(deserializedResults);
                     });
             } else {
-                const req = {
-                    origin: request.from,
-                    destination: request.to,
-                    travelMode: request.mode || google.maps.DirectionsTravelMode.DRIVING,
-                    waypoints: request.waypoints || [],
-                    provideRouteAlternatives: false,
-                    optimizeWaypoints: false,
-                };
+                // Convert origin and destination to LatLng if they're addresses
+                Promise.all([
+                    typeof request.from === 'string' ? this.geocode(request.from) : Promise.resolve(request.from),
+                    typeof request.to === 'string' ? this.geocode(request.to) : Promise.resolve(request.to),
+                    ...((request.waypoints || []).map(
+                        (wp) => (typeof wp.location === 'string' ? this.geocode(wp.location) : Promise.resolve(wp.location)),
+                    )),
+                ]).then(([origin, destination, ...waypointLocations]) => {
+                    const routesRequest = {
+                        origin: {
+                            location: {
+                                latLng: {
+                                    latitude: origin.lat(),
+                                    longitude: origin.lng(),
+                                },
+                            },
+                        },
+                        destination: {
+                            location: {
+                                latLng: {
+                                    latitude: destination.lat(),
+                                    longitude: destination.lng(),
+                                },
+                            },
+                        },
+                        travelMode: request.mode === 'DRIVING' ? 'DRIVE' : request.mode,
+                        computeAlternativeRoutes: false,
+                        languageCode: 'en-US',
+                    };
 
-                const directionsService = new google.maps.DirectionsService();
-                directionsService.route(req, (response, status) => {
-                    if (status === google.maps.DirectionsStatus.OK) {
-                        const result = response.routes[0].legs;
-                        this.directionsCache[hash] = result;
-                        return resolve(result);
+                    if (waypointLocations.length > 0) {
+                        routesRequest.intermediates = waypointLocations.map((location) => ({
+                            location: {
+                                latLng: {
+                                    latitude: location.lat(),
+                                    longitude: location.lng(),
+                                },
+                            },
+                        }));
                     }
 
-                    return reject(status);
-                });
+                    const apiKey = document.querySelector('script[src*="maps.googleapis.com/maps/api/js"]')
+                        .src.split('key=')[1].split('&')[0];
+
+                    return fetch('https://routes.googleapis.com/directions/v2:computeRoutes', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-Goog-Api-Key': apiKey,
+                            'X-Goog-FieldMask': 'routes.legs.steps,routes.legs',
+                        },
+                        body: JSON.stringify(routesRequest),
+                    });
+                })
+                    .then((response) => response.json())
+                    .then((result) => {
+                        if (!result.routes || !result.routes[0]) {
+                            return reject(new Error('No routes found'));
+                        }
+
+                        // Convert the Routes API response to match the old Directions API format
+                        const legs = result.routes[0].legs.map((leg) => ({
+                            start_location: new google.maps.LatLng(
+                                leg.startLocation.latLng.latitude,
+                                leg.startLocation.latLng.longitude,
+                            ),
+                            end_location: new google.maps.LatLng(
+                                leg.endLocation.latLng.latitude,
+                                leg.endLocation.latLng.longitude,
+                            ),
+                            steps: leg.steps.map((step) => ({
+                                start_location: new google.maps.LatLng(
+                                    step.startLocation.latLng.latitude,
+                                    step.startLocation.latLng.longitude,
+                                ),
+                                end_location: new google.maps.LatLng(
+                                    step.endLocation.latLng.latitude,
+                                    step.endLocation.latLng.longitude,
+                                ),
+                                path: step.polyline.encodedPolyline
+                                    ? google.maps.geometry.encoding.decodePath(step.polyline.encodedPolyline)
+                                    : [],
+                            })),
+                        }));
+
+                        this.directionsCache[hash] = legs;
+                        return resolve(legs);
+                    })
+                    .catch((error) => reject(error));
             }
         });
     },
@@ -292,7 +360,7 @@ const MapAnimator = {
     animate(d) {
         if (d > this.distance) {
             this.map.panTo(this.endLocation.latlng);
-            this.marker.setPosition(this.endLocation.latlng);
+            this.marker.position = this.endLocation.latlng;
 
             if (this.callback) {
                 google.maps.event.addListenerOnce(this.map, 'click', () => {
@@ -305,7 +373,7 @@ const MapAnimator = {
         const p = this.polyline.GetPointAtDistance(d);
 
         this.map.panTo(p);
-        this.marker.setPosition(p);
+        this.marker.position = p;
         this.timerHandle = setTimeout(
             () => {
                 this.animate(d + this.step);
@@ -320,7 +388,7 @@ const MapAnimator = {
             clearTimeout(this.timerHandle);
             this.timerHandle = null;
             this.map.panTo(this.endLocation.latlng);
-            this.marker.setPosition(this.endLocation.latlng);
+            this.marker.position = this.endLocation.latlng;
         }
     },
 
